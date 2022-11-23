@@ -12,34 +12,33 @@ const Navbar = () => {
     const expandCollapse = () => setCollapse(!expand);
 
     const resNavbarExpandStyle = {
-    transition:'height 0.3s linear',
-    height: `${expand ? '200px' : '0px'}`
+    transition:'height 0.3s linear'
     }
 
     return (
         <section>
-            <nav className={`flex shadow-md justify-between items-center flex-wrap px-2 sm:container sm:mx-auto`}>
+            <nav className={`flex shadow-md justify-between items-center flex-wrap px-2 md:px-[5%] lg:px-[4%]`}>
 
                 {/* Brand Image / Text */}
                 <div>
-                    <img className={`w-11/12`} src={brandLogo} alt="Brand Logo" />
+                    <img className={`w-11/12 md:w-full`} src={brandLogo} alt="Brand Logo" />
                 </div>
 
                 {/* Expand Bar Icon */}
-                <div className={`lg:hidden order-3 lg:order-none`}>
+                <div className={`md:hidden order-3 md:order-none`}>
                     <HiBars3BottomLeft onClick={expandCollapse} className={`text-3xl`}></HiBars3BottomLeft>
                 </div>
 
                 {/* Navlink */}
-                <div style={resNavbarExpandStyle} className={`order-4 bg-white overflow-hidden lg:-order-none flex justify-center text-center flex-col basis-full`}>
-                    <NavLink className={`text-blackSA border-b pb-2 my-2 block mx-2`}>Home</NavLink>
-                    <NavLink className={`text-blackSA border-b pb-2 my-2 block mx-2`}>About</NavLink>
-                    <NavLink className={`text-blackSA border-b pb-2 my-2 block mx-2`}>Advertise</NavLink>
-                    <NavLink className={`text-blackSA border-b pb-2 my-2 block mx-2`}>Shop</NavLink>
+                <div style={resNavbarExpandStyle} className={`order-4 bg-white md:bg-inherit overflow-hidden md:order-none flex items-center justify-center ${expand ? 'h-[200px]' : 'h-0'} text-center flex-col md:h-fit md:flex-row basis-full md:basis-auto`}>
+                    <NavLink className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Home</NavLink>
+                    <NavLink className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>About</NavLink>
+                    <NavLink className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Advertise</NavLink>
+                    <NavLink className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block mx-2`}>Shop</NavLink>
                 </div>
 
                 {/* User Avatar */}
-                <div className={`order-2 lg:order-none`}>
+                <div className={`order-2 md:order-none`}>
                     <ImUserPlus className={`text-2xl text-blackSA`}></ImUserPlus>
                     <FiLogOut className={`text-2xl hidden text-blackSA`}></FiLogOut>
                 </div>
