@@ -8,6 +8,7 @@ module.exports = {
         common: 'var(--common)',
         blackSA: 'var(--black)',
         commonDeep: 'var(--commonDeep)',
+        primaryRed: 'var(--primaryRed)',
       }
     },
   },
