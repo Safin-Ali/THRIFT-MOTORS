@@ -7,6 +7,7 @@ module.exports = {
         primary: 'var(--body--BG)',
         common: 'var(--common)',
         blackSA: 'var(--black)',
+        commonDeep: 'var(--commonDeep)',
       }
     },
   },
