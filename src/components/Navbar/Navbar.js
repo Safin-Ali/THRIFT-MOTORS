@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import brandLogo from '../../images/brand-logo.png';
-import {HiBars3BottomLeft} from 'react-icons/hi2';
+import {HiMenuAlt3} from 'react-icons/hi';
 import {ImUserPlus} from 'react-icons/im';
 import {FiLogOut} from 'react-icons/fi';
 import { NavLink } from 'react-router-dom';
@@ -26,7 +26,8 @@ const Navbar = () => {
 
                 {/* Expand Bar Icon */}
                 <div className={`md:hidden order-3 md:order-none`}>
-                    <HiBars3BottomLeft onClick={expandCollapse} className={`text-3xl`}></HiBars3BottomLeft>
+                    <HiMenuAlt3 onClick={expandCollapse} className={`text-3xl`}></HiMenuAlt3>
+                    
                 </div>
 
                 {/* Navlink */}
