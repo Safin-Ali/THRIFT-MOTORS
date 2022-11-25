@@ -4,6 +4,7 @@ import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
 import CategoryCard from '../../components/Brand-Category-Card/CategoryCard';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
+import Footer from '../../components/footer/Footer';
 
 const Home = () => {
 
@@ -27,14 +28,15 @@ const Home = () => {
                 {
                     !allBrands ? <LoadingSpinner></LoadingSpinner>
                     :
-                    <div className="grid grid-cols-3 gap-[5%] my-[5%] justify-center">
+                    <div className="grid grid-cols-3 gap-10 my-[5%] justify-center">
                         {
-                                        allBrands?.map(brand => <CategoryCard key={brand._id} data={brand}></CategoryCard>)
+                            allBrands?.slice(0,3).map(brand => <CategoryCard key={brand._id} data={brand}></CategoryCard>)
                         }
                     </div>
                 }
 
             </header>
+            <Footer></Footer>
         </>
     );
 };

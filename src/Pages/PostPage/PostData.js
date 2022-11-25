@@ -1,16 +1,25 @@
-import React from 'react';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import React, { useState } from 'react';
+import {useLoaderData } from 'react-router-dom';
+import BookProductModal from '../../components/Form/BookProductModal';
 import LeftSideNav from '../../components/Navbar/LeftSideNav';
+import RightSideNav from '../../components/Navbar/RightSideNav';
 import PostCard from '../../components/post-card/PostCard';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 
 const PostData = () => {
 
+    // get this params category all data
     const fetcheData = useLoaderData();
 
-    console.log(fetcheData)
+    // toggle modal
+    const[toggle,setToggle] = useState(false);
 
-    if(!fetcheData || !fetcheData.length) return <LoadingSpinner></LoadingSpinner>
+    // modal default data set
+    const[modalDT,setModalDT] = useState([]);
+
+    // wait for response
+    if(!fetcheData) return <LoadingSpinner></LoadingSpinner>
+
 
     return (
         <section>
@@ -22,15 +31,17 @@ const PostData = () => {
 
                 <div className={`col-span-2 py-[3%]`}>
                 {
-                        fetcheData.map(data => <PostCard key={data._id} data={data}></PostCard>)
+                        !fetcheData.length ? <p>No Post Found</p> : 
+                        fetcheData.map(data => <PostCard setModalDT={setModalDT} toggle={toggle} setToggle={setToggle} key={data._id} data={data}></PostCard>)
                 }
                 </div>
 
                 <div className={`border`}>
-                        <p>Right Nav</p>
+                        <RightSideNav></RightSideNav>
                 </div>
 
             </div>
+            <BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal>
         </section>
     );
 };

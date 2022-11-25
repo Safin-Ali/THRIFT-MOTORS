@@ -2,9 +2,7 @@ import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
 import {GoUnverified,GoVerified} from 'react-icons/go'
 
-const PostCard = ({data}) => {
-
-    console.log(data)
+const PostCard = ({data,setToggle,toggle,setModalDT}) => {
 
     const {carInfo,location,paid,postOwnerInfo,postedTime,resalePrice,sellCarImg,serviceId,usedTime} = data;
 
@@ -55,7 +53,10 @@ const PostCard = ({data}) => {
 
                     {/* Book Now Button */}
                     <div>
-                        <PrimaryButton className={'w-full'}>Book Now</PrimaryButton>
+                        <PrimaryButton onClick={()=>{
+                            setModalDT(data)
+                            setToggle(!toggle)
+                            }} className={'w-full'}>Book Now</PrimaryButton>
                     </div>
                 </section>
 
