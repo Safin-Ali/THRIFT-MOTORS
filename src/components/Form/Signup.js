@@ -160,7 +160,7 @@ const Signup = () => {
               
             </div>
             <div className={`text-center`}>
-              <PrimaryButton className={`bg-transparent border text-common hover:text-white border-common duration-150 hover:bg-common`}>SIGNUP</PrimaryButton>
+              <PrimaryButton className={`bg-transparent border hover:text-white border-common duration-150 hover:bg-common`}>SIGNUP</PrimaryButton>
             </div>
           </form>
           <div className={`flex justify-center`}>
