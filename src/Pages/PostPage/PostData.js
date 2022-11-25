@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, useLoaderData } from 'react-router-dom';
+import LeftSideNav from '../../components/Navbar/LeftSideNav';
 import PostCard from '../../components/post-card/PostCard';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 
@@ -16,7 +17,7 @@ const PostData = () => {
             <div className={`grid grid-cols-4 gap-[5%]`}>
                 
                 <div className={`border`}>
-                        <p>Left Nav</p>
+                        <LeftSideNav></LeftSideNav>
                 </div>
 
                 <div className={`col-span-2 py-[3%]`}>

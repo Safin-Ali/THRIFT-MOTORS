@@ -59,10 +59,10 @@ const Navbar = () => {
 
                 {/* Navlink */}
                 <div style={resNavbarExpandStyle} className={`order-4 bg-white md:bg-inherit overflow-hidden md:order-none flex items-center justify-center ${expand ? 'h-[200px]' : 'h-0'} text-center flex-col md:h-fit md:flex-row basis-full md:basis-auto`}>
-                    <NavLink className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Home</NavLink>
-                    <NavLink className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>About</NavLink>
-                    <NavLink className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Advertise</NavLink>
-                    <NavLink className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block mx-2`}>Shop</NavLink>
+                    <NavLink to={'/'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Home</NavLink>
+                    <NavLink to={'/dashboard'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Dashboard</NavLink>
+                    <NavLink to={'/'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Advertise</NavLink>
+                    <NavLink to={'/'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block mx-2`}>Shop</NavLink>
                 </div>
 
                 {/* User Avatar */}
