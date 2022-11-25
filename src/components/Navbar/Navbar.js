@@ -1,19 +1,48 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import brandLogo from '../../images/brand-logo.png';
 import {HiMenuAlt3} from 'react-icons/hi';
-import {ImUserPlus} from 'react-icons/im';
+import {ImGooglePlus, ImUserPlus} from 'react-icons/im';
 import {FiLogOut} from 'react-icons/fi';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { AuthUser } from '../../Context/AuthContext';
 
 const Navbar = () => {
 
+    // use AuthContext For User Data
+    const {logOut,userData} = useContext(AuthUser);
+
+    console.log(userData)
+
+    // navbar expand small devices when "expand" is true
     const [expand,setCollapse] = useState(false);
 
+    // toggle navbars expand and collapse in this function
     const expandCollapse = () => setCollapse(!expand);
+
+    // assign new route / change route path using by this hook
+    const navigate = useNavigate();
+
+    // get current location Object data in this hook
+    const location = useLocation();
 
     const resNavbarExpandStyle = {
     transition:'height 0.3s linear'
     }
+
+    // intrigate login / signup page by this function
+    const handleAuthDir = (path) => {
+    // store route path when you req another route and goto next route path
+    location.state = (path)
+    navigate(path)
+    };
+
+    // logout authuser by this function
+    const handleLogout = () => {
+        logOut()
+        .then(() => {})
+        .catch(e => console.log(e.message))
+    }
+
 
     return (
         <>
@@ -21,7 +50,7 @@ const Navbar = () => {
 
                 {/* Brand Image / Text */}
                 <div>
-                    <img className={`w-11/12 md:w-full`} src={brandLogo} alt="Brand Logo" />
+                    <NavLink to={`/`}><img className={`w-11/12 md:w-full`} src={brandLogo} alt="Brand Logo" /></NavLink>
                 </div>
 
                 {/* Expand Bar Icon */}
@@ -40,8 +69,13 @@ const Navbar = () => {
 
                 {/* User Avatar */}
                 <div className={`order-2 md:order-none`}>
-                    <ImUserPlus className={`text-2xl text-blackSA`}></ImUserPlus>
-                    <FiLogOut className={`text-2xl hidden text-blackSA`}></FiLogOut>
+                    {
+                        userData 
+                        ? 
+                        <FiLogOut onClick={handleLogout} className={`text-2xl text-blackSA cursor-pointer`}></FiLogOut>
+                        :
+                        <ImUserPlus onClick={()=>handleAuthDir('/signup')} className={`text-2xl text-blackSA cursor-pointer`}></ImUserPlus>
+                    }
                 </div>
 
             </nav>

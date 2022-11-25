@@ -9,6 +9,7 @@ module.exports = {
         blackSA: 'var(--black)',
         commonDeep: 'var(--commonDeep)',
         primaryRed: 'var(--primaryRed)',
+        lightgray: 'var(--lightgray)',
       }
     },
   },
