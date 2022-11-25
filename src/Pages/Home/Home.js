@@ -24,11 +24,15 @@ const Home = () => {
 
                 {/* Category / Brand Logo */}
 
-                <div className="grid grid-cols-3 gap-[5%] my-[5%] justify-center">
-                    {
-                        allBrands?.map(brand => <CategoryCard key={brand._id} data={brand}></CategoryCard>) || <LoadingSpinner></LoadingSpinner>
-                    }
-                </div>
+                {
+                    !allBrands ? <LoadingSpinner></LoadingSpinner>
+                    :
+                    <div className="grid grid-cols-3 gap-[5%] my-[5%] justify-center">
+                        {
+                                        allBrands?.map(brand => <CategoryCard key={brand._id} data={brand}></CategoryCard>)
+                        }
+                    </div>
+                }
 
             </header>
         </>

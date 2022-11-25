@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import brandLogo from '../../images/brand-logo.png';
 import {HiMenuAlt3} from 'react-icons/hi';
-import {ImGooglePlus, ImUserPlus} from 'react-icons/im';
+import {ImUserPlus} from 'react-icons/im';
 import {FiLogOut} from 'react-icons/fi';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/AuthContext';
@@ -10,8 +10,6 @@ const Navbar = () => {
 
     // use AuthContext For User Data
     const {logOut,userData} = useContext(AuthUser);
-
-    console.log(userData)
 
     // navbar expand small devices when "expand" is true
     const [expand,setCollapse] = useState(false);
@@ -31,9 +29,10 @@ const Navbar = () => {
 
     // intrigate login / signup page by this function
     const handleAuthDir = (path) => {
+        
     // store route path when you req another route and goto next route path
-    location.state = (path)
-    navigate(path)
+    location['from'] = location.pathname;
+    navigate(path);
     };
 
     // logout authuser by this function
@@ -42,7 +41,6 @@ const Navbar = () => {
         .then(() => {})
         .catch(e => console.log(e.message))
     }
-
 
     return (
         <>
@@ -74,7 +72,7 @@ const Navbar = () => {
                         ? 
                         <FiLogOut onClick={handleLogout} className={`text-2xl text-blackSA cursor-pointer`}></FiLogOut>
                         :
-                        <ImUserPlus onClick={()=>handleAuthDir('/signup')} className={`text-2xl text-blackSA cursor-pointer`}></ImUserPlus>
+                        <ImUserPlus onClick={()=>handleAuthDir('/login')} className={`text-2xl text-blackSA cursor-pointer`}></ImUserPlus>
                     }
                 </div>
 

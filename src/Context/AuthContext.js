@@ -53,8 +53,6 @@ const AuthContext = ({children}) => {
         return signOut(auth);
     }
 
-    console.log(userData)
-
     useEffect(()=>{
         const unSusb = onAuthStateChanged(auth,user=>{
             setUserData(user)
