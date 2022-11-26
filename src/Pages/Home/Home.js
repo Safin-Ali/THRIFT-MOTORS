@@ -30,7 +30,7 @@ const Home = () => {
 
                 {/* Carousel Banner */}
                 <div>
-                    <Carousel></Carousel>
+                    <Carousel url={`http://localhost:5000/sliderImage`}></Carousel>
                 </div>
 
                 {/* Category / Brand Logo */}

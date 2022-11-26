@@ -20,6 +20,8 @@ const Login = () => {
     // get current location Object data in this hook
     const location = useLocation();
 
+    console.log(location)
+
     // get requested location
     const from = location.state?location.state : '/';
 
@@ -49,7 +51,7 @@ const Login = () => {
       .catch(e => console.log(e.message))
     }
 
-    if(userData) return <Navigate to={from}></Navigate>
+    if(userData) return <Navigate to={from} replace={true}></Navigate>
 
   return (
     <section className={`w-4/6/6 mx-auto flex justify-center items-center min-h-screen max-h-screen`}>
