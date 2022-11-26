@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext,useState } from 'react';
 import brandLogo from '../../images/brand-logo.png';
 import {HiMenuAlt3} from 'react-icons/hi';
 import {ImUserPlus} from 'react-icons/im';
@@ -37,8 +37,6 @@ const Navbar = () => {
             return res.data
         }
     })
-
-    console.log(allUsersInfo)
 
     // intrigate login / signup page by this function
     const handleAuthDir = (path) => {

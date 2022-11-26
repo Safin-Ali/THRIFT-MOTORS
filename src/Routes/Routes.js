@@ -1,3 +1,4 @@
+import AddProduct from "../components/Form/AddProduct";
 import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
 import Home from "../Pages/Home/Home";
@@ -21,6 +22,9 @@ export const router = createBrowserRouter([
 
             // get dashboard page
             {path: '/dashboard', element: <DashboardPage></DashboardPage>},
+
+            // get add product page
+            {path: '/add-pruduct', element: <AddProduct></AddProduct>},
         ]
     },
 

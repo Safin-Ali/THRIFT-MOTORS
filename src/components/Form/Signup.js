@@ -54,8 +54,6 @@ const Signup = () => {
         const imgFormData = new FormData();
         imgFormData.append('image',data.userAvatar[0])
 
-        console.log(data)
-
         // imgbb api connect
         const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMGBB_API}`
 
@@ -159,6 +157,8 @@ const Signup = () => {
   
               
             </div>
+            
+            {/* submit button */}
             <div className={`text-center`}>
               <PrimaryButton className={`bg-transparent border hover:text-white border-common duration-150 hover:bg-common`}>SIGNUP</PrimaryButton>
             </div>
