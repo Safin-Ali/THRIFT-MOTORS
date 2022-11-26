@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-const Carousel = ({url,imgArray}) => {
+const Carousel = ({url,imgArray,className=''}) => {
 
     // store image array
     const [apiImageArray,setAPIImageArray] = useState(null);
@@ -69,7 +69,7 @@ const Carousel = ({url,imgArray}) => {
         return (
             <>
                 <section className={`flex`}>
-                    <div className={`mx-auto w-2/5 border-2 rounded-lg overflow-hidden relative flex `}>
+                    <div className={`mx-auto ${className} border-2 rounded-lg overflow-hidden relative flex `}>
                         {
                             apiImageArray?.banner.map((img,idx)=> <img key={idx} style={{left: `${idx*100}%`}} name={`carousel-items`} src={img} alt="Slide_Image" className={`rounded-lg w-full`}  />)
                         }

@@ -29,16 +29,23 @@ const Home = () => {
             <header className={`py-10 mx-[4%]`}>
 
                 {/* Carousel Banner */}
-                <div>
-                    <Carousel url={`http://localhost:5000/sliderImage`}></Carousel>
+                <div className={`grid grid-cols-3 gap-5 justify-center items-center`}>
+                    <div className={`text-center`}>
+                        <h1 className={`text-2xl font-semibold mb-5`}>Welcome, <span className={`text-common`}>THRIFT</span> <span className={`text-primaryRed`}>MOTORS</span></h1>
+                        <p className={`text-lg`}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed explicabo </p>
+                    </div>
+                    <div className={`col-span-2`}>
+                        <Carousel className={'w-[75%]'} url={`http://localhost:5000/sliderImage`}></Carousel>
+                    </div>
                 </div>
 
                 {/* Category / Brand Logo */}
 
+                    <h3 className={`text-3xl font-bold text-center mt-[5%]`}>Choose Your Brand</h3>
                 {
                     !allBrands ? <LoadingSpinner></LoadingSpinner>
                     :
-                    <div className="grid grid-cols-3 gap-10 my-[5%] justify-center">
+                    <div className="grid grid-cols-3 gap-10 my-[3%] justify-center">
                         {
                             allBrands?.slice(0,3).map(brand => <CategoryCard key={brand._id} data={brand}></CategoryCard>)
                         }
@@ -51,7 +58,7 @@ const Home = () => {
                     advPost.length > 0 
                     &&
                     <section>
-                        <h2>Advertised post</h2>
+                        <h3 className={`text-3xl font-bold text-center mt-[5%]`}>Advertised post</h3>
                         <div>
                             {
                                 advPost.map(post => <div key={post._id}><img src={post.sellCarImg} alt="Post Banner" /></div>)
