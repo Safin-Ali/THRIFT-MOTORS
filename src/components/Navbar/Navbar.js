@@ -83,7 +83,7 @@ const Navbar = () => {
                         allUsersInfo?.userRole === 'seller' 
                         && <>
                             <NavLink to={`/my-product/${userData?.email}`} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Product</NavLink>
-                            <NavLink to={`/add-pruduct`} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Add Product</NavLink>
+                            <NavLink to={`/add-product`} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Add Product</NavLink>
                             <NavLink to={'/my-buyers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Buyers</NavLink>
                         </>
                         
@@ -94,8 +94,8 @@ const Navbar = () => {
                         allUsersInfo?.userRole === 'admin' 
 
                         && <>
-                            <NavLink to={'/add-sellers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>All Sellers</NavLink>
-                            <NavLink to={'/my-buyers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>All Buyers</NavLink>
+                            <NavLink to={'/all-sellers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>All Sellers</NavLink>
+                            <NavLink to={'/all-buyers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>All Buyers</NavLink>
                         </>
                     }
                     

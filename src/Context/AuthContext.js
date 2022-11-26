@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut,updateProfile } from 'firebase/auth';
 import app from '../Firebase/Firebase.init';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 export const AuthUser = createContext();
 
@@ -53,6 +55,15 @@ const AuthContext = ({children}) => {
         return signOut(auth);
     }
 
+    // get your information
+    const {data:currUserInfo,isLoading} = useQuery({
+        queryKey: ['User Information',userData?.email],
+        queryFn: async () => {
+                const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`);
+                return res.data
+        }
+    })
+
     useEffect(()=>{
         const unSusb = onAuthStateChanged(auth,user=>{
             setUserData(user)
@@ -61,9 +72,8 @@ const AuthContext = ({children}) => {
         return () => unSusb()
     },[])
 
-
     // all variable,function,userdata of Object
-    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub}
+    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading}
     return (
         <AuthUser.Provider value={authInfo}>{children}</AuthUser.Provider>
     );

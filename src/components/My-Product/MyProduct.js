@@ -1,9 +1,9 @@
 import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
 
-const MyProduct = ({data,setToggle,toggle,setModalDT,handleDeleteProduct}) => {
+const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
 
-    const {carInfo,location,paid,_id,postOwnerInfo,postedTime,resalePrice,sellCarImg,serviceId,usedTime} = data;
+    const {carInfo,location,paid,advertise,_id,postOwnerInfo,postedTime,resalePrice,sellCarImg,serviceId,usedTime} = data;
 
     const shortlocation = location.roadNo+', '+location.area+', '+location.city+', '+location.country;
 
@@ -50,7 +50,7 @@ const MyProduct = ({data,setToggle,toggle,setModalDT,handleDeleteProduct}) => {
 
                     {/* Book Now Button */}
                     <div className={`flex gap-5`}>
-                        <PrimaryButton className={'w-full'}>ADVERTISE</PrimaryButton>
+                        <PrimaryButton onClick={()=>advertiseProduct(_id,postOwnerInfo.email)} className={'w-full'} disabled={advertise}>{advertise?'Advertised':'Advertise'}</PrimaryButton>
                         <PrimaryButton onClick={()=>handleDeleteProduct(_id,postOwnerInfo.email)} className={'w-full'}>DELETE</PrimaryButton>
                     </div>
                 </section>

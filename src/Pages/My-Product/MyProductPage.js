@@ -9,16 +9,7 @@ const MyProductPage = () => {
     // use AuthContext For User Data
      const {userData} = useContext(AuthUser);
 
-    // get your information
-    const {data:currUserInfo} = useQuery({
-        queryKey: ['User Information',userData?.email],
-        queryFn: async () => {
-                const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`);
-             return res.data
-        }
-    })
-
-    // get your information
+    // get my all product
     const {data:myProduct,refetch} = useQuery({
         queryKey: ['My Product',userData?.email],
         queryFn: async () => {
@@ -28,7 +19,6 @@ const MyProductPage = () => {
     })
 
     // delete product
-
     function handleDeleteProduct (id,email) {
         axios.delete(`http://localhost:5000/postedData?id=${id}&email=${email}`)
         .then(res => {
@@ -39,11 +29,23 @@ const MyProductPage = () => {
         })
     }
 
+    function advertiseProduct (id,email) {
+        axios.patch(`http://localhost:5000/postedData`,{id,email})
+        .then(res => {
+            if(res.data.modifiedCount > 0){
+                window.alert('advertise success full')
+                return refetch()
+            }
+        })
+    }
+
+    if(!myProduct?.length) return <div>no product</div>
+
     return (
         <section className={`mx-5`}>
             <div className={`grid grid-cols-3 gap-5`}>
                 {
-                    myProduct?.map( prod => <MyProduct handleDeleteProduct={handleDeleteProduct} key={prod._id} data={prod}></MyProduct>)
+                    myProduct?.map( prod => <MyProduct handleDeleteProduct={handleDeleteProduct} advertiseProduct={advertiseProduct} key={prod._id} data={prod}></MyProduct>)
                 }
             </div>
         </section>

@@ -1,3 +1,4 @@
+import DashTable from "../components/Dashboard/DashTable";
 import AddProduct from "../components/Form/AddProduct";
 import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
@@ -5,6 +6,7 @@ import Home from "../Pages/Home/Home";
 import Main from "../Pages/Main/Main";
 import MyProductPage from "../Pages/My-Product/MyProductPage";
 import PostData from "../Pages/PostPage/PostData";
+import AdminPage from "../Pages/Private/AdminPage";
 import DashboardPage from "../Pages/Private/DashboardPage";
 import PrivatePage from "../Pages/Private/PrivatePage";
 
@@ -21,14 +23,14 @@ export const router = createBrowserRouter([
             // get posted data by category id/name wise
             {path: '/category/:id', loader: async ({params}) => fetch(`http://localhost:5000/category/${params.id}`), element: <PrivatePage><PostData></PostData></PrivatePage>},
 
-            // get dashboard page
-            {path: '/dashboard', element: <DashboardPage></DashboardPage>},
-
             // get add product page
-            {path: '/add-pruduct', element: <AddProduct></AddProduct>},
+            {path: '/add-product', element: <DashboardPage><AddProduct></AddProduct></DashboardPage>},
 
             // get my product page
-            {path: '/my-product/:id', element: <MyProductPage></MyProductPage>},
+            {path: '/my-product/:id', element: <DashboardPage><MyProductPage></MyProductPage></DashboardPage>},
+
+            // get all sellers (admin)
+            {path: '/all-sellers', element: <DashboardPage><DashTable></DashTable></DashboardPage>},
         ]
     },
 

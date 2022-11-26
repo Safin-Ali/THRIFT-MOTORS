@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from '../../components/Carousel/Carousel';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
@@ -8,11 +8,21 @@ import Footer from '../../components/footer/Footer';
 
 const Home = () => {
 
+    // store advertised post data
+    const[advPost,setAdvertisedPost] = useState([]);
+
+    // get all brand data
     const {data: allBrands} = useQuery({
         queryKey: ['allBrand'],
         queryFn: () => axios.get(`http://localhost:5000/all-brand`)
-        .then(res => res.data)
+        .then(res =>res.data)
     })
+
+    // get all advertised data
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/advertised`)
+        .then(res => setAdvertisedPost(res.data))
+    },[])
 
     return (
         <>
@@ -33,6 +43,21 @@ const Home = () => {
                             allBrands?.slice(0,3).map(brand => <CategoryCard key={brand._id} data={brand}></CategoryCard>)
                         }
                     </div>
+                }
+
+                {/* advertised post */}
+
+                {
+                    advPost.length > 0 
+                    &&
+                    <section>
+                        <h2>Advertised post</h2>
+                        <div>
+                            {
+                                advPost.map(post => <div key={post._id}><img src={post.sellCarImg} alt="Post Banner" /></div>)
+                            }
+                        </div>
+                    </section>
                 }
 
             </header>

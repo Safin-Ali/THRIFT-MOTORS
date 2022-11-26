@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, {useContext, useEffect, useState } from 'react';
 import {useForm} from 'react-hook-form';
@@ -7,22 +6,24 @@ import { AuthUser } from '../../Context/AuthContext';
 import { generateImgURL } from '../image-url-generate/imgURLGenerate';
 import {BiImageAdd} from "react-icons/bi";
 import PrimaryButton from "../primary-button/PrimaryButton";
+import LoadingSpinner from '../Spinner/LoadingSpinner';
+import { Navigate } from 'react-router-dom';
 
 
 const AddProduct = () => {
 
     // use AuthContext For User Data
-    const {userData} = useContext(AuthUser);
+    const {userData,isLoading,currUserInfo} = useContext(AuthUser);
 
     // get form all value in object
     const {register,handleSubmit,reset} = useForm();
 
-        // store there brand info on matches with form brand
-        const [brandInfo,setBrandInfo] = useState();
+    // store there brand info on matches with form brand
+    const [brandInfo,setBrandInfo] = useState();
 
-        const[allBrand,setAllBrand] = useState()
+    const[allBrand,setAllBrand] = useState()
 
-    // get brand dadta
+    // get brand data
     useEffect(()=>{
         axios.get(`http://localhost:5000/all-brand`)
         .then(res => {
@@ -30,16 +31,6 @@ const AddProduct = () => {
             setBrandInfo(res.data[0])
         })
     },[])
-
-    // get your information
-    const {data:currUserInfo} = useQuery({
-        queryKey: ['User Information',userData?.email],
-        queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`);
-            return res.data
-        }
-    })
-
     
     // get brand info
     function handleBrandInfo (e) {
@@ -75,7 +66,9 @@ const AddProduct = () => {
                 postOwnerInfo: {email: userData?.email,phoneNumber: phoneNumber,photo:userData?.photoURL || currUserInfo?.userAvatar,name: userData?.displayName,varified:currUserInfo.userVarified},
                 paid: false,
     
-                serviceId: brandInfo._id
+                serviceId: brandInfo._id,
+
+                advertise: false
             }
 
             // post all data
@@ -89,6 +82,15 @@ const AddProduct = () => {
             console.log(e.message)
         }
     }
+
+    console.log(currUserInfo)
+
+    // wait for user information
+    if(isLoading) return <LoadingSpinner></LoadingSpinner>;
+
+    // if(!currUserInfo?.email)
+    if(!currUserInfo && currUserInfo.userRole !== 'seller') return <Navigate to={`/`}></Navigate>
+
 
     return (
         <section>
