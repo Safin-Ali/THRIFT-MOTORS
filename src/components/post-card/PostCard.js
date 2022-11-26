@@ -1,6 +1,6 @@
 import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
-import {GoUnverified,GoVerified} from 'react-icons/go'
+import {GoUnverified,GoVerified} from 'react-icons/go';
 
 const PostCard = ({data,setToggle,toggle,setModalDT}) => {
 

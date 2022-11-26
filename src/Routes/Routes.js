@@ -1,4 +1,4 @@
-import DashTable from "../components/Dashboard/DashTable";
+import AllUser from "../components/Dashboard/AllUser";
 import AddProduct from "../components/Form/AddProduct";
 import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
             {path: '/my-product/:id', element: <DashboardPage><MyProductPage></MyProductPage></DashboardPage>},
 
             // get all sellers (admin)
-            {path: '/all-sellers', element: <DashboardPage><DashTable></DashTable></DashboardPage>},
+            {path: '/all-sellers', element: <DashboardPage><AllUser></AllUser></DashboardPage>},
         ]
     },
 

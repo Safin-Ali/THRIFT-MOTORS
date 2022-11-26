@@ -48,7 +48,8 @@ const Signup = () => {
     // form all values
     function onSubmit(data){
       // set user account role
-        data['userRole'] = selRole;  
+        data['userRole'] = selRole;
+        data['userVarified'] = false;
 
         // conver image file and post image to the imgbb
         const imgFormData = new FormData();
