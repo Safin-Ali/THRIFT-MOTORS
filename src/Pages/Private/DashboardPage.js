@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 import { AuthUser } from '../../Context/AuthContext';
-import AdminPage from './AdminPage';
 
 const DashboardPage = ({children}) => {
     const {isLoading,currUserInfo,loading} = useContext(AuthUser);

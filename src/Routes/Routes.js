@@ -1,12 +1,13 @@
+import NotFoundPage from "../components/404-Not-Found/NotFoundPage";
 import AllUser from "../components/Dashboard/AllUser";
 import AddProduct from "../components/Form/AddProduct";
 import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
+import BlogPage from "../Pages/Blog/BlogPage";
 import Home from "../Pages/Home/Home";
 import Main from "../Pages/Main/Main";
 import MyProductPage from "../Pages/My-Product/MyProductPage";
 import PostData from "../Pages/PostPage/PostData";
-import AdminPage from "../Pages/Private/AdminPage";
 import DashboardPage from "../Pages/Private/DashboardPage";
 import PrivatePage from "../Pages/Private/PrivatePage";
 
@@ -16,6 +17,9 @@ const { createBrowserRouter } = require("react-router-dom");
 export const router = createBrowserRouter([
     {
         path:`/` , element:<Main></Main>, children:[
+
+            // 404 not found page
+            {path: '/*',element:<NotFoundPage></NotFoundPage>},
 
             // get all home page section
             {path: '/', element:<Home></Home>},
@@ -31,6 +35,9 @@ export const router = createBrowserRouter([
 
             // get all sellers (admin)
             {path: '/all-sellers', element: <DashboardPage><AllUser></AllUser></DashboardPage>},
+
+            // get blogs page
+            {path: '/blogs', element: <BlogPage></BlogPage>},
         ]
     },
 

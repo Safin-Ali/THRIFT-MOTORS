@@ -100,7 +100,10 @@ const Navbar = () => {
                     }
                     
                     <NavLink to={'/'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Advertise</NavLink>
-                    <NavLink to={'/'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block mx-2`}>Shop</NavLink>
+
+                    <NavLink to={'/*'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>SHOP</NavLink>
+
+                    <NavLink to={'/blogs'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block mx-2`}>Blogs</NavLink>
                 </div>
 
                 {/* User Avatar */}
