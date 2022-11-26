@@ -3,6 +3,7 @@ import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
 import Home from "../Pages/Home/Home";
 import Main from "../Pages/Main/Main";
+import MyProductPage from "../Pages/My-Product/MyProductPage";
 import PostData from "../Pages/PostPage/PostData";
 import DashboardPage from "../Pages/Private/DashboardPage";
 import PrivatePage from "../Pages/Private/PrivatePage";
@@ -25,6 +26,9 @@ export const router = createBrowserRouter([
 
             // get add product page
             {path: '/add-pruduct', element: <AddProduct></AddProduct>},
+
+            // get my product page
+            {path: '/my-product/:id', element: <MyProductPage></MyProductPage>},
         ]
     },
 

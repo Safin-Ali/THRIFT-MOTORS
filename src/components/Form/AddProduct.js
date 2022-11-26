@@ -51,8 +51,6 @@ const AddProduct = () => {
         return setBrandInfo(matchesBrand)
     }
 
-    console.log(brandInfo)
-
     //  syncronously post product
     async function onPost ({resalePrice,sellCarModel,originalPrice,carModelYear,usedTime,area,roadNo,city,country,phoneNumber,carImg}) {
         try{
@@ -82,8 +80,10 @@ const AddProduct = () => {
 
             // post all data
             const res = await axios.post(`http://localhost:5000/new-post`,data)
-            if(res.data.acknowledged) window.alert('Wow Post Done')
-            console.log(data,res)
+            if(res.data.acknowledged) {
+                reset()
+                window.alert('Wow Post Done')
+            }
         }
         catch(e){
             console.log(e.message)

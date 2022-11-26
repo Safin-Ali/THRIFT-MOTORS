@@ -82,8 +82,8 @@ const Navbar = () => {
                     {
                         allUsersInfo?.userRole === 'seller' 
                         && <>
-                            <NavLink to={'/myorders'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Orders</NavLink>
-                            <NavLink to={'/add-pruduct'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Add Product</NavLink>
+                            <NavLink to={`/my-product/${userData?.email}`} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Product</NavLink>
+                            <NavLink to={`/add-pruduct`} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Add Product</NavLink>
                             <NavLink to={'/my-buyers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Buyers</NavLink>
                         </>
                         
