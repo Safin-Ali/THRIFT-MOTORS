@@ -5,6 +5,7 @@ import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
 import BlogPage from "../Pages/Blog/BlogPage";
 import Home from "../Pages/Home/Home";
+import LoginPage from "../Pages/Login/LoginPage";
 import Main from "../Pages/Main/Main";
 import MyProductPage from "../Pages/My-Product/MyProductPage";
 import PostData from "../Pages/PostPage/PostData";
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
     },
 
     {
-        path: '/login', element: <Login></Login>
+        path: '/login', element: <LoginPage><Login></Login></LoginPage>
     },
     
 ])

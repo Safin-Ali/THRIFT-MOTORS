@@ -22,6 +22,9 @@ const AuthContext = ({children}) => {
     // Waiting For User data. 
     const [loading,setLoading] = useState(true);
 
+    // get jwn key from locale storage
+    const JWTToken = localStorage.getItem('jwt-token');
+
     // login with email and password
     const login = (email,pass) => {
         return signInWithEmailAndPassword(auth,email,pass);
@@ -73,7 +76,7 @@ const AuthContext = ({children}) => {
     },[])
 
     // all variable,function,userdata of Object
-    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch}
+    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch,JWTToken}
     return (
         <AuthUser.Provider value={authInfo}>{children}</AuthUser.Provider>
     );

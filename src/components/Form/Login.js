@@ -4,13 +4,13 @@ import PrimaryButton from "../primary-button/PrimaryButton";
 import {FcGoogle} from "react-icons/fc";
 import {GrGithub} from "react-icons/gr";
 import { AuthUser } from "../../Context/AuthContext";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link,useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
 
     // use AuthContext For User Data
-    const {loginWithGoogle,loginWithGitHub,login,userData} = useContext(AuthUser);
+    const {loginWithGoogle,loginWithGitHub,login} = useContext(AuthUser);
 
     // assign new route / change route path using by this hook
     const navigate = useNavigate();
@@ -38,6 +38,7 @@ const Login = () => {
       }
     }
 
+    // request api for JWT encrypt token
     function getJWTToken(email){
       axios.get(`http://localhost:5000/jwt?email=${email}`)
       .then(res => localStorage.setItem('jwt-token',res.data.encryptToken))
@@ -54,8 +55,6 @@ const Login = () => {
         await navigate(from)
       }
     }
-
-    if(userData) return <Navigate to={from} replace={true}></Navigate>
 
   return (
     <section className={`w-4/6/6 mx-auto flex justify-center items-center min-h-screen max-h-screen`}>

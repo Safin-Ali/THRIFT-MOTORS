@@ -49,7 +49,7 @@ const Navbar = () => {
     // logout authuser by this function
     const handleLogout = () => {
         logOut()
-        .then(() => {})
+        .then(() => localStorage.removeItem('jwt-token'))
         .catch(e => console.log(e.message))
     }
 
