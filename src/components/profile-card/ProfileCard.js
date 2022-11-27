@@ -3,7 +3,7 @@ import UseFetchIWithQuery from '../../Hook/UseFetchIWithQuery';
 import PrimaryButton from '../primary-button/PrimaryButton';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 
-const ProfileCard = ({data,handleSellerVerify}) => {
+const ProfileCard = ({data,handleSellerVerify,handleDeleteSeller}) => {
 
     let {userEmail,userAvatar,firstName,_id,lastName,userContactNumber,userVarified} = data;
 
@@ -63,7 +63,7 @@ const ProfileCard = ({data,handleSellerVerify}) => {
                 {/* Button */}
                 <div className={`flex gap-2 justify-center mt-5`}>
                     <PrimaryButton onClick={()=>handleSellerVerify(userEmail,_id,userVarified)} className={`px-3 py-1.5`}>{userVarified ? 'Refute' : 'Verify'}</PrimaryButton>
-                    <PrimaryButton className={`px-3 py-1.5 bg-red-600`}>Delete</PrimaryButton>
+                    <PrimaryButton onClick={()=>handleDeleteSeller(_id)} className={`px-3 py-1.5 bg-red-600`}>Delete</PrimaryButton>
                 </div>
             </div>
         </div>

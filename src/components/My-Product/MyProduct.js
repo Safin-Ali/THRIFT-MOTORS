@@ -1,7 +1,5 @@
 import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
-import {GoUnverified,GoVerified} from 'react-icons/go';
-import {BsBookmark} from 'react-icons/bs';
 import {BiTime,BiWorld} from 'react-icons/bi';
 import {GoLocation} from 'react-icons/go';
 
@@ -17,7 +15,6 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
     }
-
 
     return (
         <div className={`border shadow-md rounded-t-md my-[3%]`}>

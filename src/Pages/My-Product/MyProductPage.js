@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
+import EmptyData from '../../components/Empty-Data/EmptyData';
 import MyProduct from '../../components/My-Product/MyProduct';
 import { AuthUser } from '../../Context/AuthContext';
 
@@ -39,7 +40,7 @@ const MyProductPage = () => {
         })
     }
 
-    if(!myProduct?.length) return <div>no product</div>
+    if(!myProduct?.length) return <EmptyData className={`justify-center`}></EmptyData>
 
     return (
         <section className={`mx-5`}>

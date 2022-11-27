@@ -28,6 +28,14 @@ const AllUser = () => {
         }
     }
 
+    async function handleDeleteSeller (id) {
+        const res = await axios.delete(`http://localhost:5000/userInfo?id=${id}`);
+        if(res.data.deletedCount > 0){
+            window.alert('User Delete Successful')
+            refetch()
+        }
+    }
+
     // waiting for user information
     if(!allSellers) return <LoadingSpinner></LoadingSpinner>
 
@@ -37,7 +45,7 @@ const AllUser = () => {
     return (
         <section className={`grid grid-cols-1 sm:mx-[20%] md:grid-cols-2 lg:grid-cols-3 gap-7 md:mx-[8%] my-10`}>
             {
-                allSellers.map(elm => <ProfileCard handleSellerVerify={handleSellerVerify} key={elm._id} data={elm}></ProfileCard>)
+                allSellers.map(elm => <ProfileCard handleDeleteSeller={handleDeleteSeller} handleSellerVerify={handleSellerVerify} key={elm._id} data={elm}></ProfileCard>)
             }
         </section>
     );
