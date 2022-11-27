@@ -25,10 +25,10 @@ const SellerPage = () => {
 
     return(
         <section>
-            <div className={`grid grid-cols-5`}>
+            <div className={`grid grid-cols-1 lg:grid-cols-5`}>
 
                 {/* Side Nav */}
-                <LeftNav className={`px-4 text-center border-r`}>
+                <LeftNav className={`lg:w-full text-center border-r`}>
                     <section className={`my-5`}>
                             <Link className={`col-span-2`} to={`/dashboard/my-product/${currUserInfo.userEmail}`}>
                                 <AiOutlineShoppingCart className={`text-xl inline-block mr-1`}></AiOutlineShoppingCart> My Product
@@ -47,7 +47,7 @@ const SellerPage = () => {
                 </LeftNav>
 
                 {/* Dashboard Content */}
-                <div className={`col-span-4`}>
+                <div className={`lg:col-span-4`}>
                     <Outlet></Outlet>
                 </div>
             </div>

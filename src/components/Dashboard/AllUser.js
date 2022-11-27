@@ -43,7 +43,7 @@ const AllUser = () => {
     if(!allSellers.length) return <EmptyData></EmptyData>
 
     return (
-        <section className={`grid grid-cols-1 sm:mx-[20%] md:grid-cols-2 lg:grid-cols-3 gap-7 md:mx-[8%] my-10`}>
+        <section className={`grid grid-cols-1 mx-[5%] sm:mx-[10%] md:grid-cols-2 lg:grid-cols-3 gap-7 md:mx-[5%] my-10`}>
             {
                 allSellers.map(elm => <ProfileCard handleDeleteSeller={handleDeleteSeller} handleSellerVerify={handleSellerVerify} key={elm._id} data={elm}></ProfileCard>)
             }
