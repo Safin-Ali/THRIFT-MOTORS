@@ -5,13 +5,11 @@ import {ImUserPlus} from 'react-icons/im';
 import {FiLogOut} from 'react-icons/fi';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/AuthContext';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 
 const Navbar = () => {
 
     // use AuthContext For User Data
-    const {logOut,userData} = useContext(AuthUser);
+    const {logOut,userData,currUserInfo} = useContext(AuthUser);
 
     // navbar expand small devices when "expand" is true
     const [expand,setCollapse] = useState(false);
@@ -29,14 +27,11 @@ const Navbar = () => {
         transition:'all 0.3s linear'
     }
 
-    // get current User role
-    const {data:allUsersInfo} = useQuery({
-        queryKey: ['User Information',userData?.email],
-        queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`);
-            return res.data
-        }
-    })
+    let dashPath;
+
+    if(currUserInfo?.userRole === 'user') dashPath = '/my-orders';
+    if(currUserInfo?.userRole === 'seller') dashPath = `/my-product/${userData?.email}`;
+    if(currUserInfo?.userRole === 'admin') dashPath = '/all-sellers';
 
     // intrigate login / signup page by this function
     const handleAuthDir = (path) => {
@@ -74,32 +69,16 @@ const Navbar = () => {
 
                     {/* show that when current user role "user" */}
                     {
-                        allUsersInfo?.userRole === 'user'
+                        currUserInfo?.userRole === 'user'
                         && <NavLink to={'/myorders'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Orders</NavLink>
                     }
+                    { 
 
-                     {/* show that when current user role only "seller" */}
-                    {
-                        allUsersInfo?.userRole === 'seller' 
-                        && <>
-                            <NavLink to={`/my-product/${userData?.email}`} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Product</NavLink>
-                            <NavLink to={`/add-product`} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Add Product</NavLink>
-                            <NavLink to={'/my-buyers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Buyers</NavLink>
-                        </>
-                        
+                    userData?.email
+                     &&
+                    <NavLink to={`/dashboard${dashPath}`} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Dashboard</NavLink>
+
                     }
-
-                    {/* show that when current user role only "seller" */}
-                    {
-                        allUsersInfo?.userRole === 'admin' 
-
-                        && <>
-                            <NavLink to={'/all-sellers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>All Sellers</NavLink>
-                            <NavLink to={'/all-buyers'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>All Buyers</NavLink>
-                        </>
-                    }
-                    
-                    <NavLink to={'/'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Advertise</NavLink>
 
                     <NavLink to={'/*'} className={`text-blackSA border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>SHOP</NavLink>
 

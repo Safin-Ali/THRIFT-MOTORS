@@ -33,6 +33,8 @@ const AddProduct = () => {
             setBrandInfo(res.data[0])
         })
     },[])
+
+    if(!currUserInfo) return <LoadingSpinner></LoadingSpinner>
     
     // get brand info
     function handleBrandInfo (e) {

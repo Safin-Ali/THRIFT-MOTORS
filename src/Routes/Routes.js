@@ -9,8 +9,9 @@ import LoginPage from "../Pages/Login/LoginPage";
 import Main from "../Pages/Main/Main";
 import MyProductPage from "../Pages/My-Product/MyProductPage";
 import PostData from "../Pages/PostPage/PostData";
-import DashboardPage from "../Pages/Private/DashboardPage";
+import AdminPage from "../Pages/Private/AdminPage";
 import PrivatePage from "../Pages/Private/PrivatePage";
+import SellerPage from "../Pages/Private/SellerPage";
 
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -29,13 +30,18 @@ export const router = createBrowserRouter([
             {path: '/category/:id', loader: async ({params}) => fetch(`http://localhost:5000/category/${params.id}`), element: <PrivatePage><PostData></PostData></PrivatePage>},
 
             // get add product page
-            {path: '/add-product', element: <DashboardPage><AddProduct></AddProduct></DashboardPage>},
+            {path: '/dashboard', element: <SellerPage></SellerPage>, children:[
+                {path: '/dashboard/my-product/:id', element: <MyProductPage></MyProductPage>},
+                // get my product page
+                {path: '/dashboard/add-product', element: <AddProduct></AddProduct>},
+                {path: '/dashboard/my-buyers',},
+            ]},
 
-            // get my product page
-            {path: '/my-product/:id', element: <DashboardPage><MyProductPage></MyProductPage></DashboardPage>},
 
             // get all sellers (admin)
-            {path: '/all-sellers', element: <DashboardPage><AllUser></AllUser></DashboardPage>},
+            {path: '/dashboard/all-sellers', element: <AdminPage></AdminPage>,children:[
+                {path: '/dashboard/all-sellers', element: <AllUser></AllUser>},
+            ]},
 
             // get blogs page
             {path: '/blogs', element: <BlogPage></BlogPage>},

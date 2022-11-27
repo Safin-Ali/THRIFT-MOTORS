@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 import { AuthUser } from '../../Context/AuthContext';
+import SellerPage from './SellerPage';
 
 const DashboardPage = ({children}) => {
     const {isLoading,currUserInfo,loading} = useContext(AuthUser);
@@ -14,6 +15,10 @@ const DashboardPage = ({children}) => {
     if(!currUserInfo) return <Navigate to={`/`}></Navigate>;
 
     // check user role and then send user req location with her role wise
+    if (currUserInfo.userRole === 'user') {
+        return children
+    }
+
     if (currUserInfo.userRole === 'admin') {
         return children
     }

@@ -8,7 +8,7 @@ import { AuthUser } from '../../Context/AuthContext';
 const MyProductPage = () => {
 
     // use AuthContext For User Data
-     const {userData} = useContext(AuthUser);
+     const {userData,currUserInfo} = useContext(AuthUser);
 
     // get my all product
     const {data:myProduct,refetch} = useQuery({
@@ -41,10 +41,11 @@ const MyProductPage = () => {
     }
 
     if(!myProduct?.length) return <EmptyData className={`justify-center`}></EmptyData>
+    
 
     return (
-        <section className={` mx-[10%]  lg:mx-[5%]`}>
-            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5`}>
+        <section className={` mx-[10%]  lg:mx-[7%]`}>
+            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5`}>
                 {
                     myProduct?.map( prod => <MyProduct handleDeleteProduct={handleDeleteProduct} advertiseProduct={advertiseProduct} key={prod._id} data={prod}></MyProduct>)
                 }
