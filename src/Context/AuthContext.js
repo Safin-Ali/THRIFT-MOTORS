@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut,updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, deleteUser, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut,updateProfile } from 'firebase/auth';
 import app from '../Firebase/Firebase.init';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -45,6 +45,11 @@ const AuthContext = ({children}) => {
         return signInWithPopup(auth,GitHubProvider)
     }
 
+    // delete account user
+    const deleteAccount = () => {
+        return deleteUser(auth.currentUser);
+    }
+
     // update user profile
     const updateAuthProfile = (name,imgURL) => {
         return updateProfile(auth.currentUser,{
@@ -76,7 +81,7 @@ const AuthContext = ({children}) => {
     },[])
 
     // all variable,function,userdata of Object
-    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch,JWTToken}
+    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch,JWTToken,deleteAccount}
     return (
         <AuthUser.Provider value={authInfo}>{children}</AuthUser.Provider>
     );

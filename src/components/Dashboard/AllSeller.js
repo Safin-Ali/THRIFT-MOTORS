@@ -1,20 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthUser } from '../../Context/AuthContext';
 import EmptyData from '../Empty-Data/EmptyData';
 import ProfileCard from '../profile-card/ProfileCard';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 
-const AllUser = () => {
+const AllSeller = () => {
+
+    // use AuthContext For User Data
+    const {deleteAccount} = useContext(AuthUser);
 
     // api for all sellers information
-    const url = `http://localhost:5000/allUser?role=seller`
+    const url = `http://localhost:5000/allUser`
 
     const {data:allSellers,refetch} = useQuery({
         queryKey: ['all seller'],
         queryFn: async () => {
             const res = await axios.get(url);
-            return res.data
+            const onlySellers = res.data.filter(elm => elm.userRole === 'seller')
+            return onlySellers
         }
     })
 
@@ -29,10 +34,16 @@ const AllUser = () => {
     }
 
     async function handleDeleteSeller (id) {
-        const res = await axios.delete(`http://localhost:5000/userInfo?id=${id}`);
-        if(res.data.deletedCount > 0){
-            window.alert('User Delete Successful')
-            refetch()
+        try{
+            const res = await axios.delete(`http://localhost:5000/userInfo?id=${id}`);
+            if(res.data.deletedCount > 0){
+                const del = await deleteAccount();
+                await window.alert('User Delete Successful')
+                await refetch()
+            }
+        }
+        catch(e){
+            console.log(e)
         }
     }
 
@@ -51,4 +62,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default AllSeller;

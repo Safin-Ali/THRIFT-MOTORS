@@ -1,5 +1,6 @@
 import NotFoundPage from "../components/404-Not-Found/NotFoundPage";
-import AllUser from "../components/Dashboard/AllUser";
+import AllBuyers from "../components/Dashboard/AllBuyers";
+import AllSeller from "../components/Dashboard/AllSeller";
 import AddProduct from "../components/Form/AddProduct";
 import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
@@ -39,8 +40,9 @@ export const router = createBrowserRouter([
 
 
             // get all sellers (admin)
-            {path: '/dashboard/all-sellers', element: <AdminPage></AdminPage>,children:[
-                {path: '/dashboard/all-sellers', element: <AllUser></AllUser>},
+            {path: '/dashboard', element: <AdminPage></AdminPage>,children:[
+                {path: '/dashboard/all-sellers', element: <AllSeller></AllSeller>},
+                {path: '/dashboard/all-buyers', element: <AllBuyers></AllBuyers>},
             ]},
 
             // get blogs page
