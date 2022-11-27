@@ -43,8 +43,8 @@ const MyProductPage = () => {
     if(!myProduct?.length) return <EmptyData className={`justify-center`}></EmptyData>
 
     return (
-        <section className={`mx-5`}>
-            <div className={`grid grid-cols-3 gap-5`}>
+        <section className={` mx-[10%]  lg:mx-[5%]`}>
+            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5`}>
                 {
                     myProduct?.map( prod => <MyProduct handleDeleteProduct={handleDeleteProduct} advertiseProduct={advertiseProduct} key={prod._id} data={prod}></MyProduct>)
                 }

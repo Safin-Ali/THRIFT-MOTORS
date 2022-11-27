@@ -5,6 +5,7 @@ import {FcGoogle} from "react-icons/fc";
 import {GrGithub} from "react-icons/gr";
 import { AuthUser } from "../../Context/AuthContext";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
 
@@ -19,8 +20,6 @@ const Login = () => {
 
     // get current location Object data in this hook
     const location = useLocation();
-
-    console.log(location)
 
     // get requested location
     const from = location.state?location.state : '/';
@@ -39,16 +38,21 @@ const Login = () => {
       }
     }
 
+    function getJWTToken(email){
+      axios.get(`http://localhost:5000/jwt?email=${email}`)
+      .then(res => localStorage.setItem('jwt-token',res.data.encryptToken))
+    }
+
     // form all values
-    function onLogin(data){
-      // call firebase signup function
-      login(data.userEmail,data.password)            
-      .then(res => {
-        reset()
-        alert('login Success')
-        navigate(from)
-      })
-      .catch(e => console.log(e.message))
+    async function onLogin(data){
+      // call firebase signup function         
+      const res = await login(data.userEmail,data.password);
+      if(res) {
+        await getJWTToken(res.user.email)
+        await reset()
+        await alert('login Success')
+        await navigate(from)
+      }
     }
 
     if(userData) return <Navigate to={from} replace={true}></Navigate>

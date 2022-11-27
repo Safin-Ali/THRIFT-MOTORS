@@ -47,7 +47,7 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
                     </div>
 
                     {/* Location */}
-                    <div className={`flex capitalize gap-x-5 items-center justify-center`}>
+                    <div className={`hidden lg:flex capitalize gap-x-5 items-center justify-center`}>
                         <div className={`flex gap-x-2 items-center h-[60px]`}>
                             <GoLocation></GoLocation>
                             <p>{shortlocation}</p>
