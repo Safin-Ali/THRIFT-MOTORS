@@ -7,7 +7,7 @@ import { generateImgURL } from '../image-url-generate/imgURLGenerate';
 import {BiImageAdd} from "react-icons/bi";
 import PrimaryButton from "../primary-button/PrimaryButton";
 import LoadingSpinner from '../Spinner/LoadingSpinner';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const AddProduct = () => {
@@ -21,7 +21,9 @@ const AddProduct = () => {
     // store there brand info on matches with form brand
     const [brandInfo,setBrandInfo] = useState();
 
-    const[allBrand,setAllBrand] = useState()
+    const[allBrand,setAllBrand] = useState();
+
+    const navigate =  useNavigate();
 
     // get brand data
     useEffect(()=>{
@@ -76,6 +78,7 @@ const AddProduct = () => {
             if(res.data.acknowledged) {
                 reset()
                 window.alert('Wow Post Done')
+                navigate(`/my-product/:${userData?.email}`)
             }
         }
         catch(e){

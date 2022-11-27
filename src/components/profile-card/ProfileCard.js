@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {GoUnverified,GoVerified} from 'react-icons/go';
 import UseFetchIWithQuery from '../../Hook/UseFetchIWithQuery';
 import PrimaryButton from '../primary-button/PrimaryButton';
@@ -44,19 +43,19 @@ const ProfileCard = ({data,handleSellerVerify}) => {
                     <div className={`p-3 border rounded-lg`}>
                         {
                             !sellerAllPostCount ? <LoadingSpinner></LoadingSpinner>
-                            : <h5>{sellerAllPostCount.length}</h5>
+                            : <h5 className={`font-semibold`}>{sellerAllPostCount.length}</h5>
                         }
                         <h6>POST</h6>
                     </div>
                     <div className={`p-3 border rounded-lg`}>
                         {
                             !soldProd ? <LoadingSpinner></LoadingSpinner>
-                            : <h5>{soldProd.length}</h5>
+                            : <h5 className={`font-semibold`}>{soldProd.length}</h5>
                         }
                         <h6>Sell</h6>
                     </div>
                     <div className={`p-3 border rounded-lg`}>
-                        <h5>2/10</h5>
+                        <h5 className={`font-semibold`}>2/10</h5>
                         <h6>rate</h6>
                     </div>
                 </div>

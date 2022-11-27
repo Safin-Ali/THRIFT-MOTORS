@@ -4,7 +4,7 @@ import PrimaryButton from "../primary-button/PrimaryButton";
 import {FcGoogle} from "react-icons/fc";
 import {GrGithub} from "react-icons/gr";
 import { AuthUser } from "../../Context/AuthContext";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
@@ -69,6 +69,8 @@ const Login = () => {
             {/* Password Feild */}
             <div className={`my-2`}><input type="password" {...register('password')} className={`border focus:outline-none focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm`} placeholder='Enter Password'required/>
             </div>
+
+            <div>No account? <Link className={`text-common underline`} to={`/signup`}>registration</Link></div>
             
           </div>
           <div className={`text-center`}>

@@ -78,7 +78,7 @@ const PostCard = ({data,setToggle,toggle,setModalDT}) => {
                             <img className={`rounded-[50%]`} src={postOwnerInfo.photo} alt="Pisr Author Avatar" />
                         </div>
                         <div className={`flex flex-col justify-center`}>
-                            <div>
+                            <div className={`flex items-center justify-center gap-x-2`}>
                             <p>{postOwnerInfo.name}</p>
                                 {
                                     postOwnerInfo.varified ?

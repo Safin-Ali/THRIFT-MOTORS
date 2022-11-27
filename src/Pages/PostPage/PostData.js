@@ -3,7 +3,6 @@ import {useLoaderData } from 'react-router-dom';
 import EmptyData from '../../components/Empty-Data/EmptyData';
 import BookProductModal from '../../components/Form/BookProductModal';
 import LeftSideNav from '../../components/Navbar/LeftSideNav';
-import RightSideNav from '../../components/Navbar/RightSideNav';
 import PostCard from '../../components/post-card/PostCard';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 
