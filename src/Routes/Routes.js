@@ -1,4 +1,5 @@
 import NotFoundPage from "../components/404-Not-Found/NotFoundPage";
+import UnAuthorized from "../components/404-Not-Found/UnAuthorized";
 import AllBuyers from "../components/Dashboard/AllBuyers";
 import AllSeller from "../components/Dashboard/AllSeller";
 import AddProduct from "../components/Form/AddProduct";
@@ -37,6 +38,9 @@ export const router = createBrowserRouter([
                 {path: '/dashboard/add-product', element: <AddProduct></AddProduct>},
                 {path: '/dashboard/my-buyers',},
             ]},
+
+            // unathorized page
+            {path:'/error401',element:<UnAuthorized></UnAuthorized>},
 
 
             // get all sellers (admin)

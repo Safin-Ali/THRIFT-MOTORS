@@ -11,9 +11,9 @@ const ProfileCard = ({data,handleSellerVerify,handleDeleteSeller}) => {
 
     const sellerPostUrl = `http://localhost:5000/userPostCount?email=${userEmail}`;
 
-    const soldProd = UseFetchIWithQuery(soldUrl);
+    const soldProd = UseFetchIWithQuery(soldUrl,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
 
-    const sellerAllPostCount = UseFetchIWithQuery(sellerPostUrl);
+    const sellerAllPostCount = UseFetchIWithQuery(sellerPostUrl,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
 
     return (
         <div className={`border rounded-md py-[5%]`}>

@@ -76,7 +76,7 @@ const AddProduct = () => {
             }
 
             // post all data
-            const res = await axios.post(`http://localhost:5000/new-post`,data)
+            const res = await axios.post(`http://localhost:5000/new-post`,data,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
             if(res.data.acknowledged) {
                 reset()
                 window.alert('Wow Post Done')
@@ -85,14 +85,15 @@ const AddProduct = () => {
         }
         catch(e){
             console.log(e.message)
+            if(e.request.status === 401) return navigate('/error401')
+            return
         }
     }
 
     // wait for user information
     if(isLoading) return <LoadingSpinner></LoadingSpinner>;
 
-    // if(!currUserInfo?.email)
-    if(!currUserInfo && currUserInfo.userRole !== 'seller') return <Navigate to={`/`}></Navigate>
+    if(currUserInfo.userRole !== 'seller') return <Navigate to={`/`}></Navigate>
 
 
     return (

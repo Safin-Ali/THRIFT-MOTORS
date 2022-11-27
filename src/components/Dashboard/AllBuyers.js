@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import UnAuthorized from '../404-Not-Found/UnAuthorized';
 import EmptyData from '../Empty-Data/EmptyData';
 import ProfileCard from '../profile-card/ProfileCard';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
@@ -10,34 +12,57 @@ const AllBuyers = () => {
     // api for all sellers information
     const url = `http://localhost:5000/allUser`;
 
+    const navigate = useNavigate();
+
     const {data:allBuyers,refetch} = useQuery({
         queryKey: ['all seller'],
         queryFn: async () => {
-            const res = await axios.get(url);
+            try{
+            const res = await axios.get(url,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             const onlyBuyers = res.data.filter(elm => elm.userRole === 'user');
             return onlyBuyers
+            }
+            catch(e){
+                return e.request.status
+            }
         }
     })
 
-    console.log(allBuyers)
-
     async function handleSellerVerify (email,id,status) {
-        // patch body for user verifiy
-        const patchBody = {userEmail:email,_id:id,status}
-        const res = await axios.patch(`http://localhost:5000/allUser`,patchBody);
-        if(res.data.modifiedCount > 0){
-            window.alert('Update Successful')
-            refetch()
+        try{
+            // patch body for user verifiy
+            const patchBody = {userEmail:email,_id:id,status}
+            const res = await axios.patch(`http://localhost:5000/allUser`,patchBody,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            if(res.data.modifiedCount > 0){
+                window.alert('Update Successful')
+                refetch()
+            }
         }
+        catch(e){
+            console.log(e.message)
+            if(e.request.status === 401) return navigate('/error401')
+            return
+        }
+        
     }
 
     async function handleDeleteSeller (id) {
-        const res = await axios.delete(`http://localhost:5000/userInfo?id=${id}`);
-        if(res.data.deletedCount > 0){
-            window.alert('User Delete Successful')
-            refetch()
+        try{
+            const res = await axios.delete(`http://localhost:5000/userInfo?id=${id}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            if(res.data.deletedCount > 0){
+                window.alert('User Delete Successful')
+                refetch()
+            }
+        }
+        catch(e){
+            console.log(e.message)
+            if(e.request.status === 401) return navigate('/error401')
+            return
         }
     }
+
+    // when jwt key do not decrypt
+    if(allBuyers === 401) return <UnAuthorized></UnAuthorized>
 
     // waiting for user information
     if(!allBuyers) return <LoadingSpinner></LoadingSpinner>

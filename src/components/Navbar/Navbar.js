@@ -11,6 +11,8 @@ const Navbar = () => {
     // use AuthContext For User Data
     const {logOut,userData,currUserInfo} = useContext(AuthUser);
 
+    console.log(currUserInfo)
+
     // navbar expand small devices when "expand" is true
     const [expand,setCollapse] = useState(false);
 

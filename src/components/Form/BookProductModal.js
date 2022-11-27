@@ -5,10 +5,13 @@ import { AuthUser } from '../../Context/AuthContext';
 import PrimaryButton from '../primary-button/PrimaryButton';
 import axios from 'axios';
 import { generateDate } from '../date-generate/dateGenerate';
+import { useNavigate } from 'react-router-dom';
 
 const BookProductModal = ({toggle,setToggle,modalDT}) => {
     
-    const {userData} = useContext(AuthUser)
+    const {userData} = useContext(AuthUser);
+
+    const navigate = useNavigate();
 
     const {postOwnerInfo,carInfo,resalePrice,_id} = modalDT;
 
@@ -18,15 +21,23 @@ const BookProductModal = ({toggle,setToggle,modalDT}) => {
     const title = carInfo?.brand.concat(" ",carInfo.sellCarModel," ",carInfo.carModelYear);
 
     const handleBooked = async ({contactNumber,location}) => {
-        const currentDate = generateDate();
-        const res = await axios.post('http://localhost:5000/bookedCar',{title,bookedCarId: _id,bookedTime: currentDate,postOwnerName:userData.displayName,postOwnerEmail:postOwnerInfo.email,contactNumber,location})
-        const data = await res;
-        if(data.data.acknowledged) {
-            window.alert('Post Successful')
-            reset()
-            setToggle(!toggle)
+        try{
+            const currentDate = generateDate();
+            const res = await axios.post('http://localhost:5000/bookedCar',{title,bookedCarId: _id,bookedTime: currentDate,postOwnerName:userData.displayName,postOwnerEmail:postOwnerInfo.email,contactNumber,location})
+            const data = await res;
+            if(data.data.acknowledged) {
+                window.alert('Post Successful')
+                reset()
+                setToggle(!toggle)
+            }
+        }
+        catch(e){
+                console.log(e.message)
+                if(e.request.status === 401) return navigate('/error401')
+                return
         }
     }
+
 
 
     return (

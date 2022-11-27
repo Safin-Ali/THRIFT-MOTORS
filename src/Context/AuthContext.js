@@ -67,8 +67,14 @@ const AuthContext = ({children}) => {
     const {data:currUserInfo,isLoading,refetch} = useQuery({
         queryKey: ['User Information',userData?.email],
         queryFn: async () => {
-                const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`);
+            try{
+                const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
                 return res.data
+            }
+            catch(e){
+                console.log(e.message)
+                return undefined
+            }
         }
     })
 
