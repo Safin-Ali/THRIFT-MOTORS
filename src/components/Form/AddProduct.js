@@ -80,7 +80,7 @@ const AddProduct = () => {
             if(res.data.acknowledged) {
                 reset()
                 window.alert('Wow Post Done')
-                navigate(`/my-product/:${userData?.email}`)
+                navigate(`/dashboard/my-product/${userData?.email}`)
             }
         }
         catch(e){

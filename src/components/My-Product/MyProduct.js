@@ -59,7 +59,12 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
                     </div>
                     {/* Book Now Button */}
                     <div className={`flex gap-5`}>
-                        <PrimaryButton onClick={()=>advertiseProduct(_id,postOwnerInfo.email)} className={'w-full'} disabled={advertise}>{advertise?'Advertised':'Advertise'}</PrimaryButton>
+                        
+                        {
+                            !paid &&
+                            <PrimaryButton onClick={()=>advertiseProduct(_id,postOwnerInfo.email)} className={'w-full'} disabled={advertise}>{advertise?'Advertised':'Advertise'}</PrimaryButton>
+                        }
+
                         <PrimaryButton onClick={()=>handleDeleteProduct(_id,postOwnerInfo.email)} className={'w-full'}>DELETE</PrimaryButton>
                     </div>
                 </section>
