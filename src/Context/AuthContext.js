@@ -56,7 +56,7 @@ const AuthContext = ({children}) => {
     }
 
     // get your information
-    const {data:currUserInfo,isLoading} = useQuery({
+    const {data:currUserInfo,isLoading,refetch} = useQuery({
         queryKey: ['User Information',userData?.email],
         queryFn: async () => {
                 const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`);
@@ -73,7 +73,7 @@ const AuthContext = ({children}) => {
     },[])
 
     // all variable,function,userdata of Object
-    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading}
+    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch}
     return (
         <AuthUser.Provider value={authInfo}>{children}</AuthUser.Provider>
     );

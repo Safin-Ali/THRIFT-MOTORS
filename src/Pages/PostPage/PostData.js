@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useLoaderData } from 'react-router-dom';
+import EmptyData from '../../components/Empty-Data/EmptyData';
 import BookProductModal from '../../components/Form/BookProductModal';
 import LeftSideNav from '../../components/Navbar/LeftSideNav';
 import RightSideNav from '../../components/Navbar/RightSideNav';
@@ -23,22 +24,20 @@ const PostData = () => {
 
     return (
         <section>
-            <div className={`grid grid-cols-4 gap-[5%]`}>
+            <div className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-[5%]`}>
                 
-                <div className={`border`}>
+                <aside className={`border hidden md:block`}>
                         <LeftSideNav></LeftSideNav>
-                </div>
+                </aside>
 
-                <div className={`col-span-2 py-[3%]`}>
-                {
-                        !fetcheData.length ? <p>No Post Found</p> : 
-                        fetcheData.map(data => <PostCard setModalDT={setModalDT} toggle={toggle} setToggle={setToggle} key={data._id} data={data}></PostCard>)
-                }
-                </div>
-
-                <div className={`border`}>
-                        <RightSideNav></RightSideNav>
-                </div>
+                <aside className={`md:col-span-2 lg:col-span-3 py-[3%]`}>
+                    <div>
+                    {
+                            !fetcheData.length ?  <EmptyData></EmptyData>: 
+                            fetcheData.map(data => <PostCard setModalDT={setModalDT} toggle={toggle} setToggle={setToggle} key={data._id} data={data}></PostCard>)
+                    }
+                    </div>
+                </aside>
 
             </div>
             <BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal>

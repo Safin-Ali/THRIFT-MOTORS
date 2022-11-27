@@ -10,6 +10,7 @@
 @layer base {
     :root{
         --body--BG: #F4F8F9;
+        --white--card: #F9F9F9;
         --common: #FFB200;
         --primaryRed: #C1101F;
         --commonDeep: #c48e12;

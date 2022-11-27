@@ -29,13 +29,13 @@ const Home = () => {
             <header className={`py-10 mx-[4%]`}>
 
                 {/* Carousel Banner */}
-                <div className={`grid grid-cols-3 gap-5 justify-center items-center`}>
+                <div className={`grid grid-cols-1 lg:grid-cols-3 gap-5 justify-center items-center`}>
                     <div className={`text-center`}>
                         <h1 className={`text-2xl font-semibold mb-5`}>Welcome, <span className={`text-common`}>THRIFT</span> <span className={`text-primaryRed`}>MOTORS</span></h1>
                         <p className={`text-lg`}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed explicabo </p>
                     </div>
-                    <div className={`col-span-2`}>
-                        <Carousel className={'w-[75%]'} url={`http://localhost:5000/sliderImage`}></Carousel>
+                    <div className={`lg:col-span-2`}>
+                        <Carousel className={'w-full lg:w-[75%]'} url={`http://localhost:5000/sliderImage`}></Carousel>
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@ const Home = () => {
                 {
                     !allBrands ? <LoadingSpinner></LoadingSpinner>
                     :
-                    <div className="grid grid-cols-3 gap-10 my-[3%] justify-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-[3%] justify-center">
                         {
                             allBrands?.slice(0,3).map(brand => <CategoryCard key={brand._id} data={brand}></CategoryCard>)
                         }

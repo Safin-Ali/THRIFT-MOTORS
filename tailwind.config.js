@@ -10,6 +10,7 @@ module.exports = {
         commonDeep: 'var(--commonDeep)',
         primaryRed: 'var(--primaryRed)',
         lightgray: 'var(--lightgray)',
+        whiteCard: 'var(--white--card)',
       }
     },
   },

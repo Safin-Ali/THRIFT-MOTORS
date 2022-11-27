@@ -1,5 +1,9 @@
 import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
+import {GoUnverified,GoVerified} from 'react-icons/go';
+import {BsBookmark} from 'react-icons/bs';
+import {BiTime,BiWorld} from 'react-icons/bi';
+import {GoLocation} from 'react-icons/go';
 
 const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
 
@@ -7,18 +11,32 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
 
     const shortlocation = location.roadNo+', '+location.area+', '+location.city+', '+location.country;
 
+    const bgImage = {
+        backgroundImage: 
+        `url(${sellCarImg})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+    }
+
+
     return (
-        <div className={`border shadow-md rounded-t-lg my-[3%]`}>
+        <div className={`border shadow-md rounded-t-md my-[3%]`}>
             
             {/* Card Content Middle */}
-            <div>
-
-                {/* Post Thumbnail */}
                 <div>
-                    <img src={sellCarImg} className={`border rounded-t-lg`} alt="Post Thumbnail" />
+                {/* Post Thumbnail */}
+                <div style={bgImage} className={`object-cover col-span-2 rounded-t-md h-[300px] max-h-fit`}>
                 </div>
 
-                <section className={`p-10`}>
+                <section className={`p-5`}>                    
+                    {/* Time And Bookmark */}
+                    <div className={`flex justify-between items-center`}>
+                        <div className={`flex items-center p-1 lg:p-0`}>
+                            <BiTime className={`text-2xl p-0.5 inline`}></BiTime>
+                            <p>{postedTime}</p>
+                        </div>
+                    </div>
+
                     {/* Post Info */}
                     <div>
                         <h3 className={`text-2xl font-medium text-center my-1.5`}>{`${carInfo.brand} ${carInfo.sellCarModel} ${carInfo.carModelYear}`}</h3>
@@ -26,28 +44,22 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
                     </div>
 
                     {/* Price */}
-                    <div className={`flex justify-between items-center my-2`}>
-                        <p className={`p-1 rounded-md bg-common hover:shadow-lg`}>Original price: ${carInfo.originalPrice}</p>
-                        <p className={`p-1 rounded-md bg-primaryRed text-white hover:shadow-lg`}>Resale price: ${resalePrice}</p>
+                    <div className={`flex text-center justify-center gap-x-4 items-center my-2`}>
+                        <p className={`p-1 text-sm rounded-md bg-common hover:shadow-lg`}>Original price: ${carInfo.originalPrice}</p>
+                        <p className={`p-1 text-sm rounded-md bg-primaryRed text-white hover:shadow-lg`}>Resale price: ${resalePrice}</p>
                     </div>
 
-                    {/* Time And Location */}
-                    <div className={`flex capitalize justify-between my-2`}>
-                        <p>{shortlocation}</p>
-                        <p>{postedTime}</p>
-                    </div>
-
-                    {/* Post owner Info */}
-                    <div className={`flex justify-between items-center`}>
-                        <div className={`w-[10%] rounded-[50%]`}>
-                            <img className={`rounded-[50%]`} src={postOwnerInfo.photo} alt="Pisr Author Avatar" />
+                    {/* Location */}
+                    <div className={`flex capitalize gap-x-5 items-center justify-center`}>
+                        <div className={`flex gap-x-2 items-center`}>
+                            <GoLocation></GoLocation>
+                            <p>{shortlocation}</p>
                         </div>
-                        <div className={`flex flex-col justify-center`}>
-                            <p>{postOwnerInfo.email}</p>
-                            <p>{postOwnerInfo.phoneNumber}</p>
+                        <div className={`flex gap-x-2 items-center`}>
+                            <BiWorld></BiWorld>
+                            <p>{location?.country}</p>
                         </div>
                     </div>
-
                     {/* Book Now Button */}
                     <div className={`flex gap-5`}>
                         <PrimaryButton onClick={()=>advertiseProduct(_id,postOwnerInfo.email)} className={'w-full'} disabled={advertise}>{advertise?'Advertised':'Advertise'}</PrimaryButton>

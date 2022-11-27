@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import axios from 'axios';
 import {GoUnverified,GoVerified} from 'react-icons/go';
 import UseFetchIWithQuery from '../../Hook/UseFetchIWithQuery';
 import PrimaryButton from '../primary-button/PrimaryButton';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 
-const ProfileCard = ({data}) => {
+const ProfileCard = ({data,handleSellerVerify}) => {
 
-    const {userEmail,userAvatar,firstName,lastName,userContactNumber} = data;
+    let {userEmail,userAvatar,firstName,_id,lastName,userContactNumber,userVarified} = data;
 
     const soldUrl = `http://localhost:5000/userSoldCount?email=${userEmail}&paid=true`;
 
@@ -14,7 +14,7 @@ const ProfileCard = ({data}) => {
 
     const soldProd = UseFetchIWithQuery(soldUrl);
 
-    const sellerAllPostCount = UseFetchIWithQuery(sellerPostUrl)
+    const sellerAllPostCount = UseFetchIWithQuery(sellerPostUrl);
 
     return (
         <div className={`border rounded-md py-[5%]`}>
@@ -28,7 +28,9 @@ const ProfileCard = ({data}) => {
                 {/* user name */}
                 <div className={`flex items-center my-3 gap-5 justify-center`}>
                     <p>{firstName.concat(' ',lastName)}</p>
-                    <GoUnverified></GoUnverified>
+                    {
+                        userVarified ? <GoVerified className={`text-blue-600`}></GoVerified> : <GoUnverified></GoUnverified>
+                    }
                 </div>
 
                 {/* user contact information */}
@@ -61,7 +63,7 @@ const ProfileCard = ({data}) => {
 
                 {/* Button */}
                 <div className={`flex gap-2 justify-center mt-5`}>
-                    <PrimaryButton className={`px-3 py-1.5`}>Verify</PrimaryButton>
+                    <PrimaryButton onClick={()=>handleSellerVerify(userEmail,_id,userVarified)} className={`px-3 py-1.5`}>{userVarified ? 'Refute' : 'Verify'}</PrimaryButton>
                     <PrimaryButton className={`px-3 py-1.5 bg-red-600`}>Delete</PrimaryButton>
                 </div>
             </div>

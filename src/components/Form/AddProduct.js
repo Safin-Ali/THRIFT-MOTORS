@@ -83,8 +83,6 @@ const AddProduct = () => {
         }
     }
 
-    console.log(currUserInfo)
-
     // wait for user information
     if(isLoading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -96,10 +94,10 @@ const AddProduct = () => {
         <section>
             <div className={`w-2/3 mx-auto`}>
                 <form onSubmit={handleSubmit(onPost)}>
-                    <div className={`grid grid-cols-3 gap-3`}>
+                    <div className={`grid grid-cols-3 justify-center pt-5 gap-3`}>
 
                         {/* select car brand */}
-                        <div className={`text-center w-[85%]`}>
+                        <div className={` w-fulllg:w-[85%] lg:w-[95%] col-span-3 lg:col-span-1 lg:mx-auto`}>
                             <select onChange={handleBrandInfo} className={`border w-full focus:outline-none focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-l`}>
                                 {
                                     allBrand?.map( brand => <option key={brand._id} value={brand.brand}>{brand.brand}</option>)
@@ -108,62 +106,62 @@ const AddProduct = () => {
                         </div>
 
                         {/*car model feild*/}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('sellCarModel')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Model'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('sellCarModel')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Model'required/>
                         </div>
 
                         {/* car model year feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('carModelYear')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Model Year'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('carModelYear')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Model Year'required/>
                         </div>
 
                         {/* card base price feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('originalPrice')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Original Price'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('originalPrice')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Original Price'required/>
                         </div>
 
                         {/* car used time feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('usedTime')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Used Time'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('usedTime')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Used Time'required/>
                         </div>
 
                         {/* car sell price feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('resalePrice')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Sell price'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('resalePrice')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Car Sell price'required/>
                         </div>
 
                         {/* location area feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('area')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-1 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Area'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('area')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-1 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Area'required/>
                         </div>
 
                         {/* location roadNo feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('roadNo')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Road No'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('roadNo')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Road No'required/>
                         </div>
 
                         {/* location city feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('city')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='City'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('city')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='City'required/>
                         </div>
 
                         {/* location country feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('country')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Country'required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('country')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Country'required/>
                         </div>
 
                         {/* contact number */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text" {...register('phoneNumber')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Phone Number' required/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text" {...register('phoneNumber')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} placeholder='Phone Number' required/>
                         </div>
 
                         {/* user email feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="email" {...register('userEmail')} className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} defaultValue={userData?.email} readOnly/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="email" {...register('userEmail')} className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} defaultValue={userData?.email} readOnly/>
                         </div>
 
                         {/* user name feild */}
-                        <div className={`my-2 w-[95%] col-span-1 mx-auto`}><input type="text"  className={`border w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} defaultValue={userData?.displayName} readOnly/>
+                        <div className={`my-2 w-full lg:w-[95%] col-span-3 lg:col-span-1 mx-auto`}><input type="text"  className={`border w-full lg:w-[85%] focus:outline-none focus:border-common focus:border-b-2 focus:shadow-md focus:border-0 p-2 rounded-sm`} defaultValue={userData?.displayName} readOnly/>
                         </div>
 
                         {/* Image Upload */}            
                         <div className="flex col-span-3 items-center justify-center my-2">
-                            <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                            <label htmlFor="dropzone-file" className="flex mx-5 flex-col items-center justify-center h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
                                 <div className="flex px-10 text-lightgray flex-col items-center justify-center text-center">
                                     <p className="mb-2"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                                         <BiImageAdd className={`text-2xl m-3`}></BiImageAdd>
                                     <p>SVG, PNG, JPG (MAX. 650x500px)</p>
                                 </div>
-                                <input id="dropzone-file" {...register('carImg')} type="file" className="" required/>
+                                <input id="dropzone-file" {...register('carImg')} type="file" className="text-center" required/>
                             </label>
                         </div> 
 
