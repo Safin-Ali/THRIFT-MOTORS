@@ -23,7 +23,7 @@ const BookProductModal = ({toggle,setToggle,modalDT}) => {
     const handleBooked = async ({contactNumber,location}) => {
         try{
             const currentDate = generateDate();
-            const res = await axios.post('http://localhost:5000/bookedCar',{title,bookedCarId: _id,bookedTime: currentDate,postOwnerName:userData.displayName,postOwnerEmail:postOwnerInfo.email,contactNumber,location})
+            const res = await axios.post('http://localhost:5000/bookedCar',{title,bookedCarId: _id,bookedTime: currentDate,postOwnerName:userData.displayName,postOwnerEmail:postOwnerInfo.email,contactNumber,location},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
             const data = await res;
             if(data.data.acknowledged) {
                 window.alert('Post Successful')
