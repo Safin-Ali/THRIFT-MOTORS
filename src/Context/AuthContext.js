@@ -74,6 +74,9 @@ const AuthContext = ({children}) => {
         })
     };
 
+    // JWT Verification Header
+    const headerJWT = {headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}}
+
     // toastfy call
     const notifyFaild = (text) => {
         return toast.error(text)
@@ -85,16 +88,16 @@ const AuthContext = ({children}) => {
     }
 
     // get your information
-    const {data:currUserInfo,isLoading,refetch} = useQuery({
+    const {data:currUserInfo=[],isLoading,refetch} = useQuery({
         queryKey: ['User Information',userData?.email],
         queryFn: async () => {
             try{
-                const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+                const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`,headerJWT);
                 return res.data
             }
             catch(e){
                 console.log(e.message)
-                return undefined
+                return e.message
             }
         }
     })

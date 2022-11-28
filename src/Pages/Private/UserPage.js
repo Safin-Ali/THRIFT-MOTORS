@@ -16,6 +16,7 @@ const UserPage = () => {
     if(loading) return <LoadingSpinner></LoadingSpinner>;
 
     if(!userData) return <Navigate to={'/'}></Navigate>;
+    
 
     if(!JWTToken) return AutoLogOut();
 

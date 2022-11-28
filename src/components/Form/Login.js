@@ -6,6 +6,7 @@ import {GrGithub} from "react-icons/gr";
 import { AuthUser } from "../../Context/AuthContext";
 import { Link,useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { generateJWT } from "../../Hook/generateJWT";
 
 const Login = () => {
 
@@ -28,7 +29,10 @@ const Login = () => {
     function handleLoginWithGoogle (provider) {
       if(provider === 'google') {
         loginWithGoogle()
-        .then(result => navigate(from))
+        .then(result => {
+          navigate(from)
+          generateJWT(result.user.email)
+        })
         .catch(e => console.log(e.message))
       }
       if(provider === 'gitHub') {
@@ -38,29 +42,27 @@ const Login = () => {
       }
     }
 
-    // request api for JWT encrypt token
-    function getJWTToken(email){
-      axios.get(`http://localhost:5000/jwt?email=${email}`)
-      .then(res => localStorage.setItem('jwt-token',res.data.encryptToken))
-    }
-
     // form all values
     async function onLogin(data){
       // call firebase signup function         
       const res = await login(data.userEmail,data.password);
       if(res) {
-        await getJWTToken(res.user.email)
+        await generateJWT(res.user.email)
         await reset()
-        await alert('login Success')
         await navigate(from)
       }
     }
 
   return (
-    <section className={`w-4/6/6 mx-auto flex justify-center items-center min-h-screen max-h-screen`}>
+    <section className={`w-full mx-auto flex gap-x-10 justify-center items-center min-h-screen max-h-screen`}>
+
+    <div className={`w-1/2`}>
+      <img className={`w-full h-auto`} src="https://i.ibb.co/PwVZRMc/Authentication-pana.png" alt="Auth_Banner" />
+    </div>
+
       <div className={`border shadow-md py-[2%] px-[3%]`}>
 
-      <h2 className={`text-4xl text-center my-2 font-semibold`}>Login</h2>
+      <h2 className={`text-4xl text-center my-2 font-semibold text-common uppercase`}>Login</h2>
 
         <form onSubmit={handleSubmit(onLogin)}>
           <div className={`text-center`}>
