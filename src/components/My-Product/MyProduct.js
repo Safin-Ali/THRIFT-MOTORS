@@ -17,7 +17,7 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
     }
 
     return (
-        <div className={`border shadow-md rounded-t-md my-[3%]`}>
+        <div className={`border drop-shadow-lg bg-whiteCard hover:scale-[1.02] duration-[500ms] rounded-t-md my-[3%]`}>
             
             {/* Card Content Middle */}
                 <div>
@@ -37,7 +37,7 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
                     {/* Post Info */}
                     <div>
                         <h3 className={`text-2xl font-medium text-center my-1.5`}>{`${carInfo.brand} ${carInfo.sellCarModel} ${carInfo.carModelYear}`}</h3>
-                        <p className={`text-center`}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p className={`text-center`}>this car sell for i am buy a new car..but i don't have much more money. if like this car then please knock me</p>
                     </div>
 
                     {/* Price */}

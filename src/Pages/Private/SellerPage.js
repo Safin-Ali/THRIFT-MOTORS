@@ -29,17 +29,17 @@ const SellerPage = () => {
 
                 {/* Side Nav */}
                 <LeftNav className={`lg:w-full text-center border-r`}>
-                    <section className={`my-5`}>
+                    <section className={`my-5 border-b pb-3`}>
                             <Link className={`col-span-2`} to={`/dashboard/my-product/${currUserInfo.userEmail}`}>
                                 <AiOutlineShoppingCart className={`text-xl inline-block mr-1`}></AiOutlineShoppingCart> My Product
                             </Link>
                     </section>
 
-                    <section className={`my-5`}>
+                    <section className={`my-5 border-b pb-3`}>
                             <Link className={`col-span-2`} to={`/dashboard/add-product`}><MdAddShoppingCart className={`text-xl inline-block mr-1`}></MdAddShoppingCart> Add Product</Link>
                     </section>
 
-                    <section className={`my-5`}>
+                    <section className={`my-5 border-b pb-3`}>
                             <Link className={`col-span-2`} to={`/dashboard/my-buyers`}>
                                 <FaUserTie className={`text-xl inline-block mr-1`}></FaUserTie>My Buyers
                             </Link>
