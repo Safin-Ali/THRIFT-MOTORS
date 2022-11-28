@@ -39,7 +39,8 @@ const PostData = () => {
                 </aside>
 
             </div>
-            <BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal>
+                    
+                <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
         </section>
     );
 };

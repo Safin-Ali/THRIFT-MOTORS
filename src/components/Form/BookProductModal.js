@@ -37,27 +37,24 @@ const BookProductModal = ({toggle,setToggle,modalDT}) => {
                 return
         }
     }
-
-
-
     return (
-        <div className={`text-white ${toggle ? 'block' : 'hidden'} fixed rounded-md left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-800 px-6 top-1/2`}>
+        <div className={`text-white w-[90%] sm:w-[80%] lg:w-auto lg:p-[2%] ${toggle ? 'block' : 'hidden'} fixed rounded-md left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-800 top-1/2`}>
             <div className={`flex p-4 text-center justify-between items-center`}>
-                <h5 className={`text-3xl`}>{title}</h5>
+                <h5 className={`sm:text-3xl`}>{title}</h5>
                 <IoClose onClick={()=> setToggle(!toggle)} className={`text-2xl cursor-pointer`}></IoClose>
             </div>
 
             {/* form page */}
             <form onSubmit={handleSubmit(handleBooked)}>
-                <div className={`grid grid-cols-2 gap-x-5`}>
-                    <div className={`my-2`}><input className={`p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text" defaultValue={postOwnerInfo?.name || ''} readOnly/></div>
-                    <div className={`my-2`}><input className={`p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="email" defaultValue={postOwnerInfo?.email || ''} readOnly/></div>
-                    <div className={`my-2`}><input className={`p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text"
+                <div className={`grid grid-cols-1 sm:grid-cols-2 justify-center gap-x-5`}>
+                    <div className={`my-2 col-span-1 mx-auto`}><input className={`p-1 sm:p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text" defaultValue={postOwnerInfo?.name || ''} readOnly/></div>
+                    <div className={`my-2 col-span-1 mx-auto`}><input className={`p-1 sm:p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="email" defaultValue={postOwnerInfo?.email || ''} readOnly/></div>
+                    <div className={`my-2 col-span-1 mx-auto`}><input className={`p-1 sm:p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text"
                      value={`$${Math.ceil(resalePrice)}`} readOnly/></div>
-                    <div className={`my-2`}><input className={`p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text" defaultValue={userData?.displayName} readOnly/></div>
-                    <div className={`my-2`}><input className={`p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text" placeholder={`Your number`} {...register('contactNumber')} required/></div>
-                    <div className={`my-2`}><input className={`p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text" placeholder={`your location`} {...register('location')} required/></div>
-                    <div className={`my-2 text-center col-span-2`}><PrimaryButton>SUBMIT</PrimaryButton></div>
+                    <div className={`my-2 col-span-1 mx-auto`}><input className={`p-1 sm:p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text" defaultValue={userData?.displayName} readOnly/></div>
+                    <div className={`my-2 col-span-1 mx-auto`}><input className={`p-1 sm:p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text" placeholder={`Your number`} {...register('contactNumber')} required/></div>
+                    <div className={`my-2 col-span-1 mx-auto`}><input className={`p-1 sm:p-2 rounded-md focus:outline-none focus:border-2 focus:border-common text-blackSA`} type="text" placeholder={`your location`} {...register('location')} required/></div>
+                    <div className={`my-2 col-span-1 mx-auto text-center sm:col-span-2`}><PrimaryButton>SUBMIT</PrimaryButton></div>
                 </div>
             </form>
         </div>
