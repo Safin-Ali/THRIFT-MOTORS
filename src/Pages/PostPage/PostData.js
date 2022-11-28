@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaArrowAltCircleRight } from 'react-icons/fa';
 import {useLoaderData } from 'react-router-dom';
 import EmptyData from '../../components/Empty-Data/EmptyData';
 import BookProductModal from '../../components/Form/BookProductModal';
@@ -17,19 +18,21 @@ const PostData = () => {
     // modal default data set
     const[modalDT,setModalDT] = useState([]);
 
-    // wait for response
-    if(!fetcheData) return <LoadingSpinner></LoadingSpinner>
+    // side nav toggle
+    const[togSideNav,setBolNavTog] = useState(false)
 
+    // wait for response
+    if(!fetcheData) return <LoadingSpinner></LoadingSpinner>;
 
     return (
         <section>
-            <div className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-[5%]`}>
+            <div className={`flex md:grid mx-auto sm:grid-cols-3 lg:grid-cols-4 lg:gap-5`}>
                 
-                <aside className={`border hidden md:block`}>
+                <aside className={`border overflow-hidden ${togSideNav ? 'basis-full' : 'basis-0'}`}>
                         <LeftSideNav></LeftSideNav>
                 </aside>
 
-                <aside className={`md:col-span-2 lg:col-span-3 py-[3%]`}>
+                <aside className={`md:grid-cols-1 md:col-span-2 lg:col-span-3 py-[3%]`}>
                     <div>
                     {
                             !fetcheData.length ?  <EmptyData></EmptyData>: 
@@ -40,7 +43,12 @@ const PostData = () => {
 
             </div>
                     
-                <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
+            <section className={`relative`}>
+                    <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
+                {/* side nav arrow */}
+                <div className={`fixed top-1/2 `}><FaArrowAltCircleRight onClick={()=>setBolNavTog(!togSideNav)} className={`text-xl`}></FaArrowAltCircleRight></div>
+                
+                </section>
         </section>
     );
 };
