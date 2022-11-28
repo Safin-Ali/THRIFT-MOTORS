@@ -5,7 +5,7 @@ import {GoLocation} from 'react-icons/go';
 
 const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
 
-    const {carInfo,location,paid,advertise,_id,postOwnerInfo,postedTime,resalePrice,sellCarImg,serviceId,usedTime} = data;
+    const {carInfo,location,paid,advertise,_id,postOwnerInfo,postedTime,resalePrice,sellCarImg} = data;
 
     const shortlocation = location.roadNo+', '+location.area+', '+location.city+', '+location.country;
 

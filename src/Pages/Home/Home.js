@@ -32,7 +32,7 @@ const Home = () => {
                 <div className={`grid grid-cols-1 lg:grid-cols-3 gap-5 justify-center items-center`}>
                     <div className={`text-center`}>
                         <h1 className={`text-2xl font-semibold mb-5`}>Welcome, <span className={`text-common`}>THRIFT</span> <span className={`text-primaryRed`}>MOTORS</span></h1>
-                        <p className={`text-lg`}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur sed explicabo </p>
+                        <p className={`text-lg`}>Here you bought all secondhand or used car with good condition.</p>
                     </div>
                     <div className={`lg:col-span-2`}>
                         <Carousel className={'w-full lg:w-[75%]'} url={`http://localhost:5000/sliderImage`}></Carousel>
@@ -67,6 +67,8 @@ const Home = () => {
                     </section>
                 }
 
+                <div>
+                </div>
             </header>
             <Footer></Footer>
         </>

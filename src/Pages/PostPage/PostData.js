@@ -6,6 +6,7 @@ import BookProductModal from '../../components/Form/BookProductModal';
 import LeftSideNav from '../../components/Navbar/LeftSideNav';
 import PostCard from '../../components/post-card/PostCard';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
+import { ToastContainer} from 'react-toastify';
 
 const PostData = () => {
 
@@ -46,9 +47,21 @@ const PostData = () => {
             <section className={`relative`}>
                     <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
                 {/* side nav arrow */}
-                <div className={`fixed top-1/2 `}><FaArrowAltCircleRight onClick={()=>setBolNavTog(!togSideNav)} className={`text-xl`}></FaArrowAltCircleRight></div>
+                <div className={`fixed top-1/2 cursor-pointer md:hidden`}><FaArrowAltCircleRight onClick={()=>setBolNavTog(!togSideNav)} className={`text-xl`}></FaArrowAltCircleRight></div>
                 
-                </section>
+            </section>
+            <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            limit={1}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover={false}
+            theme="light"/>
         </section>
     );
 };

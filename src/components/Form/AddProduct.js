@@ -8,12 +8,13 @@ import {BiImageAdd} from "react-icons/bi";
 import PrimaryButton from "../primary-button/PrimaryButton";
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 import { Navigate, useNavigate } from 'react-router-dom';
+import { ToastContainer} from 'react-toastify';
 
 
 const AddProduct = () => {
 
     // use AuthContext For User Data
-    const {userData,isLoading,currUserInfo} = useContext(AuthUser);
+    const {userData,isLoading,currUserInfo,notifySuccess,notifyFaild} = useContext(AuthUser);
 
     // get form all value in object
     const {register,handleSubmit,reset} = useForm();
@@ -78,13 +79,14 @@ const AddProduct = () => {
             // post all data
             const res = await axios.post(`http://localhost:5000/new-post`,data,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
             if(res.data.acknowledged) {
-                reset()
-                window.alert('Wow Post Done')
-                navigate(`/dashboard/my-product/${userData?.email}`)
+                reset();
+                setTimeout(()=>navigate(`/dashboard/my-product/${userData?.email}`),2500)
+                return notifySuccess('WOW! New Prroduct Added Successfully');
             }
         }
         catch(e){
             console.log(e.message)
+            notifyFaild('Please Check Console')
             if(e.request.status === 401) return navigate('/error401')
             return
         }
@@ -179,6 +181,18 @@ const AddProduct = () => {
                     </div>
                 </form>
             </div>
+            <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            limit={1}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover={false}
+            theme="light"/>
         </section>
     );
 };

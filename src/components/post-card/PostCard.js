@@ -7,7 +7,7 @@ import {GoLocation} from 'react-icons/go';
 
 const PostCard = ({data,setToggle,toggle,setModalDT}) => {
 
-    const {carInfo,location,firstName,postOwnerInfo,postedTime,resalePrice,sellCarImg,usedTime,} = data;
+    const {carInfo,location,postOwnerInfo,postedTime,resalePrice,sellCarImg,} = data;
 
     const shortlocation = location.roadNo+', '+location.area+', '+location.city;
 
@@ -43,7 +43,7 @@ const PostCard = ({data,setToggle,toggle,setModalDT}) => {
                     {/* Post Info */}
                     <div>
                         <h3 className={`text-2xl font-medium text-center my-1.5`}>{`${carInfo.brand} ${carInfo.sellCarModel} ${carInfo.carModelYear}`}</h3>
-                        <p className={`text-center`}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p className={`text-center capitalize`}>this car sell for i am buy a new car..but i don't have much more money. if like this car then please knock me</p>
                     </div>
 
                     {/* Price */}

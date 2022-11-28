@@ -3,6 +3,8 @@ import { createUserWithEmailAndPassword, deleteUser, getAuth, GithubAuthProvider
 import app from '../Firebase/Firebase.init';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AuthUser = createContext();
 
@@ -58,6 +60,25 @@ const AuthContext = ({children}) => {
         });
     }
 
+    // toastfy call
+    const notifySuccess = (text) => {
+        return toast.success(text,{
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+    };
+
+    // toastfy call
+    const notifyFaild = (text) => {
+        return toast.error(text)
+    };
+
     // signout auth function
     const logOut = () => {
         return signOut(auth);
@@ -87,7 +108,7 @@ const AuthContext = ({children}) => {
     },[])
 
     // all variable,function,userdata of Object
-    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch,JWTToken,deleteAccount}
+    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch,JWTToken,deleteAccount,notifySuccess,notifyFaild}
     return (
         <AuthUser.Provider value={authInfo}>{children}</AuthUser.Provider>
     );
