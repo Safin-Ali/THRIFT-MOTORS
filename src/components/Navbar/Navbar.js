@@ -5,13 +5,12 @@ import {ImUserPlus} from 'react-icons/im';
 import {FiLogOut} from 'react-icons/fi';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/AuthContext';
+import LoadingSpinner from '../Spinner/LoadingSpinner';
 
 const Navbar = () => {
 
     // use AuthContext For User Data
-    const {logOut,userData,currUserInfo} = useContext(AuthUser);
-
-    console.log(currUserInfo)
+    const {logOut,userData,currUserInfo,loaded} = useContext(AuthUser);
 
     // navbar expand small devices when "expand" is true
     const [expand,setCollapse] = useState(false);
@@ -29,8 +28,9 @@ const Navbar = () => {
         transition:'all 0.3s linear'
     }
 
-    let dashPath;
+    let dashPath = '/my-orders';
 
+    if(loaded) return <LoadingSpinner></LoadingSpinner>
     if(currUserInfo?.userRole === 'user') dashPath = '/my-orders';
     if(currUserInfo?.userRole === 'seller') dashPath = `/my-product/${userData?.email}`;
     if(currUserInfo?.userRole === 'admin') dashPath = '/all-sellers';
@@ -70,7 +70,7 @@ const Navbar = () => {
                     <NavLink to={'/'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Home</NavLink>
                     { 
 
-                    userData?.email
+                    currUserInfo
                      &&
                     <NavLink to={`/dashboard${dashPath}`} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Dashboard</NavLink>
 

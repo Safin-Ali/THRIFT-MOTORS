@@ -1,11 +1,11 @@
 import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
 import {GoUnverified,GoVerified} from 'react-icons/go';
-import {BsBookmark} from 'react-icons/bs';
+import {MdReportGmailerrorred} from 'react-icons/md';
 import {BiTime,BiWorld} from 'react-icons/bi';
 import {GoLocation} from 'react-icons/go';
 
-const PostCard = ({data,setToggle,toggle,setModalDT,wishListProd}) => {
+const PostCard = ({data,setToggle,toggle,setModalDT,reportProduct}) => {
 
     const {carInfo,location,postOwnerInfo,postedTime,resalePrice,sellCarImg,_id} = data;
 
@@ -37,7 +37,7 @@ const PostCard = ({data,setToggle,toggle,setModalDT,wishListProd}) => {
                             <BiTime className={`text-2xl p-0.5 inline`}></BiTime>
                             <p>{postedTime}</p>
                         </div>
-                        <BsBookmark onClick={()=>wishListProd(_id)} className={`text-2xl p-1 cursor-pointer`}></BsBookmark>
+                        <MdReportGmailerrorred onClick={()=>reportProduct(_id)} className={`text-4xl p-1 cursor-pointer`}></MdReportGmailerrorred>
                     </div>
 
                     {/* Post Info */}

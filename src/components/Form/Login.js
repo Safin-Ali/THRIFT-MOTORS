@@ -5,13 +5,15 @@ import {FcGoogle} from "react-icons/fc";
 import {GrGithub} from "react-icons/gr";
 import { AuthUser } from "../../Context/AuthContext";
 import { Link,useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { userInfoPost } from "../../Hook/userInfoPost";
+import { ToastContainer } from "react-toastify";
 import { generateJWT } from "../../Hook/generateJWT";
+
 
 const Login = () => {
 
     // use AuthContext For User Data
-    const {loginWithGoogle,loginWithGitHub,login} = useContext(AuthUser);
+    const {loginWithGoogle,loginWithGitHub,login,notifySuccess,notifyFaild} = useContext(AuthUser);
 
     // assign new route / change route path using by this hook
     const navigate = useNavigate();
@@ -26,19 +28,34 @@ const Login = () => {
     const from = location.state?location.state : '/';
 
     // Login With Google
-    function handleLoginWithGoogle (provider) {
-      if(provider === 'google') {
-        loginWithGoogle()
-        .then(result => {
-          navigate(from)
-          generateJWT(result.user.email)
-        })
-        .catch(e => console.log(e.message))
+    async function handleLoginWithGoogle (provider) {
+      try{
+        if(provider === 'google') {
+
+          const result = await loginWithGoogle();   
+
+          const postdata = await userInfoPost(result);
+
+          if(postdata.data.acknowledged){
+
+            notifySuccess('Login Successfull')
+
+             // generate token JWT
+          await generateJWT(result?.user?.email);
+          await  notifySuccess(`Encrypt token Added`)
+          return navigate(from);
+
+          }
+        }
+
+        if(provider === 'gitHub') {
+          const result = await loginWithGitHub();              
+          // const postdata = await userInfoPost(result);
+          console.log(result)
+        }
       }
-      if(provider === 'gitHub') {
-        loginWithGitHub()
-        .then(result => navigate(from))
-        .catch(e => console.log(e.message))
+      catch(e){
+         notifyFaild(e.message)
       }
     }
 

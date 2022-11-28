@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/AuthContext';
 import UnAuthorized from '../404-Not-Found/UnAuthorized';
 import EmptyData from '../Empty-Data/EmptyData';
-import ProfileCard from '../profile-card/ProfileCard';
+import ReportedProductCard from '../reported-product-card/ReportedProductCard';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 
-const AllSeller = () => {
+const AllReportedPost = () => {
 
     // use AuthContext For User Data
     const {deleteAccount} = useContext(AuthUser);
@@ -16,15 +16,14 @@ const AllSeller = () => {
     const navigate = useNavigate();
 
     // api for all sellers information
-    const url = `http://localhost:5000/allUser`
+    const url = `http://localhost:5000/reportedProd`
 
-    const {data:allSellers,refetch} = useQuery({
-        queryKey: ['all seller'],
+    const {data:allReportedPost,refetch} = useQuery({
+        queryKey: ['all reported'],
         queryFn: async () => {
             try{
                 const res = await axios.get(url,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
-                const onlySellers = res.data.filter(elm => elm.userRole === 'seller')
-                return onlySellers
+                return res.data
             }
             catch(e){
                 return e.request.status
@@ -66,21 +65,21 @@ const AllSeller = () => {
     }
 
     // when jwt key do not decrypt
-    if(allSellers === 401) return <UnAuthorized></UnAuthorized>
+    if(allReportedPost === 401) return <UnAuthorized></UnAuthorized>
 
     // waiting for user information
-    if(!allSellers) return <LoadingSpinner></LoadingSpinner>
+    if(!allReportedPost) return <LoadingSpinner></LoadingSpinner>
 
     // if user information lengtn 0
-    if(!allSellers.length) return <EmptyData></EmptyData>
+    if(!allReportedPost.length) return <EmptyData></EmptyData>
 
     return (
         <section className={`grid grid-cols-1 mx-[5%] sm:mx-[10%] md:grid-cols-2 lg:grid-cols-3 gap-7 md:mx-[5%] my-10`}>
             {
-                allSellers.map(elm => <ProfileCard handleDeleteSeller={handleDeleteSeller} handleSellerVerify={handleSellerVerify} key={elm._id} data={elm}></ProfileCard>)
+                allReportedPost.map(elm => <ReportedProductCard handleDeleteSeller={handleDeleteSeller} handleSellerVerify={handleSellerVerify} key={elm._id} data={elm}></ReportedProductCard>)
             }
         </section>
     );
 };
 
-export default AllSeller;
+export default AllReportedPost;

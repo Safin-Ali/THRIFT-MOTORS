@@ -13,7 +13,7 @@ const MyProductPage = () => {
     const navigate = useNavigate();
 
     // use AuthContext For User Data
-     const {userData,notifyFaild,notifySuccess,currUserInfo} = useContext(AuthUser);
+     const {userData,notifyFaild,notifySuccess} = useContext(AuthUser);
 
     // get my all product
     const {data:myProduct,refetch} = useQuery({
@@ -54,7 +54,7 @@ const MyProductPage = () => {
         .then(res => {
             if(res.data.modifiedCount > 0){
                 refetch()
-                return notifySuccess('advertise success full')
+                return notifySuccess('Advertise Success full')
             }
         })
         .catch(e =>{

@@ -1,8 +1,8 @@
 import NotFoundPage from "../components/404-Not-Found/NotFoundPage";
 import UnAuthorized from "../components/404-Not-Found/UnAuthorized";
 import AllBuyers from "../components/Dashboard/AllBuyers";
+import AllReportedPost from "../components/Dashboard/AllReportedPost";
 import AllSeller from "../components/Dashboard/AllSeller";
-import MyWishlist from "../components/Dashboard/MyWishlist";
 import AddProduct from "../components/Form/AddProduct";
 import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
@@ -49,12 +49,12 @@ export const router = createBrowserRouter([
             {path: '/dashboard', element: <AdminPage></AdminPage>,children:[
                 {path: '/dashboard/all-sellers', element: <AllSeller></AllSeller>},
                 {path: '/dashboard/all-buyers', element: <AllBuyers></AllBuyers>},
+                {path: '/dashboard/all-reported-post', element: <AllReportedPost></AllReportedPost>},
             ]},
 
             // get buyer / user 
             {path: '/dashboard', element: <UserPage></UserPage>,children:[
                 {path: '/dashboard/my-orders', element: <UserPage></UserPage>},
-                {path: '/dashboard/my-wishlist', element: <MyWishlist></MyWishlist>},
             ]},
 
             // get blogs page

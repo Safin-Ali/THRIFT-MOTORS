@@ -92,7 +92,7 @@ const AuthContext = ({children}) => {
         queryKey: ['User Information',userData?.email],
         queryFn: async () => {
             try{
-                const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`,headerJWT);
+                const res = await axios.get(`http://localhost:5000/userInfo?email=${userData?.email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
                 return res.data
             }
             catch(e){

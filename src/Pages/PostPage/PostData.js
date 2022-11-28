@@ -21,11 +21,11 @@ const PostData = () => {
     const navigate = useNavigate();
 
     // wishlist product function
-    function wishListProd (serviceId) {
-        axios.post('http://localhost:5000/wishlist',{email:currUserInfo?.userEmail,userId:currUserInfo?._id,productId:serviceId},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
+    function reportProduct (serviceId) {
+        axios.post('http://localhost:5000/reportedProd',{email:currUserInfo?.userEmail,userId:currUserInfo?._id,productId:serviceId},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
         .then(res => {
             if(res.data.acknowledged){
-                notifySuccess('WOW! You Are Booked Successfully')
+                notifySuccess('WOW! You Are Reported Successfully')
             }
         })
         .catch(e => {
@@ -58,7 +58,7 @@ const PostData = () => {
                     <div>
                     {
                             !fetcheData.length ?  <EmptyData></EmptyData>: 
-                            fetcheData.map(data => <PostCard wishListProd={wishListProd} setModalDT={setModalDT} toggle={toggle} setToggle={setToggle} key={data._id} data={data}></PostCard>)
+                            fetcheData.map(data => <PostCard reportProduct={reportProduct} setModalDT={setModalDT} toggle={toggle} setToggle={setToggle} key={data._id} data={data}></PostCard>)
                     }
                     </div>
                 </aside>

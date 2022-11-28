@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import Carousel from '../../components/Carousel/Carousel';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
@@ -8,15 +8,11 @@ import Footer from '../../components/footer/Footer';
 import AdvertisedProduct from '../../components/advertised-product/AdvertisedProduct';
 import { ToastContainer} from 'react-toastify';
 import BookProductModal from '../../components/Form/BookProductModal';
-import { AuthUser } from '../../Context/AuthContext';
 
 const Home = () => {
 
     // store advertised post data
     const[advPost,setAdvertisedPost] = useState([]);
-
-    // currUserInfo
-    const {currUserInfo,notifySuccess} = useContext(AuthUser);
 
     // get all brand data
     const {data: allBrands} = useQuery({

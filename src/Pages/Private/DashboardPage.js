@@ -7,8 +7,6 @@ import SellerPage from './SellerPage';
 const DashboardPage = ({children}) => {
     const {isLoading,currUserInfo,loading} = useContext(AuthUser);
 
-    console.log(currUserInfo)
-
     //  waiting for findout user info
     if(isLoading) return <LoadingSpinner></LoadingSpinner>;
 

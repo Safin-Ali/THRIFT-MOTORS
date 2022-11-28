@@ -1,8 +1,9 @@
 import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
 
-const AdvertisedProduct = ({data,setToggle,toggle,setModalDT}) => {
-    const {carInfo,sellCarImg,usedTime,resalePrice} = data;
+const ReportedProductCard = ({data,setToggle,toggle,setModalDT}) => {
+
+    const {advertise,carInfo,postedTime,resalePrice,sellCarImg} = data;
 
     const bgImage = {
         backgroundImage: 
@@ -10,7 +11,7 @@ const AdvertisedProduct = ({data,setToggle,toggle,setModalDT}) => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
     }
-
+    
     return (
         <>
             <div className={`border shadow-md duration-[700] rounded-t-xl rounded-b-md`}>
@@ -22,7 +23,7 @@ const AdvertisedProduct = ({data,setToggle,toggle,setModalDT}) => {
 
                     <div className={`flex justify-center text-center gap-x-3`}>
                         <p className={`font-medium`}>Resale <b>${resalePrice}</b></p>
-                        <p className={`font-medium`}>Used <b>{usedTime}</b></p>
+                        <p className={`font-medium`}>Used <b>{''}</b></p>
                     </div>
 
                     <div className={`text-center`}>
@@ -37,4 +38,4 @@ const AdvertisedProduct = ({data,setToggle,toggle,setModalDT}) => {
     );
 };
 
-export default AdvertisedProduct;
+export default ReportedProductCard;
