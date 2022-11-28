@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
-import {useLoaderData } from 'react-router-dom';
+import {useLoaderData, useNavigate } from 'react-router-dom';
 import EmptyData from '../../components/Empty-Data/EmptyData';
 import BookProductModal from '../../components/Form/BookProductModal';
 import LeftSideNav from '../../components/Navbar/LeftSideNav';
 import PostCard from '../../components/post-card/PostCard';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 import { ToastContainer} from 'react-toastify';
+import { AuthUser } from '../../Context/AuthContext';
+import axios from 'axios';
 
 const PostData = () => {
 
+    const {currUserInfo,notifySuccess} = useContext(AuthUser);
+
     // get this params category all data
-    const fetcheData = useLoaderData();
+    let fetcheData = useLoaderData();
+
+    // assign new route / change route path using by this hook
+    const navigate = useNavigate();
+
+    // wishlist product function
+    function wishListProd (serviceId) {
+        axios.post('http://localhost:5000/wishlist',{email:currUserInfo?.userEmail,userId:currUserInfo?._id,productId:serviceId},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
+        .then(res => {
+            if(res.data.acknowledged){
+                notifySuccess('WOW! You Are Booked Successfully')
+            }
+        })
+        .catch(e => {
+            console.log(e.request)
+            if(e.request.status === 401) return navigate('/login')
+        })
+    }
 
     // toggle modal
     const[toggle,setToggle] = useState(false);
@@ -20,7 +41,7 @@ const PostData = () => {
     const[modalDT,setModalDT] = useState([]);
 
     // side nav toggle
-    const[togSideNav,setBolNavTog] = useState(false)
+    const[togSideNav,setBolNavTog] = useState(false);
 
     // wait for response
     if(!fetcheData) return <LoadingSpinner></LoadingSpinner>;
@@ -37,7 +58,7 @@ const PostData = () => {
                     <div>
                     {
                             !fetcheData.length ?  <EmptyData></EmptyData>: 
-                            fetcheData.map(data => <PostCard setModalDT={setModalDT} toggle={toggle} setToggle={setToggle} key={data._id} data={data}></PostCard>)
+                            fetcheData.map(data => <PostCard wishListProd={wishListProd} setModalDT={setModalDT} toggle={toggle} setToggle={setToggle} key={data._id} data={data}></PostCard>)
                     }
                     </div>
                 </aside>

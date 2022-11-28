@@ -2,6 +2,7 @@ import NotFoundPage from "../components/404-Not-Found/NotFoundPage";
 import UnAuthorized from "../components/404-Not-Found/UnAuthorized";
 import AllBuyers from "../components/Dashboard/AllBuyers";
 import AllSeller from "../components/Dashboard/AllSeller";
+import MyWishlist from "../components/Dashboard/MyWishlist";
 import AddProduct from "../components/Form/AddProduct";
 import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
@@ -14,6 +15,7 @@ import PostData from "../Pages/PostPage/PostData";
 import AdminPage from "../Pages/Private/AdminPage";
 import PrivatePage from "../Pages/Private/PrivatePage";
 import SellerPage from "../Pages/Private/SellerPage";
+import UserPage from "../Pages/Private/UserPage";
 
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -47,6 +49,12 @@ export const router = createBrowserRouter([
             {path: '/dashboard', element: <AdminPage></AdminPage>,children:[
                 {path: '/dashboard/all-sellers', element: <AllSeller></AllSeller>},
                 {path: '/dashboard/all-buyers', element: <AllBuyers></AllBuyers>},
+            ]},
+
+            // get buyer / user 
+            {path: '/dashboard', element: <UserPage></UserPage>,children:[
+                {path: '/dashboard/my-orders', element: <UserPage></UserPage>},
+                {path: '/dashboard/my-wishlist', element: <MyWishlist></MyWishlist>},
             ]},
 
             // get blogs page

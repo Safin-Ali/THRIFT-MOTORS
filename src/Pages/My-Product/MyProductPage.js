@@ -13,7 +13,7 @@ const MyProductPage = () => {
     const navigate = useNavigate();
 
     // use AuthContext For User Data
-     const {userData,notifyFaild,notifySuccess} = useContext(AuthUser);
+     const {userData,notifyFaild,notifySuccess,currUserInfo} = useContext(AuthUser);
 
     // get my all product
     const {data:myProduct,refetch} = useQuery({
@@ -48,6 +48,7 @@ const MyProductPage = () => {
         })
     }
 
+    // advertise product
     function advertiseProduct (id,email) {
         axios.patch(`http://localhost:5000/postedData`,{id,email},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
         .then(res => {
@@ -66,7 +67,6 @@ const MyProductPage = () => {
 
     if(!myProduct?.length) return <EmptyData className={`justify-center`}></EmptyData>
     
-
     return (
         <>
             <section className={`mx-[5%] md:mx-[mx-7%] lg:mx-[7%]`}>

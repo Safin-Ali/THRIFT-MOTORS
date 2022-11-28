@@ -5,9 +5,9 @@ import {BsBookmark} from 'react-icons/bs';
 import {BiTime,BiWorld} from 'react-icons/bi';
 import {GoLocation} from 'react-icons/go';
 
-const PostCard = ({data,setToggle,toggle,setModalDT}) => {
+const PostCard = ({data,setToggle,toggle,setModalDT,wishListProd}) => {
 
-    const {carInfo,location,postOwnerInfo,postedTime,resalePrice,sellCarImg,} = data;
+    const {carInfo,location,postOwnerInfo,postedTime,resalePrice,sellCarImg,_id} = data;
 
     const shortlocation = location.roadNo+', '+location.area+', '+location.city;
 
@@ -37,7 +37,7 @@ const PostCard = ({data,setToggle,toggle,setModalDT}) => {
                             <BiTime className={`text-2xl p-0.5 inline`}></BiTime>
                             <p>{postedTime}</p>
                         </div>
-                        <BsBookmark className={`text-2xl p-1 cursor-pointer`}></BsBookmark>
+                        <BsBookmark onClick={()=>wishListProd(_id)} className={`text-2xl p-1 cursor-pointer`}></BsBookmark>
                     </div>
 
                     {/* Post Info */}

@@ -1,26 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Carousel from '../../components/Carousel/Carousel';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
 import CategoryCard from '../../components/Brand-Category-Card/CategoryCard';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 import Footer from '../../components/footer/Footer';
+import AdvertisedProduct from '../../components/advertised-product/AdvertisedProduct';
+import { ToastContainer} from 'react-toastify';
+import BookProductModal from '../../components/Form/BookProductModal';
+import { AuthUser } from '../../Context/AuthContext';
 
 const Home = () => {
 
     // store advertised post data
     const[advPost,setAdvertisedPost] = useState([]);
 
+    // currUserInfo
+    const {currUserInfo,notifySuccess} = useContext(AuthUser);
+
     // get all brand data
     const {data: allBrands} = useQuery({
         queryKey: ['allBrand'],
         queryFn: () => axios.get(`http://localhost:5000/all-brand`)
         .then(res =>res.data)
-    })
+    });
+
+    // toggle modal
+    const[toggle,setToggle] = useState(false);
+
+    // modal default data set
+    const[modalDT,setModalDT] = useState([]);
 
     // get all advertised data
     useEffect(()=>{
-        axios.get(`http://localhost:5000/advertised`)
+        axios.get(`http://localhost:5000/advertised`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
         .then(res => setAdvertisedPost(res.data))
     },[])
 
@@ -41,7 +54,7 @@ const Home = () => {
 
                 {/* Category / Brand Logo */}
 
-                    <h3 className={`text-3xl font-bold text-center mt-[5%]`}>Choose Your Brand</h3>
+                    <h3 className={`text-3xl font-bold text-center mt-[5%] capitalize`}>Choose Your Brand</h3>
                 {
                     !allBrands ? <LoadingSpinner></LoadingSpinner>
                     :
@@ -58,10 +71,10 @@ const Home = () => {
                     advPost.length > 0 
                     &&
                     <section>
-                        <h3 className={`text-3xl font-bold text-center mt-[5%]`}>Advertised post</h3>
-                        <div>
+                        <h3 className={`text-3xl font-bold text-center mt-[5%] pb-3 capitalize`}>Advertised post</h3>
+                        <div className={`lg:grid-cols-3 grid-cols-1 md:grid-cols-2 grid w-[90%] mx-auto gap-6 justify-center`}>
                             {
-                                advPost.map(post => <div key={post._id}><img src={post.sellCarImg} alt="Post Banner" /></div>)
+                                advPost.map(post =>  <AdvertisedProduct setModalDT={setModalDT} key={post._id} toggle={toggle} setToggle={setToggle} data={post}></AdvertisedProduct>)
                             }
                         </div>
                     </section>
@@ -71,6 +84,22 @@ const Home = () => {
                 </div>
             </header>
             <Footer></Footer>
+            <section className={`relative`}>
+                    <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
+                
+            </section>
+            <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            limit={1}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover={false}
+            theme="light"/>
         </>
     );
 };

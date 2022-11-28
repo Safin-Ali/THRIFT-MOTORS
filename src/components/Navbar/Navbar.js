@@ -68,12 +68,6 @@ const Navbar = () => {
                 {/* Navlink */}
                 <div style={resNavbarExpandStyle} className={`order-4 bg-white md:bg-inherit overflow-hidden md:order-none flex items-center justify-center ${expand ? 'min-h-[200px] max-h-fit' : 'h-0'} text-center flex-col md:h-fit md:flex-row basis-full md:basis-auto`}>
                     <NavLink to={'/'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Home</NavLink>
-
-                    {/* show that when current user role "user" */}
-                    {
-                        currUserInfo?.userRole === 'user'
-                        && <NavLink to={'/myorders'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>My Orders</NavLink>
-                    }
                     { 
 
                     userData?.email
