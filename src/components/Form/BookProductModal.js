@@ -1,24 +1,24 @@
-import React, { useContext } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect,} from 'react';
 import {useForm} from 'react-hook-form';
 import {IoClose} from 'react-icons/io5'
 import { AuthUser } from '../../Context/AuthContext';
 import PrimaryButton from '../primary-button/PrimaryButton';
 
-const BookProductModal = ({toggle,setToggle,modalDT}) => {
+const BookProductModal = ({toggle,setToggle,modalDT,handleBooked}) => {
     
-    const {userData,notifySuccess} = useContext(AuthUser);
+    const {userData} = useContext(AuthUser);
 
     const {postOwnerInfo,resalePrice,title} = modalDT;
+
+    // reset form after the toggle boolean false
+    useEffect(()=>{
+        toggle || reset()
+    },[toggle])
 
     // get form all value oin object
     const {register,handleSubmit,reset} = useForm();
     
-
-    const handleBooked = () => {
-        notifySuccess('Booking Successfull')
-        reset()
-        setToggle(!toggle)
-    }
     return (
         <div className={`text-white w-[90%] sm:w-[80%] lg:w-auto lg:p-[2%] ${toggle ? 'block' : 'hidden'} fixed rounded-md left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-slate-800 top-1/2`}>
             <div className={`flex p-4 text-center justify-between items-center`}>

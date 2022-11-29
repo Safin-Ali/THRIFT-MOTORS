@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { MdAddShoppingCart } from 'react-icons/md';
+import { MdAddShoppingCart,MdReportProblem } from 'react-icons/md';
+import { FaUserTie } from 'react-icons/fa';
 import { Link, Navigate, Outlet,} from 'react-router-dom';
 import LeftNav from '../../components/Dashboard/LeftNav';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
@@ -36,11 +37,11 @@ const AdminPage = () => {
                     </section>
 
                     <section className={`my-5 border-b pb-3`}>
-                            <Link className={`col-span-2`} to={`/dashboard/all-buyers`}><MdAddShoppingCart className={`text-xl inline-block mr-1`}></MdAddShoppingCart> All Buyers</Link>
+                            <Link className={`col-span-2`} to={`/dashboard/all-buyers`}><FaUserTie className={`text-xl inline-block mr-1`}></FaUserTie> All Buyers</Link>
                     </section>
 
                     <section className={`my-5 border-b pb-3`}>
-                            <Link className={`col-span-2`} to={`/dashboard/all-reported-post`}><MdAddShoppingCart className={`text-xl inline-block mr-1`}></MdAddShoppingCart> All Reported Post</Link>
+                            <Link className={`col-span-2`} to={`/dashboard/all-reported-post`}><MdReportProblem className={`text-xl inline-block mr-1`}></MdReportProblem> All Reported Post</Link>
                     </section>
                 </LeftNav>
 

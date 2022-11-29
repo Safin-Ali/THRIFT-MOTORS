@@ -55,7 +55,7 @@ const ProfileCard = ({data,handleSellerVerify,handleDeleteSeller}) => {
                         <h6>Sell</h6>
                     </div>
                     <div className={`p-3 border rounded-lg`}>
-                        <h5 className={`font-semibold`}>2/10</h5>
+                        <h5 className={`font-semibold`}>{Math.ceil(Math.random()*(10-1))}/10</h5>
                         <h6>rate</h6>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ import axios from 'axios';
 
 const PostData = () => {
 
-    const {currUserInfo,notifySuccess} = useContext(AuthUser);
+    const {currUserInfo,notifySuccess,headerJWT,notifyFaild} = useContext(AuthUser);
 
     // get this params category all data
     let fetcheData = useLoaderData();
@@ -40,6 +40,24 @@ const PostData = () => {
     // modal default data set
     const[modalDT,setModalDT] = useState([]);
 
+    // submit form value and push value to the database
+    const handleBooked = async ({contactNumber,location}) => {
+
+        // Data Algorithm for booked Information
+        const data = {contactNumber,location,bookedProductId:modalDT._id,price: modalDT.resalePrice,productImg:modalDT.sellCarImg,buyerEmail: currUserInfo.userEmail};
+
+        try{
+            const res = await axios.post(`http://localhost:5000/bookedCar`,data,headerJWT);
+            if(res.data.acknowledged) {
+                notifySuccess('Booking Successfull')
+                return setToggle(!toggle)
+            }
+        }
+        catch(e){
+            notifyFaild(e.message)
+        }
+    }
+
     // side nav toggle
     const[togSideNav,setBolNavTog] = useState(false);
 
@@ -66,7 +84,7 @@ const PostData = () => {
             </div>
                     
             <section className={`relative`}>
-                    <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
+                    <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal handleBooked={handleBooked} modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
                 {/* side nav arrow */}
                 <div className={`fixed top-1/2 cursor-pointer md:hidden`}><FaArrowAltCircleRight onClick={()=>setBolNavTog(!togSideNav)} className={`text-xl`}></FaArrowAltCircleRight></div>
                 

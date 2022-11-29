@@ -1,10 +1,11 @@
-import React, { useContext, } from "react";
+import React, { useContext, useState, } from "react";
 import {useForm} from 'react-hook-form';
 import PrimaryButton from "../primary-button/PrimaryButton";
 import {FcGoogle} from "react-icons/fc";
 import {GrGithub} from "react-icons/gr";
 import { AuthUser } from "../../Context/AuthContext";
 import { Link,useLocation, useNavigate } from "react-router-dom";
+import {FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
 import { userInfoPost } from "../../Hook/userInfoPost";
 import { ToastContainer } from "react-toastify";
 import { generateJWT } from "../../Hook/generateJWT";
@@ -13,7 +14,10 @@ import { generateJWT } from "../../Hook/generateJWT";
 const Login = () => {
 
     // use AuthContext For User Data
-    const {loginWithGoogle,loginWithGitHub,login,notifySuccess,notifyFaild} = useContext(AuthUser);
+    const {loginWithGoogle,loginWithGitHub,login,notifySuccess,notifyFaild,userData} = useContext(AuthUser);
+
+    // toggle password hide/visible
+    const[passToggle,setPassToggle] = useState(false);
 
     // assign new route / change route path using by this hook
     const navigate = useNavigate();
@@ -64,9 +68,9 @@ const Login = () => {
       // call firebase signup function         
       const res = await login(data.userEmail,data.password);
       if(res) {
-        await generateJWT(res.user.email)
-        await reset()
-        await navigate(from)
+        generateJWT(res.user.email)
+        reset()
+        return navigate(from)
       }
     }
 
@@ -89,10 +93,11 @@ const Login = () => {
             </div>
 
             {/* Password Feild */}
-            <div className={`my-2`}><input type="password" {...register('password')} className={`border focus:outline-none focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm`} placeholder='Enter Password'required/>
+            <div className={`my-2`}>
+                <input onFocus={()=>setPassToggle(true)} type={passToggle? 'text' : 'password'} {...register('password')} className={`border focus:outline-none z-[1] focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm`} placeholder='Enter Password'required/>
             </div>
 
-            <div>No account? <Link className={`text-common underline`} to={`/signup`}>registration</Link></div>
+            <div>No Account? <Link className={`text-common underline`} to={`/signup`}>registration</Link></div>
             
           </div>
           <div className={`text-center`}>

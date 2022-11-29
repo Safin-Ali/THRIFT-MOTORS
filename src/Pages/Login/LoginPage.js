@@ -15,7 +15,7 @@ const LoginPage = ({children}) => {
     // first verify JWT Token Availbale Or Not
     if(!JWTToken) return children;
 
-    if(userData) return <Navigate to={from} replace={true}></Navigate>;
+    if(userData) return <Navigate to={from} ></Navigate>;
 
     return children;
 };

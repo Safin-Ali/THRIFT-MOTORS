@@ -9,7 +9,7 @@
 
 @layer base {
     :root{
-        --body--BG: #F4F8F9;
+        --body--BG: #fffbfd;
         --white--card: #F9F9F9;
         --common: #6E29E7;
         --primaryRed: #C1101F;
@@ -29,6 +29,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--body--BG);
+  transition: all 0.3s ease-in;
 }
 
 code {

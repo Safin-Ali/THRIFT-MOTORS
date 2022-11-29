@@ -29,14 +29,10 @@ const UserPage = () => {
 
                 {/* Side Nav */}
                 <LeftNav className={`lg:w-full text-center border-r`}>
-                    <section className={`my-5`}>
+                    <section className={`my-5 border-b pb-3`}>
                             <Link className={`col-span-2`} to={`/dashboard/my-orders`}>
                                 <AiOutlineShoppingCart className={`text-xl inline-block mr-1`}></AiOutlineShoppingCart> My Orders
                             </Link>
-                    </section>
-
-                    <section className={`my-5`}>
-                            <Link className={`col-span-2`} to={`/dashboard/my-wishlist`}><MdAddShoppingCart className={`text-xl inline-block mr-1`}></MdAddShoppingCart> All Wishlist</Link>
                     </section>
                 </LeftNav>
 

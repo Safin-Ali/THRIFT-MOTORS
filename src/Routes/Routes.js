@@ -6,6 +6,7 @@ import AllSeller from "../components/Dashboard/AllSeller";
 import AddProduct from "../components/Form/AddProduct";
 import Login from "../components/Form/Login";
 import Signup from "../components/Form/Signup";
+import MyOrders from "../components/User-Page-Card/MyOrders";
 import BlogPage from "../Pages/Blog/BlogPage";
 import Home from "../Pages/Home/Home";
 import LoginPage from "../Pages/Login/LoginPage";
@@ -53,7 +54,7 @@ export const router = createBrowserRouter([
 
             // get buyer / user 
             {path: '/dashboard', element: <UserPage></UserPage>,children:[
-                {path: '/dashboard/my-orders', element: <UserPage></UserPage>},
+                {path: '/dashboard/my-orders', element: <MyOrders></MyOrders>},
             ]},
 
             // get blogs page

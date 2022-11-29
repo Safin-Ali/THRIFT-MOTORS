@@ -111,7 +111,7 @@ const AuthContext = ({children}) => {
     },[])
 
     // all variable,function,userdata of Object
-    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch,JWTToken,deleteAccount,notifySuccess,notifyFaild}
+    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch,JWTToken,deleteAccount,notifySuccess,notifyFaild,headerJWT}
     return (
         <AuthUser.Provider value={authInfo}>{children}</AuthUser.Provider>
     );

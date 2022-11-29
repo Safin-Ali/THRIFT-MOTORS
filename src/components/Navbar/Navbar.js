@@ -2,10 +2,12 @@ import React, { useContext,useState } from 'react';
 import brandLogo from '../../images/brand-logo.png';
 import {HiMenuAlt3} from 'react-icons/hi';
 import {ImUserPlus} from 'react-icons/im';
+import { BsFillMoonFill,BsFillSunFill} from 'react-icons/bs';
 import {FiLogOut} from 'react-icons/fi';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/AuthContext';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
+import '../../index.css'
 
 const Navbar = () => {
 
@@ -14,6 +16,17 @@ const Navbar = () => {
 
     // navbar expand small devices when "expand" is true
     const [expand,setCollapse] = useState(false);
+
+    // theme toggle state
+    const[themeDark,setThemeBool] = useState(false);
+
+    // set theme function
+        if(themeDark){
+            document.body.classList.add('dark-theme')
+        }
+        else{
+            document.body.classList.remove('dark-theme')
+        }
 
     // toggle navbars expand and collapse in this function
     const expandCollapse = () => setCollapse(!expand);
@@ -61,8 +74,7 @@ const Navbar = () => {
 
                 {/* Expand Bar Icon */}
                 <div className={`md:hidden order-3 md:order-none`}>
-                    <HiMenuAlt3 onClick={expandCollapse} className={`text-4xl`}></HiMenuAlt3>
-                    
+                    <HiMenuAlt3 onClick={expandCollapse} className={`text-4xl`}></HiMenuAlt3>                   
                 </div>
 
                 {/* Navlink */}
@@ -79,6 +91,19 @@ const Navbar = () => {
                     <NavLink to={'/*'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>SHOP</NavLink>
 
                     <NavLink to={'/blogs'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block mx-2`}>Blogs</NavLink>
+
+                    {/* Theme Avatar */}
+                    <div className={`order-2 md:mx-3 md:order-none pb-5 md:pb-0 w-full`}>
+                    {
+                        themeDark 
+                        ? 
+                        <BsFillSunFill onClick={()=>{
+                            setThemeBool(!themeDark)
+                        }} className={`text-2xl text-blackSA w-full cursor-pointer`}></BsFillSunFill>
+                        :
+                        <BsFillMoonFill onClick={()=>setThemeBool(!themeDark)} className={`text-2xl text-blackSA w-full cursor-pointer`}></BsFillMoonFill>
+                    }
+                    </div>
 
                     {/* User Avatar */}
                     <div className={`order-2 md:order-none pb-5 md:pb-0 w-full`}>

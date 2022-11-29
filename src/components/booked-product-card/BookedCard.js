@@ -1,9 +1,8 @@
 import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
-
-const ReportedProductCard = ({data,setToggle,toggle,setModalDT}) => {
-
-    const {advertise,carInfo,resalePrice,sellCarImg} = data;
+const BookedCard = ({data}) => {
+    
+    const {advertise,carInfo,postedTime,resalePrice,sellCarImg} = data;
 
     const bgImage = {
         backgroundImage: 
@@ -11,7 +10,7 @@ const ReportedProductCard = ({data,setToggle,toggle,setModalDT}) => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
     }
-    
+
     return (
         <>
             <div className={`border shadow-md duration-[700] rounded-t-xl rounded-b-md`}>
@@ -27,10 +26,7 @@ const ReportedProductCard = ({data,setToggle,toggle,setModalDT}) => {
                     </div>
 
                     <div className={`text-center`}>
-                        <PrimaryButton onClick={()=>{
-                            setModalDT(data)
-                            setToggle(!toggle)
-                            }} className={`hover:scale-[1.05] duration-[500ms]`}>DELETE POST</PrimaryButton>
+                        <PrimaryButton className={`hover:scale-[1.05] duration-[500ms]`}>PAY NOW</PrimaryButton>
                     </div>
                 </div>
             </div>
@@ -38,4 +34,4 @@ const ReportedProductCard = ({data,setToggle,toggle,setModalDT}) => {
     );
 };
 
-export default ReportedProductCard;
+export default BookedCard;

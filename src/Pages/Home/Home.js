@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState } from 'react';
 import Carousel from '../../components/Carousel/Carousel';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
@@ -8,8 +8,18 @@ import Footer from '../../components/footer/Footer';
 import AdvertisedProduct from '../../components/advertised-product/AdvertisedProduct';
 import { ToastContainer} from 'react-toastify';
 import BookProductModal from '../../components/Form/BookProductModal';
+import { AuthUser } from '../../Context/AuthContext';
 
 const Home = () => {
+
+    const {headerJWT,currUserInfo,notifySuccess,notifyFaild} = useContext(AuthUser)
+
+    const bgImage = {
+        backgroundImage: 
+        `url(https://i.ibb.co/L13jN5q/buying-car-winning-money-vector-illustration-82574-4840.jpg)`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+    }
 
     // store advertised post data
     const[advPost,setAdvertisedPost] = useState([]);
@@ -23,6 +33,23 @@ const Home = () => {
 
     // toggle modal
     const[toggle,setToggle] = useState(false);
+
+    const handleBooked = async ({contactNumber,location}) => {
+
+        // Data Algorithm for booked Information
+        const data = {contactNumber,location,bookedProductId:modalDT._id,price: modalDT.resalePrice,productImg:modalDT.sellCarImg,buyerEmail: currUserInfo.userEmail};
+
+        try{
+            const res = await axios.post(`http://localhost:5000/bookedCar`,data,headerJWT);
+            if(res.data.acknowledged) {
+                notifySuccess('Booking Successfull')
+                return setToggle(!toggle)
+            }
+        }
+        catch(e){
+            notifyFaild(e.message)
+        }
+    }
 
     // modal default data set
     const[modalDT,setModalDT] = useState([]);
@@ -81,7 +108,7 @@ const Home = () => {
             </header>
             <Footer></Footer>
             <section className={`relative`}>
-                    <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
+                    <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal handleBooked={handleBooked} modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
                 
             </section>
             <ToastContainer
