@@ -9,7 +9,7 @@ const BlogPage = () => {
     const[blogs,setBlogs] = useState(null);
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/blogs`)
+        axios.get(`https://thrift-motors-server.vercel.app/blogs`)
         .then(res => setBlogs(res.data))
     },[])
 

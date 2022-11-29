@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useContext, useEffect,} from 'react';
 import {useForm} from 'react-hook-form';
 import {IoClose} from 'react-icons/io5'

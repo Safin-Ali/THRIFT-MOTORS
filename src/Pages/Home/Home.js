@@ -9,10 +9,13 @@ import AdvertisedProduct from '../../components/advertised-product/AdvertisedPro
 import { ToastContainer} from 'react-toastify';
 import BookProductModal from '../../components/Form/BookProductModal';
 import { AuthUser } from '../../Context/AuthContext';
+import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
 
 const Home = () => {
 
-    const {currUserInfo,notifySuccess,notifyFaild} = useContext(AuthUser)
+    const {notifySuccess,notifyFaild} = useContext(AuthUser)
+
+    const currUserInfo = useCurrUserInfo();
 
     const bgImage = {
         backgroundImage: 
@@ -27,7 +30,7 @@ const Home = () => {
     // get all brand data
     const {data: allBrands} = useQuery({
         queryKey: ['allBrand'],
-        queryFn: () => axios.get(`http://localhost:5000/all-brand`)
+        queryFn: () => axios.get(`https://thrift-motors-server.vercel.app/all-brand`)
         .then(res =>res.data)
     });
 
@@ -40,7 +43,7 @@ const Home = () => {
         const data = {contactNumber,location,bookedProductId:modalDT._id,price: modalDT.resalePrice,productImg:modalDT.sellCarImg,buyerEmail: currUserInfo.userEmail};
 
         try{
-            const res = await axios.post(`http://localhost:5000/bookedCar`,data,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            const res = await axios.post(`https://thrift-motors-server.vercel.app/bookedCar`,data,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.acknowledged) {
                 notifySuccess('Booking Successfull')
                 return setToggle(!toggle)
@@ -56,7 +59,7 @@ const Home = () => {
 
     // get all advertised data
     useEffect(()=>{
-        axios.get(`http://localhost:5000/advertised`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
+        axios.get(`https://thrift-motors-server.vercel.app/advertised`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
         .then(res => setAdvertisedPost(res.data))
     },[])
 
@@ -71,7 +74,7 @@ const Home = () => {
                         <p className={`text-lg`}>Here you bought all secondhand or used car with good condition.</p>
                     </div>
                     <div className={`lg:col-span-2`}>
-                        <Carousel className={'w-full lg:w-[75%]'} url={`http://localhost:5000/sliderImage`}></Carousel>
+                        <Carousel className={'w-full lg:w-[75%]'} url={`https://thrift-motors-server.vercel.app/sliderImage`}></Carousel>
                     </div>
                 </div>
 

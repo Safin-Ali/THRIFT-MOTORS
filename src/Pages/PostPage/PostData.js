@@ -9,10 +9,13 @@ import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 import { ToastContainer} from 'react-toastify';
 import { AuthUser } from '../../Context/AuthContext';
 import axios from 'axios';
+import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
 
 const PostData = () => {
 
-    const {currUserInfo,notifySuccess,notifyFaild} = useContext(AuthUser);
+    const {notifySuccess,notifyFaild} = useContext(AuthUser);
+
+    const currUserInfo = useCurrUserInfo();
 
     // get this params category all data
     let fetcheData = useLoaderData();
@@ -22,7 +25,7 @@ const PostData = () => {
 
     // wishlist product function
     function reportProduct (serviceId) {
-        axios.post('http://localhost:5000/reportedProd',{email:currUserInfo?.userEmail,userId:currUserInfo?._id,productId:serviceId},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
+        axios.post('https://thrift-motors-server.vercel.app/reportedProd',{email:currUserInfo?.userEmail,userId:currUserInfo?._id,productId:serviceId},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
         .then(res => {
             if(res.data.acknowledged){
                 notifySuccess('WOW! You Are Reported Successfully')
@@ -47,7 +50,7 @@ const PostData = () => {
         const data = {contactNumber,location,bookedProductId:modalDT._id,price: modalDT.resalePrice,productImg:modalDT.sellCarImg,buyerEmail: currUserInfo.userEmail};
 
         try{
-            const res = await axios.post(`http://localhost:5000/bookedCar`,data,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            const res = await axios.post(`https://thrift-motors-server.vercel.app/bookedCar`,data,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.acknowledged) {
                 notifySuccess('Booking Successfull')
                 return setToggle(!toggle)

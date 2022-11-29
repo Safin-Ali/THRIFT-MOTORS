@@ -31,7 +31,7 @@ const AddProduct = () => {
 
     // get brand data
     useEffect(()=>{
-        axios.get(`http://localhost:5000/all-brand`)
+        axios.get(`https://thrift-motors-server.vercel.app/all-brand`)
         .then(res => {
             setAllBrand(res.data)
             setBrandInfo(res.data[0])
@@ -80,7 +80,7 @@ const AddProduct = () => {
             }
 
             // post all data
-            const res = await axios.post(`http://localhost:5000/new-post`,data,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
+            const res = await axios.post(`https://thrift-motors-server.vercel.app/new-post`,data,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
             if(res.data.acknowledged) {
                 reset();
                 setTimeout(()=>navigate(`/dashboard/my-product/${userData?.email}`),2500)

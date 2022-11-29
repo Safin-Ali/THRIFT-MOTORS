@@ -7,9 +7,9 @@ const ProfileCard = ({data,handleSellerVerify,handleDeleteSeller}) => {
 
     let {userEmail,userAvatar,firstName,_id,lastName,userContactNumber,userVarified} = data;
 
-    const soldUrl = `http://localhost:5000/userSoldCount?email=${userEmail}&paid=true`;
+    const soldUrl = `https://thrift-motors-server.vercel.app/userSoldCount?email=${userEmail}&paid=true`;
 
-    const sellerPostUrl = `http://localhost:5000/userPostCount?email=${userEmail}`;
+    const sellerPostUrl = `https://thrift-motors-server.vercel.app/userPostCount?email=${userEmail}`;
 
     const soldProd = UseFetchIWithQuery(soldUrl,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
 

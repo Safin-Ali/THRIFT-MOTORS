@@ -1,22 +1,27 @@
 import React, { useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { AuthUser } from '../../Context/AuthContext';
 import UnAuthorized from '../404-Not-Found/UnAuthorized';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 import EmptyData from '../Empty-Data/EmptyData';
 import BookedCard from '../booked-product-card/BookedCard';
+import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
 
 
 const MyOrders = () => {
 
-    const {currUserInfo} = useContext(AuthUser)
+    const currUserInfo = useCurrUserInfo();
+
+    const i = 1;
+
+    console.log(currUserInfo)
     
     const {data:bookedCar,refetch} = useQuery({
-        queryKey: ['all seller',currUserInfo?.userEmail],
+        queryKey: ['all seller',currUserInfo],
         queryFn: async () => {
             try{
-            const res = await axios.get(`http://localhost:5000/bookedCar?email=${currUserInfo?.userEmail}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+                console.log(currUserInfo,i+1)
+            const res = await axios.get(`https://thrift-motors-server.vercel.app/bookedCar?email=${currUserInfo?.userEmail}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             return res.data;
             }
             catch(e){
