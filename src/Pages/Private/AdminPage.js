@@ -16,13 +16,14 @@ const AdminPage = () => {
 
     const currUserInfo = useCurrUserInfo();
 
-    console.log(currUserInfo)
-
     if(loading) return <LoadingSpinner></LoadingSpinner>;
 
     if(!userData) return <Navigate to={'/'}></Navigate>;
 
-    if(!localStorage.getItem('jwt-token')) return AutoLogOut();
+    if(!localStorage.getItem('jwt-token')) {
+        AutoLogOut()
+        return <Navigate to={`/error401`}></Navigate>
+    };
 
     if(!currUserInfo) return <LoadingSpinner></LoadingSpinner>;
     

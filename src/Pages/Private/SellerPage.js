@@ -20,7 +20,10 @@ const SellerPage = () => {
 
     if(!userData) return <Navigate to={'/'}></Navigate>
 
-    if(!localStorage.getItem('jwt-token')) return AutoLogOut()
+    if(!localStorage.getItem('jwt-token')) {
+        AutoLogOut()
+        return <Navigate to={`/error401`}></Navigate>
+    };
 
     if(!currUserInfo) return <LoadingSpinner></LoadingSpinner>;
     

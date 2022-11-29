@@ -26,7 +26,7 @@ const ProfileCard = ({data,handleSellerVerify,handleDeleteSeller}) => {
             <div>
                 {/* user name */}
                 <div className={`flex items-center my-3 gap-5 justify-center`}>
-                    <p>{firstName.concat(' ',lastName)}</p>
+                    <p>{firstName?.concat(' ',lastName)}</p>
                     {
                         userVarified ? <GoVerified className={`text-blue-600`}></GoVerified> : <GoUnverified></GoUnverified>
                     }

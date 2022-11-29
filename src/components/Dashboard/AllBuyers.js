@@ -10,7 +10,7 @@ import LoadingSpinner from '../Spinner/LoadingSpinner';
 const AllBuyers = () => {
 
     // api for all sellers information
-    const url = `https://thrift-motors-server.vercel.app/allUser`;
+const url = `http://localhost:5000/alluser`;
 
     const navigate = useNavigate();
 
@@ -19,6 +19,7 @@ const AllBuyers = () => {
         queryFn: async () => {
             try{
             const res = await axios.get(url,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            console.log(res.data)
             const onlyBuyers = res.data.filter(elm => elm.userRole === 'user');
             return onlyBuyers
             }

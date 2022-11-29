@@ -6,21 +6,17 @@ import LoadingSpinner from '../Spinner/LoadingSpinner';
 import EmptyData from '../Empty-Data/EmptyData';
 import BookedCard from '../booked-product-card/BookedCard';
 import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
+import AutoLogOut from '../../Hook/AutoLogOut';
 
 
 const MyOrders = () => {
 
     const currUserInfo = useCurrUserInfo();
-
-    const i = 1;
-
-    console.log(currUserInfo)
     
     const {data:bookedCar,refetch} = useQuery({
         queryKey: ['all seller',currUserInfo],
         queryFn: async () => {
             try{
-                console.log(currUserInfo,i+1)
             const res = await axios.get(`https://thrift-motors-server.vercel.app/bookedCar?email=${currUserInfo?.userEmail}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             return res.data;
             }
