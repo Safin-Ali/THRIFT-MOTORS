@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
             {path: '/', element:<Home></Home>},
 
             // get posted data by category id/name wise
-            {path: '/category/:id', loader: async ({params}) => fetch(`https://thrift-motors-server.vercel.app/category/${params.id}`), element: <PrivatePage><PostData></PostData></PrivatePage>},
+            {path: '/category/:id', loader: async ({params}) => fetch(`http://localhost:5000/category/${params.id}`), element: <PrivatePage><PostData></PostData></PrivatePage>},
 
             // get add product page
             {path: '/dashboard', element: <SellerPage></SellerPage>, children:[

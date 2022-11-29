@@ -100,7 +100,7 @@ const Signup = () => {
               .catch(e => console.log(e.message))
 
               // post user information to userInfo server
-              axios.post(`https://thrift-motors-server.vercel.app/userinfo`,data)
+              axios.post(`http://localhost:5000/userinfo`,data)
                 .then(res => {
 
                   // if post successfull then popup toast

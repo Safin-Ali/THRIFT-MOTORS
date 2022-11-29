@@ -16,7 +16,7 @@ const MyOrders = () => {
         queryKey: ['all seller',currUserInfo?.userEmail],
         queryFn: async () => {
             try{
-            const res = await axios.get(`https://thrift-motors-server.vercel.app/bookedCar?email=${currUserInfo?.userEmail}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            const res = await axios.get(`http://localhost:5000/bookedCar?email=${currUserInfo?.userEmail}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             return res.data;
             }
             catch(e){

@@ -7,7 +7,7 @@ const LeftSideNav = () => {
 
     const {data: allBrands} = useQuery({
         queryKey: ['allBrand'],
-        queryFn: () => axios.get(`https://thrift-motors-server.vercel.app/all-brand`)
+        queryFn: () => axios.get(`http://localhost:5000/all-brand`)
         .then(res => res.data)
     })
 

@@ -7,11 +7,16 @@ import LeftNav from '../../components/Dashboard/LeftNav';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 import { AuthUser } from '../../Context/AuthContext';
 import AutoLogOut from '../../Hook/AutoLogOut';
+import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
 
 
 const AdminPage = () => {
 
-    const {currUserInfo,userData,loading} = useContext(AuthUser);
+    const {userData,loading} = useContext(AuthUser);
+
+    const currUserInfo = useCurrUserInfo();
+
+    console.log(currUserInfo)
 
     if(loading) return <LoadingSpinner></LoadingSpinner>;
 

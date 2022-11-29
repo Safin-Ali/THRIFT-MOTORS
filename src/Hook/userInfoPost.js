@@ -14,7 +14,7 @@ export async function userInfoPost (result) {
         userVarified: false,
             }  
     try{
-        const res = axios.post(`https://thrift-motors-server.vercel.app/userinfo`,data)
+        const res = axios.post(`http://localhost:5000/userinfo`,data)
         return res
     }
     catch(e){

@@ -71,9 +71,6 @@ const AuthContext = ({children}) => {
         })
     };
 
-    // JWT Verification Header
-    const headerJWT = {headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}}
-
     // toastfy call
     const notifyFaild = (text) => {
         return toast.error(text)
@@ -84,21 +81,6 @@ const AuthContext = ({children}) => {
         return signOut(auth);
     }
 
-    // get your information
-    const {data:currUserInfo,isLoading,refetch} = useQuery({
-        queryKey: ['User Information',userData?.email],
-        queryFn: async () => {
-            try{
-                const res = await axios.get(`https://thrift-motors-server.vercel.app/userInfo?email=${userData?.email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
-                return res.data
-            }
-            catch(e){
-                console.log(e.message)
-                return e.message
-            }
-        }
-    })
-
     useEffect(()=>{
         const unSusb = onAuthStateChanged(auth,user=>{
             setUserData(user)
@@ -108,7 +90,7 @@ const AuthContext = ({children}) => {
     },[])
 
     // all variable,function,userdata of Object
-    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,currUserInfo,isLoading,refetch,deleteAccount,notifySuccess,notifyFaild,headerJWT}
+    const authInfo = {userData,loading,logOut,signUp,login,updateAuthProfile,loginWithGoogle,loginWithGitHub,deleteAccount,notifySuccess,notifyFaild,}
     return (
         <AuthUser.Provider value={authInfo}>{children}</AuthUser.Provider>
     );

@@ -8,11 +8,14 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/AuthContext';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 import '../../index.css'
+import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
 
 const Navbar = () => {
 
     // use AuthContext For User Data
-    const {logOut,userData,currUserInfo,loaded} = useContext(AuthUser);
+    const {logOut,userData,loaded} = useContext(AuthUser);
+
+    const currUserInfo =  useCurrUserInfo();
 
     // navbar expand small devices when "expand" is true
     const [expand,setCollapse] = useState(false);

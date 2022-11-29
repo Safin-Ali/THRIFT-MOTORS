@@ -20,7 +20,7 @@ const MyProductPage = () => {
         queryKey: ['My Product',userData?.email],
         queryFn: async () => {
                 try{
-                    const res = await axios.get(`https://thrift-motors-server.vercel.app/my-product/${userData?.email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+                    const res = await axios.get(`http://localhost:5000/my-product/${userData?.email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
                     return res.data
                 }
                 catch(e){
@@ -34,7 +34,7 @@ const MyProductPage = () => {
 
     // delete product
     function handleDeleteProduct (id,email) {
-        axios.delete(`https://thrift-motors-server.vercel.app/postedData?id=${id}&email=${email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
+        axios.delete(`http://localhost:5000/postedData?id=${id}&email=${email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
         .then(res => {
             if(res.data.deletedCount > 0){
                  refetch()
@@ -50,7 +50,7 @@ const MyProductPage = () => {
 
     // advertise product
     function advertiseProduct (id,email) {
-        axios.patch(`https://thrift-motors-server.vercel.app/postedData`,{id,email},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
+        axios.patch(`http://localhost:5000/postedData`,{id,email},{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}})
         .then(res => {
             if(res.data.modifiedCount > 0){
                 refetch()

@@ -10,7 +10,7 @@ import LoadingSpinner from '../Spinner/LoadingSpinner';
 const AllBuyers = () => {
 
     // api for all sellers information
-    const url = `https://thrift-motors-server.vercel.app/allUser`;
+    const url = `http://localhost:5000/allUser`;
 
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const AllBuyers = () => {
         try{
             // patch body for user verifiy
             const patchBody = {userEmail:email,_id:id,status}
-            const res = await axios.patch(`https://thrift-motors-server.vercel.app/allUser`,patchBody,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            const res = await axios.patch(`http://localhost:5000/allUser`,patchBody,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.modifiedCount > 0){
                 window.alert('Update Successful')
                 refetch()
@@ -48,7 +48,7 @@ const AllBuyers = () => {
 
     async function handleDeleteSeller (id) {
         try{
-            const res = await axios.delete(`https://thrift-motors-server.vercel.app/userInfo?id=${id}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            const res = await axios.delete(`http://localhost:5000/userInfo?id=${id}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.deletedCount > 0){
                 window.alert('User Delete Successful')
                 refetch()

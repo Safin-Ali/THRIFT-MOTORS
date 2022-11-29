@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 import { AuthUser } from '../../Context/AuthContext';
-import SellerPage from './SellerPage';
+import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
 
 const DashboardPage = ({children}) => {
-    const {isLoading,currUserInfo,loading} = useContext(AuthUser);
+    const {isLoading,loading} = useContext(AuthUser);
+
+    const currUserInfo = useCurrUserInfo();
 
     //  waiting for findout user info
     if(isLoading) return <LoadingSpinner></LoadingSpinner>;
