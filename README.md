@@ -19,23 +19,26 @@ This is a **`MERN`** Stack Website
 - **3 Types Role `(ADMIN,USERS,SELLERS)`**
 
 ## **This Website Features And Functionality**
+
 1. **Home Page Maximum 3 Category Showing**
 2. **Without **`LOGIN`** can't see any Sell post**
 3. **Report to admin pannel (`Login Must`)**
 
-4. Admin Role Controll:
-    - ### **All Users/Buyers**
-    - ### **All Sellers**
-    - ### **All Reported Post**
-    - ### **Seller & Buyers VERIFY**
-    - ### **Seller & Buyers Delete**
+4. **Admin Role Controll:**
+    - ##### **All Users/Buyers**
+    - ##### **All Sellers**
+    - ##### **All Reported Post**
+    - ##### **Seller & Buyers VERIFY**
+    - ##### **Seller & Buyers Delete**
 
-5. Seller Role Controll:
-    - ### **All Posted Product**
-    - ### **Add New Product**
+5. **Seller Role Controll:**
+    - ##### **All Posted Product**
+    - ##### **Add New Product**
+    - ##### **Delete Post**
+    - ##### **Advertise Post**
 
-6. User/Buyer Role Controll:
-    - ### **All Booked Product Only**
+6. **User/Buyer Role Controll:**
+    - ##### **All Booked Product Only**
 
 7. **Awesome Login Form**
 8. **Awesome Signup Form**
