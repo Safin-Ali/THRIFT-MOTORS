@@ -11,13 +11,13 @@ import AutoLogOut from '../../Hook/AutoLogOut';
 
 const AdminPage = () => {
 
-    const {currUserInfo,userData,JWTToken,loading} = useContext(AuthUser);
+    const {currUserInfo,userData,loading} = useContext(AuthUser);
 
     if(loading) return <LoadingSpinner></LoadingSpinner>;
 
     if(!userData) return <Navigate to={'/'}></Navigate>;
 
-    if(!JWTToken) return AutoLogOut();
+    if(!localStorage.getItem('jwt-token')) return AutoLogOut();
 
     if(!currUserInfo) return <LoadingSpinner></LoadingSpinner>;
     

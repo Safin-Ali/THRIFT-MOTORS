@@ -4,7 +4,7 @@ import { AuthUser } from '../../Context/AuthContext';
 
 const LoginPage = ({children}) => {
     // use AuthContext For User Data
-    const {userData,JWTToken} = useContext(AuthUser);
+    const {userData} = useContext(AuthUser);
 
     // get current location Object data in this hook
     const location = useLocation();
@@ -13,7 +13,7 @@ const LoginPage = ({children}) => {
     const from = location.state?location.state : '/';
 
     // first verify JWT Token Availbale Or Not
-    if(!JWTToken) return children;
+    if(!localStorage.getItem('jwt-token')) return children;
 
     if(userData) return <Navigate to={from} ></Navigate>;
 
