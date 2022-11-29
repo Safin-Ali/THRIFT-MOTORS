@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/AuthContext';
 import UnAuthorized from '../404-Not-Found/UnAuthorized';
 import EmptyData from '../Empty-Data/EmptyData';

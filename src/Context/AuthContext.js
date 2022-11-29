@@ -88,7 +88,7 @@ const AuthContext = ({children}) => {
     }
 
     // get your information
-    const {data:currUserInfo=[],isLoading,refetch} = useQuery({
+    const {data:currUserInfo,isLoading,refetch} = useQuery({
         queryKey: ['User Information',userData?.email],
         queryFn: async () => {
             try{

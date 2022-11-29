@@ -38,7 +38,6 @@ export const router = createBrowserRouter([
                 {path: '/dashboard/my-product/:id', element: <MyProductPage></MyProductPage>},
                 // get my product page
                 {path: '/dashboard/add-product', element: <AddProduct></AddProduct>},
-                {path: '/dashboard/my-buyers',},
             ]},
 
             // unathorized page

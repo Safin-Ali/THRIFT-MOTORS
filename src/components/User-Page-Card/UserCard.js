@@ -5,13 +5,12 @@ import {GoLocation} from 'react-icons/go';
 import { AuthUser } from '../../Context/AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 const UserCard = ({data}) => {
 
     // use AuthContext For User Data
     const {logOut,currUserInfo} = useContext(AuthUser);
-
-    console.log(data)
 
     // // api for all sellers information
     const url = `http://localhost:5000/wishlist?email=${currUserInfo?.userEmail}&id=${currUserInfo?._id}`;
@@ -40,6 +39,8 @@ const UserCard = ({data}) => {
     //         backgroundSize: 'cover',
     //         backgroundRepeat: 'no-repeat',
     // }
+
+    if(currUserInfo?.userRole !== 'user') return <Navigate to={'/*'}></Navigate>;
     
     
     // return (
