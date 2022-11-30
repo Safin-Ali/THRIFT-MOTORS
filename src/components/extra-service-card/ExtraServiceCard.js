@@ -7,7 +7,7 @@ const ExtraServiceCard = ({imgLink='',children,parentClassName='',}) => {
                 <img src={imgLink} alt="Service_Vector" />
             </div>
             <div>
-                <p className={`font-medium text-center px-3`}>{children}</p>
+                {children}
             </div>
         </div>
     );

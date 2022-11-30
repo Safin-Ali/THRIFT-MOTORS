@@ -4,7 +4,7 @@ import PrimaryButton from "../primary-button/PrimaryButton";
 import {FcGoogle} from "react-icons/fc";
 import { AuthUser } from "../../Context/AuthContext";
 import { Link,useLocation, useNavigate } from "react-router-dom";
-import {FaEyeSlash, FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
+import {FaEyeSlash, FaRegEye} from 'react-icons/fa';
 import { userInfoPost } from "../../Hook/userInfoPost";
 import { ToastContainer } from "react-toastify";
 import { generateJWT } from "../../Hook/generateJWT";
@@ -13,7 +13,7 @@ import { generateJWT } from "../../Hook/generateJWT";
 const Login = () => {
 
     // use AuthContext For User Data
-    const {loginWithGoogle,loginWithGitHub,login,notifySuccess,notifyFaild,userData} = useContext(AuthUser);
+    const {loginWithGoogle,loginWithGitHub,login,notifySuccess,notifyFaild} = useContext(AuthUser);
 
     // toggle password hide/visible
     const[passToggle,setPassToggle] = useState(false);
@@ -62,18 +62,35 @@ const Login = () => {
       }
     }
 
+    // new promise for waiting prepare home page
+    function prepareHome () {
+      return new Promise((res,rej)=>{
+        setTimeout(()=>{
+          return res(true)
+        },2500)
+      })
+    }
+
     // form all values
     async function onLogin(data){
+      try{
       // call firebase signup function         
       const res = await login(data.userEmail,data.password);
       if(res) {
         generateJWT(res.user.email)
+        notifySuccess('Login Success Full Please Wait')
+        await prepareHome()
         reset()
         return navigate(from)
+      }
+      }
+      catch(e){
+        notifyFaild(e.message)
       }
     }
 
   return (
+    <>
     <section className={`grid mx-[5%] md:grid-cols-2 grid-cols-1 gap-x-10 justify-center items-center min-h-screen max-h-full`}>
 
     <div>
@@ -114,6 +131,19 @@ const Login = () => {
         </div>
       </div>
     </section>
+    <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            limit={1}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover={false}
+            theme="light"/>
+    </>
   );
 };
 

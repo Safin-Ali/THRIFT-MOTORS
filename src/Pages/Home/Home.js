@@ -117,15 +117,15 @@ const Home = () => {
                     <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-0 md:grid-cols-3`}>
                         <ExtraServiceCard imgLink={`https://i.ibb.co/9rsPfYN/auto-mechanic-repairing-vehicle-engine-isolated-flat-vector-illustration-cartoon-man-fixing-checking.png`}>
                         <h3 className={`text-xl font-bold text-center text-primaryRed mt-[5%] pb-3 capitalize`}>Our CAR REPAIR</h3>
-                            If you have car problems anywhere in any country. You can email us. Our team will try to repair your car.
+                        <p className={`font-medium text-center px-3`}>If you have car problems anywhere in any country. You can email us. Our team will try to repair your car.</p>                            
                         </ExtraServiceCard>
                         <ExtraServiceCard imgLink={`https://i.ibb.co/DMNS8R6/Car-finance-pana.png`}>
-                        <h3 className={`text-xl font-bold text-center text-primaryRed mt-[5%] pb-3 capitalize`}>BUY CAR WITH LOAN</h3>
-                            You can buy a used car through loan from us if you want. But in that case some instructions must be followed.
+                        <h3 className={`text-xl font-bold text-center text-primaryRed mt-[5%] pb-3 capitalize`}>BUY CAR WITH LOAN</h3>                            
+                            <p className={`font-medium text-center px-3`}>You can buy a used car through loan from us if you want. But in that case some instructions must be followed.</p>  
                         </ExtraServiceCard>
                         <ExtraServiceCard imgLink={`https://i.ibb.co/RcJDcsC/QA-engineers-bro.png`}>
                         <h3 className={`text-xl font-bold text-center text-primaryRed mt-[5%] pb-3 capitalize`}>1 YEAR GUARANTEE</h3>
-                        Our most attractive feature here is that we offer 1 or more than year warranty on used cars
+                        <p className={`font-medium text-center px-3`}>Our most attractive feature here is that we offer 1 or more than year warranty on used cars</p>                        
                         </ExtraServiceCard>
                     </div>
                 </section>
