@@ -68,6 +68,9 @@ const Signup = () => {
 
     // form all values
     function onSubmit(data){
+
+      if(data.confirmPassword !== data.password) return notifyFaild('Wrong Password')
+
       // set user account role
         data['userRole'] = selRole;
         data['userVarified'] = false;
