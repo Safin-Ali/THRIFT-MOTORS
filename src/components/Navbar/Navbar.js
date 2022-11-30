@@ -82,18 +82,18 @@ const Navbar = () => {
 
                 {/* Navlink */}
                 <div style={resNavbarExpandStyle} className={`order-4 bg-white md:bg-inherit overflow-hidden md:order-none flex items-center justify-center ${expand ? 'min-h-[200px] max-h-fit' : 'h-0'} text-center flex-col md:h-fit md:flex-row basis-full md:basis-auto`}>
-                    <NavLink to={'/'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Home</NavLink>
+                    <NavLink to={'/'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 font-medium uppercase block md:mx-2`}>Home</NavLink>
                     { 
 
                     currUserInfo
                      &&
-                    <NavLink to={`/dashboard${dashPath}`} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>Dashboard</NavLink>
+                    <NavLink to={`/dashboard${dashPath}`} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 font-medium uppercase block md:mx-2`}>Dashboard</NavLink>
 
                     }
 
-                    <NavLink to={'/*'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block md:mx-2`}>SHOP</NavLink>
+                    <NavLink to={'/*'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 font-medium uppercase block md:mx-2`}>SHOP</NavLink>
 
-                    <NavLink to={'/blogs'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 block mx-2`}>Blogs</NavLink>
+                    <NavLink to={'/blogs'} className={`text-blackSA w-full border-b md:border-b-0 pb-2 md:pb-0 my-2 md:my-0 font-medium uppercase block mx-2`}>Blogs</NavLink>
 
                     {/* Theme Avatar */}
                     <div className={`order-2 md:mx-3 md:order-none pb-5 md:pb-0 w-full`}>
@@ -102,7 +102,7 @@ const Navbar = () => {
                         ? 
                         <BsFillSunFill onClick={()=>{
                             setThemeBool(!themeDark)
-                        }} className={`text-2xl text-blackSA w-full cursor-pointer`}></BsFillSunFill>
+                        }} className={`text-2xl text-[#ffd829] text-blackSA w-full cursor-pointer`}></BsFillSunFill>
                         :
                         <BsFillMoonFill onClick={()=>setThemeBool(!themeDark)} className={`text-2xl text-blackSA w-full cursor-pointer`}></BsFillMoonFill>
                     }

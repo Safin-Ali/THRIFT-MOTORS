@@ -19,13 +19,13 @@ const PostCard = ({data,setToggle,toggle,setModalDT,reportProduct}) => {
     }
 
     return (
-        <div className={`border mx-[3%] sm:mx-[10%] pb-3 lg:pb-0 shadow-md bg-whiteCard rounded-t-md lg:rounded-l-md my-[3%] lg:mr-[5%] lg:mx-0`}>
+        <div className={`border bg-whiteCard mx-[3%] sm:mx-[10%] pb-3 lg:pb-0 shadow-md bg-whiteCard rounded-t-md lg:rounded-l-md my-[3%] lg:mr-[5%] lg:mx-0`}>
             
             {/* Card Content Middle */}
             <div className={`grid grid-cols-1 lg:grid-cols-5 justify-center items-center`}>
 
                 {/* Post Thumbnail */}
-                <div style={bgImage} className={`object-cover col-span-2 rounded-t-md lg:rounded-r-none lg:rounded-l-md h-[300px] max-h-fit`}>
+                <div style={bgImage} className={`object-cover col-span-2 rounded-t-md lg:rounded-r-none lg:rounded-l-md h-[350px] max-h-fit`}>
 
                 </div>
 
@@ -47,7 +47,7 @@ const PostCard = ({data,setToggle,toggle,setModalDT,reportProduct}) => {
                     </div>
 
                     {/* Price */}
-                    <ul className={`flex text-center justify-center gap-x-4 items-center my-2`}>
+                    <ul className={`flex text-center font-medium justify-center gap-x-4 items-center my-2`}>
                         <li>Original ${carInfo.originalPrice}</li>
                         <li>resale ${resalePrice}</li>
                     </ul>

@@ -104,12 +104,12 @@ const Login = () => {
           <div className={`text-center`}>
 
             {/* Email Feild */}
-            <div className={`my-2`}><input type="email" {...register('userEmail')} className={`border focus:outline-none pl-5 w-[90%] focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm`} placeholder={'Your Email'} required/>
+            <div className={`my-2`}><input type="email" {...register('userEmail')} className={`border focus:outline-none bg-whiteCard pl-5 w-[90%] focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm`} placeholder={'Your Email'} required/>
             </div>
             
             {/* Password Feild */}
             <div className={`my-2 relative`}>
-                <input type={passToggle? 'text' : 'password'} {...register('password')} className={`border focus:outline-none w-[90%] z-[1] focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm pl-5`} placeholder='Enter Password'required/>
+                <input type={passToggle? 'text' : 'password'} {...register('password')} className={`border focus:outline-none bg-whiteCard w-[90%] z-[1] focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm pl-5`} placeholder='Enter Password'required/>
                 {
                   passToggle ?
                   <FaEyeSlash onClick={()=>setPassToggle(!passToggle)} className={`absolute cursor-pointer right-[10%] top-1/2 -translate-y-1/2`}></FaEyeSlash>

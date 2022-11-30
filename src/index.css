@@ -13,14 +13,16 @@
         --white--card: #fbfbff;
         --common: #6E29E7;
         --primaryRed: #C1101F;
-        --commonDeep: #6625df;
+        --commonDeep: #6119e6;
         --black: #181818;
         --lightgray: #64748B;
     }
 }
 
 .dark-theme{
-  --body--BG: #010101 ;
+  --body--BG: #0F172A;
+  --black: #fbfbff;
+  --white--card: #1E293B;
 }
 
 body {
@@ -30,6 +32,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--body--BG);
   transition: all 0.3s ease-in;
+  color: var(--black);
 }
 
 code {

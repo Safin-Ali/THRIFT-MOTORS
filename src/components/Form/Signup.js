@@ -135,45 +135,45 @@ const Signup = () => {
             <div className={`grid lg:grid-cols-2 gap-4`}>
   
               {/* First Name Feild */}
-              <div className={`col-span-1 text-center`}><input type="text" {...register('firstName')} className={`border focus:outline-none focus:border-common focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder={'First Name'} required/>
+              <div className={`col-span-1 text-center`}><input type="text" {...register('firstName')} className={`border focus:outline-none focus:border-common bg-whiteCard focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder={'First Name'} required/>
               </div>
   
               {/* Last Name Feild */}
-              <div className={`col-span-1 text-center`}><input type="text" {...register('lastName')} className={`border focus:outline-none focus:border-common focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder={'Last Name'} required/>
+              <div className={`col-span-1 text-center`}><input type="text" {...register('lastName')} className={`border focus:outline-none focus:border-common bg-whiteCard focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder={'Last Name'} required/>
               </div>
   
               {/* Email Feild */}
-              <div className={`col-span-1 text-center`}><input type="email" {...register('userEmail')} className={`border focus:outline-none focus:border-common focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder={'Your Email'} required/>
+              <div className={`col-span-1 text-center`}><input type="email" {...register('userEmail')} className={`border focus:outline-none focus:border-common bg-whiteCard focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder={'Your Email'} required/>
               </div>
   
               {/* Phone Number Feild */}
-              <div className={`col-span-1 text-center`}><input type="text" {...register('userContactNumber')} className={`border focus:outline-none focus:border-common focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder={'Phone Number'} />
+              <div className={`col-span-1 text-center`}><input type="text" {...register('userContactNumber')} className={`border focus:outline-none focus:border-common bg-whiteCard focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder={'Phone Number'} />
               </div>
   
               {/* Date Feild */}
-              <div className={`text-center col-span-1`}><input type="date" {...register('dateOfBirth')} className={`border focus:outline-none focus:border-common focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`}/>
+              <div className={`text-center col-span-1`}><input type="date" {...register('dateOfBirth')} className={`border focus:outline-none focus:border-common bg-whiteCard focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`}/>
               </div>
   
   
               {/* Role Feild */}
               <div className={`text-center col-span-1`}>
-                  <select ref={userRole} onChange={() => setUserRole(userRole.current.value)} className={`border focus:outline-none focus:border-common focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-l`}>
+                  <select ref={userRole} onChange={() => setUserRole(userRole.current.value)} className={`border focus:outline-none focus:border-common bg-whiteCard focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-l`}>
                       <option value="user">User</option>
                       <option value="seller">Seller</option>
                   </select>
               </div>
   
               {/* Password Feild */}
-              <div className={`text-center col-span-1`}><input type="password" {...register('password')} className={`border focus:outline-none focus:border-common focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder='Enter Password'required/>
+              <div className={`text-center col-span-1`}><input type="password" {...register('password')} className={`border focus:outline-none focus:border-common bg-whiteCard focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder='Enter Password'required/>
               </div>
   
               {/* Confirm Password Feild */}
-              <div className={`text-center col-span-1 `}><input type="password" {...register('confirmPassword')} className={`border focus:outline-none focus:border-common focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder='Confirm Password' required/>
+              <div className={`text-center col-span-1 `}><input type="password" {...register('confirmPassword')} className={`border focus:outline-none focus:border-common bg-whiteCard focus:border-b-2 col-span-2 text-center focus:border-0 p-0.5 md:p-1.5 rounded-sm`} placeholder='Confirm Password' required/>
               </div>
   
               {/* Image Upload */}            
               <div className="flex col-span-2 w-[80%] mx-auto md:w-auto text-center items-center justify-center my-2">
-                  <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                  <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center h-40 border-2 border-dashed rounded-lg cursor-pointer bg-">
                       <div className="flex px-10 text-lightgray flex-col items-center justify-center">
                           <p className="mb-2"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                               <BiImageAdd className={`text-2xl m-3`}></BiImageAdd>
@@ -193,7 +193,7 @@ const Signup = () => {
             </div>
 
             <div className={`text-center col-span-2 `}>
-              <p>Have a account? Please<Link className={`text-common underline`} to={`/login`}>login</Link></p>
+              <p>Have a account? Please <Link className={`text-common underline`} to={`/login`}>login</Link></p>
             </div>
           </form>
           <div className="my-3 flex justify-center items-center">
