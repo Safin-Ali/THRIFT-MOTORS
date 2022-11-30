@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext,useEffect,useState } from 'react';
 import brandLogo from '../../images/brand-logo.png';
 import {HiMenuAlt3} from 'react-icons/hi';
 import {ImUserPlus} from 'react-icons/im';
@@ -21,15 +21,7 @@ const Navbar = () => {
     const [expand,setCollapse] = useState(false);
 
     // theme toggle state
-    const[themeDark,setThemeBool] = useState(false);
-
-    // set theme function
-        if(themeDark){
-            document.body.classList.add('dark-theme')
-        }
-        else{
-            document.body.classList.remove('dark-theme')
-        }
+    const[themeDark,setThemeBool] = useState(localStorage.getItem('dark-theme'));
 
     // toggle navbars expand and collapse in this function
     const expandCollapse = () => setCollapse(!expand);
@@ -42,6 +34,13 @@ const Navbar = () => {
 
     const resNavbarExpandStyle = {
         transition:'all 0.3s linear'
+    }
+
+    console.log(themeDark)
+
+    if(themeDark){ document.body.classList.add('dark-theme');
+    } else {
+    document.body.classList.remove('dark-theme');
     }
 
     let dashPath = '/my-orders';
@@ -101,10 +100,15 @@ const Navbar = () => {
                         themeDark 
                         ? 
                         <BsFillSunFill onClick={()=>{
+                            localStorage.removeItem('dark-theme')
                             setThemeBool(!themeDark)
                         }} className={`text-2xl text-[#ffd829] text-blackSA w-full cursor-pointer`}></BsFillSunFill>
                         :
-                        <BsFillMoonFill onClick={()=>setThemeBool(!themeDark)} className={`text-2xl text-blackSA w-full cursor-pointer`}></BsFillMoonFill>
+                        <BsFillMoonFill onClick={()=>{
+                            localStorage.setItem('dark-theme',!themeDark)
+                            setThemeBool(!themeDark)
+                        }}
+                            className={`text-2xl text-blackSA w-full cursor-pointer`}></BsFillMoonFill>
                     }
                     </div>
 
