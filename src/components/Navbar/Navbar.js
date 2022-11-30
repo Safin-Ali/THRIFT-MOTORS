@@ -1,4 +1,4 @@
-import React, { useContext,useEffect,useState } from 'react';
+import React, { useContext,useState } from 'react';
 import brandLogo from '../../images/brand-logo.png';
 import {HiMenuAlt3} from 'react-icons/hi';
 import {ImUserPlus} from 'react-icons/im';

@@ -54,3 +54,9 @@ This is a **`MERN`** Stack Website
 
 
 [**© SA Safin Ali** ](https://sa-safin-ali-01.netlify.app/)
+
+## ADMIN ROLE USER LOGIN
+ 
+ **adminEmail: `safin.ali@thrift-motors.com`**
+
+**adminPassword: `Safin.ali#01`**
