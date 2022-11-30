@@ -6,7 +6,6 @@ import LoadingSpinner from '../Spinner/LoadingSpinner';
 import EmptyData from '../Empty-Data/EmptyData';
 import BookedCard from '../booked-product-card/BookedCard';
 import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
-import AutoLogOut from '../../Hook/AutoLogOut';
 
 
 const MyOrders = () => {
@@ -34,8 +33,6 @@ const MyOrders = () => {
     
     // if user information lengtn 0
     if(!bookedCar.length) return <EmptyData></EmptyData>;
-
-    console.log(bookedCar)
 
     return (
         <>

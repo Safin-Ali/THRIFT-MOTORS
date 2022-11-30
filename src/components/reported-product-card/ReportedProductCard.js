@@ -1,9 +1,11 @@
 import React from 'react';
 import PrimaryButton from '../primary-button/PrimaryButton';
 
-const ReportedProductCard = ({data,setToggle,toggle,setModalDT}) => {
+const ReportedProductCard = ({data,setToggle,toggle,setModalDT,handleDeletePost}) => {
 
-    const {advertise,carInfo,resalePrice,sellCarImg} = data;
+    const {advertise,carInfo,resalePrice,sellCarImg,_id,postOwnerInfo} = data;
+
+    console.log(data)
 
     const bgImage = {
         backgroundImage: 
@@ -28,8 +30,7 @@ const ReportedProductCard = ({data,setToggle,toggle,setModalDT}) => {
 
                     <div className={`text-center`}>
                         <PrimaryButton onClick={()=>{
-                            setModalDT(data)
-                            setToggle(!toggle)
+                            handleDeletePost(_id,postOwnerInfo?.email)
                             }} className={`hover:scale-[1.05] duration-[500ms]`}>DELETE POST</PrimaryButton>
                     </div>
                 </div>

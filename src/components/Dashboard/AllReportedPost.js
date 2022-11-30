@@ -31,30 +31,13 @@ const AllReportedPost = () => {
         }
     })
 
-    async function handleSellerVerify (email,id,status) {
+    async function handleDeletePost (id,email) {
         try{
             // patch body for user verifiy
-            const patchBody = {userEmail:email,_id:id,status}
-            const res = await axios.patch(`https://thrift-motors-server.vercel.app/allUser`,patchBody,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
-            if(res.data.modifiedCount > 0){
-                window.alert('Update Successful')
-                refetch()
-            }
-        }
-        catch(e){
-            console.log(e.message)
-            if(e.request.status === 401) return navigate('/error401')
-            return
-        }
-    }
-
-    async function handleDeleteSeller (id) {
-        try{
-            const res = await axios.delete(`https://thrift-motors-server.vercel.app/userInfo?id=${id}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            const res = await axios.delete(`http://localhost:5000/postedData?id=${id}&email=${email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.deletedCount > 0){
-                await deleteAccount();
-                await window.alert('User Delete Successful')
-                await refetch()
+                window.alert('Post Deleted')
+                refetch()
             }
         }
         catch(e){
@@ -76,7 +59,7 @@ const AllReportedPost = () => {
     return (
         <section className={`grid grid-cols-1 mx-[5%] sm:mx-[10%] md:grid-cols-2 lg:grid-cols-3 gap-7 md:mx-[5%] my-10`}>
             {
-                allReportedPost.map(elm => <ReportedProductCard handleDeleteSeller={handleDeleteSeller} handleSellerVerify={handleSellerVerify} key={elm._id} data={elm}></ReportedProductCard>)
+                allReportedPost.map(elm => <ReportedProductCard handleDeletePost={handleDeletePost} key={elm._id} data={elm}></ReportedProductCard>)
             }
         </section>
     );
