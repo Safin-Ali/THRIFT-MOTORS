@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCVT9aylVqgXOh8MuOUBIEGcfRazAWqXq8",
-  authDomain: "thrift-motors.firebaseapp.com",
-  projectId: "thrift-motors",
-  storageBucket: "thrift-motors.appspot.com",
-  messagingSenderId: "844063991186",
-  appId: "1:844063991186:web:7cf90cdad5c3d690fe4d4b"
+  apiKey:  process.env.REACT_APP_apiKey,
+  authDomain:  process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase

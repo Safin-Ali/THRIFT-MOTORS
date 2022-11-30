@@ -10,7 +10,7 @@ import LoadingSpinner from '../Spinner/LoadingSpinner';
 const AllBuyers = () => {
 
     // api for all sellers information
-const url = `http://localhost:5000/alluser`;
+const url = `https://thrift-motors-server.vercel.app/alluser`;
 
     const navigate = useNavigate();
 

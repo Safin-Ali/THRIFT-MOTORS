@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { MdAddShoppingCart } from 'react-icons/md';
 import { Link, Navigate, Outlet,} from 'react-router-dom';
 import LeftNav from '../../components/Dashboard/LeftNav';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
