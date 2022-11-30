@@ -19,7 +19,7 @@ const PostCard = ({data,setToggle,toggle,setModalDT,reportProduct}) => {
     }
 
     return (
-        <div className={`border bg-whiteCard mx-[3%] sm:mx-[10%] pb-3 lg:pb-0 shadow-md bg-whiteCard rounded-t-md lg:rounded-l-md my-[3%] lg:mr-[5%] lg:mx-0`}>
+        <div className={`border mx-[3%] sm:mx-[10%] pb-3 lg:pb-0 shadow-md bg-whiteCard rounded-t-md lg:rounded-l-md my-[3%] lg:mr-[5%] lg:mx-0`}>
             
             {/* Card Content Middle */}
             <div className={`grid grid-cols-1 lg:grid-cols-5 justify-center items-center`}>
