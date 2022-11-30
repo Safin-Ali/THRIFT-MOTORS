@@ -32,6 +32,16 @@ export const router = createBrowserRouter([
             // get all home page section
             {path: '/', element:<Home></Home>},
 
+            // signup page
+            {
+                path: '/signup', element: <Signup></Signup>
+            },
+            
+            // login page
+            {
+                path: '/login', element: <LoginPage><Login></Login></LoginPage>
+            },
+
             // get posted data by category id/name wise
             {path: '/category/:id', loader: async ({params}) => fetch(`https://thrift-motors-server.vercel.app/category/${params.id}`), element: <PrivatePage><PostData></PostData></PrivatePage>},
 
@@ -64,14 +74,5 @@ export const router = createBrowserRouter([
             // get blogs page
             {path: '/blogs', element: <BlogPage></BlogPage>},
         ]
-    },
-
-    {
-        path: '/signup', element: <Signup></Signup>
-    },
-
-    {
-        path: '/login', element: <LoginPage><Login></Login></LoginPage>
-    },
-    
+    },    
 ])

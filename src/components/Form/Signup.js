@@ -119,10 +119,10 @@ const Signup = () => {
     if(userData) return <Navigate to={from}></Navigate>
 
     return (
-      <section className={`flex mx-[2%] md:flex-row justify-center items-center min-h-screen`}>
+      <section className={`flex mx-[2%] my-[5%] md:flex-row justify-center items-center`}>
 
         <div className={`w-1/2 hidden lg:block`}>
-          <img className={`w-full h-auto`} src="https://i.ibb.co/GktZDfH/Tablet-login-rafiki.png" alt="" />
+          <img className={`w-full h-auto`} src="https://i.ibb.co/GktZDfH/Tablet-login-rafiki.png" alt="Banner_Image" />
         </div>
 
         <div className={`border shadow-md py-[2%] px-[3%]`}>
@@ -180,7 +180,8 @@ const Signup = () => {
                       <input id="dropzone-file" {...register('userAvatar')} type="file" className="hidden" required={true}/>
                   </label>
               </div> 
-  
+
+                <p className={`text-lg col-span-2 text-center opacity-[0.6] font-medium`}>Must be Upload Picture</p>
               
             </div>
             
@@ -190,18 +191,19 @@ const Signup = () => {
             </div>
 
             <div className={`text-center col-span-2 `}>
-              <p>Have a account?.user? <Link className={`text-common underline`} to={`/login`}>login</Link></p>
+              <p>Have a account? Please<Link className={`text-common underline`} to={`/login`}>login</Link></p>
             </div>
           </form>
           <div className="my-3 flex justify-center items-center">
             <span className={`w-full inline-block h-[1px] bg-common`}></span><span>X</span><span className={`w-full inline-block h-[1px] bg-common`}></span>
           </div>
           
-          <div className={`flex justify-center`}>
-            <FcGoogle onClick={()=> handleLoginWithGoogle('google')} className={`text-3xl cursor-pointer border rounded-[50%] mx-2`}></FcGoogle>
-            <GrGithub onClick={()=> handleLoginWithGoogle('gitHub')} className={`text-3xl cursor-pointer border rounded-[50%] mx-2`}></GrGithub>
+          <div onClick={()=> handleLoginWithGoogle('google')} className={`flex cursor-pointer justify-center items-center p-2 rounded-sm border w-[90%] mx-auto`}>
+          <p className={`font-medium`}>CONTINUE WITH GOOGLE</p>
+          <FcGoogle className={`text-3xl border rounded-[50%] mx-2`}></FcGoogle>
           </div>
           </div>
+          
           <ToastContainer
             position="top-center"
             autoClose={2000}
