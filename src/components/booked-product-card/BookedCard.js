@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PrimaryButton from '../primary-button/PrimaryButton';
 const BookedCard = ({data}) => {
     
@@ -10,6 +11,8 @@ const BookedCard = ({data}) => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
     }
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -26,7 +29,7 @@ const BookedCard = ({data}) => {
                     </div>
 
                     <div className={`text-center`}>
-                        <PrimaryButton className={`hover:scale-[1.05] duration-[500ms]`}>PAY NOW</PrimaryButton>
+                        <PrimaryButton onClick={()=>navigate('/payment/stripe')} className={`hover:scale-[1.05] duration-[500ms]`}>PAY NOW</PrimaryButton>
                     </div>
                 </div>
             </div>

@@ -33,6 +33,15 @@ const Signup = () => {
     // store user selectd role
     const[selRole,setUserRole] = useState('user');
 
+    // new promise for waiting prepare home page
+    function prepareHome () {
+      return new Promise((res,rej)=>{
+        setTimeout(()=>{
+          return res(true)
+        },2500)
+      })
+    }    
+
     // Login With Google
     async function handleLoginWithGoogle (provider) {
       try{
@@ -44,12 +53,14 @@ const Signup = () => {
 
           if(postdata.data.acknowledged){
 
+            await generateJWT(result?.user?.email);
             notifySuccess('Login Successfull')
-
              // generate token JWT
-          await generateJWT(result?.user?.email);
-          await  notifySuccess(`Encrypt token Added`)
-          return navigate(from);
+            notifySuccess(`Encrypt token Added`)
+            console.log('1')
+            await prepareHome()
+            console.log('2')
+          // return navigate(from);
 
           }
         }

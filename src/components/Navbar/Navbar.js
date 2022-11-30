@@ -36,8 +36,6 @@ const Navbar = () => {
         transition:'all 0.3s linear'
     }
 
-    console.log(themeDark)
-
     if(themeDark){ document.body.classList.add('dark-theme');
     } else {
     document.body.classList.remove('dark-theme');

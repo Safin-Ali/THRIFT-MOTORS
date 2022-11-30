@@ -46,7 +46,7 @@ const StripePayment = () => {
         };
 
     return (
-                <form onSubmit={handleSubmit}>
+                <form className={`m-[4%]`} onSubmit={handleSubmit}>
                     <PaymentElement>
                     </PaymentElement>
                     <button disabled={!stripe}>Submit</button>

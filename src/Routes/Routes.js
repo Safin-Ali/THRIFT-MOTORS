@@ -73,6 +73,9 @@ export const router = createBrowserRouter([
 
             // get blogs page
             {path: '/blogs', element: <BlogPage></BlogPage>},
+
+            // get payment page
+            {path: '/payment/stripe', element: <StripeElement></StripeElement>},
         ]
     },    
 ])
