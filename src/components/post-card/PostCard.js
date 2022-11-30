@@ -37,7 +37,7 @@ const PostCard = ({data,setToggle,toggle,setModalDT,reportProduct}) => {
                             <BiTime className={`text-2xl p-0.5 inline`}></BiTime>
                             <p>{postedTime}</p>
                         </div>
-                        <MdReportGmailerrorred onClick={()=>reportProduct(_id)} className={`text-4xl p-1 cursor-pointer`}></MdReportGmailerrorred>
+                        <MdReportGmailerrorred onClick={()=>reportProduct(_id)} className={`text-4xl p-1 text-red-600 cursor-pointer`}></MdReportGmailerrorred>
                     </div>
 
                     {/* Post Info */}
@@ -49,7 +49,7 @@ const PostCard = ({data,setToggle,toggle,setModalDT,reportProduct}) => {
                     {/* Price */}
                     <ul className={`flex text-center font-medium justify-center gap-x-4 items-center my-2`}>
                         <li>Original ${carInfo.originalPrice}</li>
-                        <li>resale ${resalePrice}</li>
+                        <li>Resale ${resalePrice}</li>
                     </ul>
 
                     {/* Location */}
@@ -69,7 +69,10 @@ const PostCard = ({data,setToggle,toggle,setModalDT,reportProduct}) => {
                         <PrimaryButton onClick={()=>{
                             setModalDT(data)
                             setToggle(!toggle)
-                            }} className={''}>Book Now</PrimaryButton>
+                            }} className={''}>Book Now 
+                            {postOwnerInfo.varified ?
+                                <GoVerified className={`text-green-700 ml-2 inline-block`}></GoVerified>
+                                : <GoUnverified className={`ml-2 inline-block`}></GoUnverified>}</PrimaryButton>
                     </div>
 
                     {/* Post owner Info */}
