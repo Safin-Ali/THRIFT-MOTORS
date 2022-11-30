@@ -1,13 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthUser } from '../../Context/AuthContext';
 import UnAuthorized from '../404-Not-Found/UnAuthorized';
 import EmptyData from '../Empty-Data/EmptyData';
 import ProfileCard from '../profile-card/ProfileCard';
 import LoadingSpinner from '../Spinner/LoadingSpinner';
 
 const AllBuyers = () => {
+
+    // use AuthContext For User Data
+    const {notifySuccess,notifyFaild} = useContext(AuthUser);    
 
     // api for all sellers information
 const url = `https://thrift-motors-server.vercel.app/alluser`;
@@ -35,7 +39,7 @@ const url = `https://thrift-motors-server.vercel.app/alluser`;
             const patchBody = {userEmail:email,_id:id,status}
             const res = await axios.patch(`https://thrift-motors-server.vercel.app/allUser`,patchBody,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.modifiedCount > 0){
-                window.alert('Update Successful')
+                notifySuccess('Update Successful')
                 refetch()
             }
         }
@@ -51,7 +55,7 @@ const url = `https://thrift-motors-server.vercel.app/alluser`;
         try{
             const res = await axios.delete(`https://thrift-motors-server.vercel.app/userInfo?id=${id}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.deletedCount > 0){
-                window.alert('User Delete Successful')
+                notifySuccess('User Delete Successful')
                 refetch()
             }
         }

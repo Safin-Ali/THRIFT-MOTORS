@@ -11,7 +11,7 @@ import LoadingSpinner from '../Spinner/LoadingSpinner';
 const AllReportedPost = () => {
 
     // use AuthContext For User Data
-    const {deleteAccount} = useContext(AuthUser);
+    const {notifySuccess} = useContext(AuthUser);
 
     const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const AllReportedPost = () => {
             // patch body for user verifiy
             const res = await axios.delete(`https://thrift-motors-server.vercel.app/postedData?id=${id}&email=${email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.deletedCount > 0){
-                window.alert('Post Deleted')
+                notifySuccess('Post Deleted')
                 refetch()
             }
         }

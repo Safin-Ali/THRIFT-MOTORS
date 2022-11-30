@@ -3,7 +3,6 @@ import {useForm} from 'react-hook-form';
 import PrimaryButton from "../primary-button/PrimaryButton";
 import {BiImageAdd} from "react-icons/bi";
 import {FcGoogle} from "react-icons/fc";
-import {GrGithub} from "react-icons/gr";
 import { AuthUser } from "../../Context/AuthContext";
 import axios from 'axios';
 import {Link, Navigate, useLocation, useNavigate} from 'react-router-dom';

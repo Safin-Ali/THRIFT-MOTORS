@@ -1,12 +1,12 @@
 import axios from 'axios';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../Context/AuthContext';
 
 const UserInfoUploadDB = (infoData,selRole,from) => {
 
     // use AuthContext For User Data
-    const {updateAuthProfile,signUp,loginWithGoogle,loginWithGitHub,userData} = useContext(AuthUser);
+    const {updateAuthProfile,signUp,notifySuccess} = useContext(AuthUser);
 
     // assign new route / change route path using by this hook
     const navigate = useNavigate();
@@ -50,7 +50,7 @@ const UserInfoUploadDB = (infoData,selRole,from) => {
       
                         // if post successfull then popup toast
                         if(res.data.acknowledged){
-                          window.alert('Wow Your are signin')
+                          notifySuccess('Wow Your are signin')
                           return navigate(from)
                         }
                       })

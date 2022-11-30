@@ -11,7 +11,7 @@ import LoadingSpinner from '../Spinner/LoadingSpinner';
 const AllSeller = () => {
 
     // use AuthContext For User Data
-    const {deleteAccount} = useContext(AuthUser);
+    const {notifySuccess} = useContext(AuthUser);
 
     const navigate = useNavigate();
 
@@ -53,8 +53,7 @@ const AllSeller = () => {
         try{
             const res = await axios.delete(`https://thrift-motors-server.vercel.app/userInfo?id=${id}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.deletedCount > 0){
-                await deleteAccount();
-                await window.alert('User Delete Successful')
+                await notifySuccess('User Delete Successful')
                 await refetch()
             }
         }
