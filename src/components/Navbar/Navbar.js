@@ -68,7 +68,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className={`flex shadow-md justify-between items-center flex-wrap px-2 md:px-[5%] lg:px-[4%]`}>
+            <nav className={`flex shadow-md bg-whiteCard justify-between items-center flex-wrap px-2 md:px-[5%] lg:px-[4%]`}>
 
                 {/* Brand Image / Text */}
                 <div>

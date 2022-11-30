@@ -11,7 +11,7 @@ const CategoryCard = ({data}) => {
     const handleNavigate = (categoryId) => navigate(`/category/${categoryId}`)
 
     return (
-        <div className={`border rounded-lg w-[90%] lg:w-2/3 p-3 cursor-pointer mx-auto`}>
+        <div className={`border bg-whiteCard drop-shadow-md rounded-lg w-[90%] lg:w-2/3 p-3 cursor-pointer mx-auto`}>
             <div>
                 <img src={brandLogo} className={`mx-auto`} alt="Brand Logo" />
             </div>

@@ -6,7 +6,7 @@ import axios from 'axios';
 const StripePayment = () => {
 
     useEffect(()=>{
-        axios.post('http://localhost:5000/stripe/payment')
+        axios.post('https://thrift-motors-server.vercel.app/stripe/payment')
         .then(res => console.log(res))
         .catch(e => console.log(e.message))
     },[])

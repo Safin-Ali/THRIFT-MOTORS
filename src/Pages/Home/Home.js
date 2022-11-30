@@ -112,7 +112,7 @@ const Home = () => {
             </header>
 
                 {/* Extra Services Ffeatures */}
-                <section className={`md:mx-[4%] my-5`}>
+                <section className={`md:mx-[4%] my-5 pb-[2%]`}>
                 <h3 className={`text-3xl font-bold text-center mt-[5%] pb-3 capitalize`}>Our Extra Services</h3>
                     <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-0 md:grid-cols-3`}>
                         <ExtraServiceCard imgLink={`https://i.ibb.co/9rsPfYN/auto-mechanic-repairing-vehicle-engine-isolated-flat-vector-illustration-cartoon-man-fixing-checking.png`}>
@@ -121,7 +121,11 @@ const Home = () => {
                         </ExtraServiceCard>
                         <ExtraServiceCard imgLink={`https://i.ibb.co/DMNS8R6/Car-finance-pana.png`}>
                         <h3 className={`text-xl font-bold text-center text-primaryRed mt-[5%] pb-3 capitalize`}>BUY CAR WITH LOAN</h3>
-                            IYou can buy a used car through loan from us if you want. But in that case some instructions must be followed.
+                            You can buy a used car through loan from us if you want. But in that case some instructions must be followed.
+                        </ExtraServiceCard>
+                        <ExtraServiceCard imgLink={`https://i.ibb.co/RcJDcsC/QA-engineers-bro.png`}>
+                        <h3 className={`text-xl font-bold text-center text-primaryRed mt-[5%] pb-3 capitalize`}>1 YEAR GUARANTEE</h3>
+                        Our most attractive feature here is that we offer 1 or more than year warranty on used cars
                         </ExtraServiceCard>
                     </div>
                 </section>

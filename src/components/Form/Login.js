@@ -2,10 +2,9 @@ import React, { useContext, useState, } from "react";
 import {useForm} from 'react-hook-form';
 import PrimaryButton from "../primary-button/PrimaryButton";
 import {FcGoogle} from "react-icons/fc";
-import {GrGithub} from "react-icons/gr";
 import { AuthUser } from "../../Context/AuthContext";
 import { Link,useLocation, useNavigate } from "react-router-dom";
-import {FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
+import {FaEyeSlash, FaRegEye,FaRegEyeSlash} from 'react-icons/fa';
 import { userInfoPost } from "../../Hook/userInfoPost";
 import { ToastContainer } from "react-toastify";
 import { generateJWT } from "../../Hook/generateJWT";
@@ -75,38 +74,43 @@ const Login = () => {
     }
 
   return (
-    <section className={`w-full mx-auto flex gap-x-10 justify-center items-center min-h-screen max-h-screen`}>
+    <section className={`grid mx-[5%] md:grid-cols-2 grid-cols-1 gap-x-10 justify-center items-center min-h-screen max-h-full`}>
 
-    <div className={`w-1/2`}>
+    <div>
       <img className={`w-full h-auto`} src="https://i.ibb.co/PwVZRMc/Authentication-pana.png" alt="Auth_Banner" />
     </div>
 
-      <div className={`border shadow-md py-[2%] px-[3%]`}>
-
+      <div className={`border bg-whiteCard drop-shadow-md py-[6%] mb-[3%] px-[3%] w-full lg:w-[60%] mx-auto`}>
       <h2 className={`text-4xl text-center my-2 font-semibold text-common uppercase`}>Login</h2>
 
         <form onSubmit={handleSubmit(onLogin)}>
           <div className={`text-center`}>
 
             {/* Email Feild */}
-            <div className={`my-2`}><input type="email" {...register('userEmail')} className={`border focus:outline-none focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm`} placeholder={'Your Email'} required/>
+            <div className={`my-2`}><input type="email" {...register('userEmail')} className={`border focus:outline-none pl-5 w-[90%] focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm`} placeholder={'Your Email'} required/>
             </div>
-
+            
             {/* Password Feild */}
-            <div className={`my-2`}>
-                <input onFocus={()=>setPassToggle(true)} type={passToggle? 'text' : 'password'} {...register('password')} className={`border focus:outline-none z-[1] focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm`} placeholder='Enter Password'required/>
+            <div className={`my-2 relative`}>
+                <input type={passToggle? 'text' : 'password'} {...register('password')} className={`border focus:outline-none w-[90%] z-[1] focus:border-common focus:border-b-2 focus:border-0 p-2 rounded-sm pl-5`} placeholder='Enter Password'required/>
+                {
+                  passToggle ?
+                  <FaEyeSlash onClick={()=>setPassToggle(!passToggle)} className={`absolute cursor-pointer right-[10%] top-1/2 -translate-y-1/2`}></FaEyeSlash>
+                  :
+                  <FaRegEye onClick={()=>setPassToggle(!passToggle)} className={`absolute cursor-pointer right-[10%] top-1/2 -translate-y-1/2`}></FaRegEye>
+                }
             </div>
 
-            <div>No Account? <Link className={`text-common underline`} to={`/signup`}>registration</Link></div>
+            <div><span className={`font-medium`}>No Account?</span> <Link className={`text-common underline`} to={`/signup`}>registration</Link></div>
             
           </div>
           <div className={`text-center`}>
-            <PrimaryButton className={`bg-transparent border hover:text-white border-common duration-150 hover:bg-common`}>LOGIN</PrimaryButton>
+            <PrimaryButton className={`bg-transparent w-[90%] border hover:text-white border-common duration-150 hover:bg-common`}>LOGIN</PrimaryButton>
           </div>
         </form>
-        <div className={`flex justify-center`}>
-          <FcGoogle onClick={()=> handleLoginWithGoogle('google')} className={`text-3xl cursor-pointer border rounded-[50%] mx-2`}></FcGoogle>
-          <GrGithub onClick={()=> handleLoginWithGoogle('gitHub')} className={`text-3xl cursor-pointer border rounded-[50%] mx-2`}></GrGithub>
+        <div onClick={()=> handleLoginWithGoogle('google')} className={`flex cursor-pointer justify-center items-center p-2 rounded-sm border w-[90%] mx-auto`}>
+          <p className={`font-medium`}>CONTINUE WITH GOOGLE</p>
+          <FcGoogle className={`text-3xl border rounded-[50%] mx-2`}></FcGoogle>
         </div>
       </div>
     </section>

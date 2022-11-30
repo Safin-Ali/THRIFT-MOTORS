@@ -34,7 +34,7 @@ const AllReportedPost = () => {
     async function handleDeletePost (id,email) {
         try{
             // patch body for user verifiy
-            const res = await axios.delete(`http://localhost:5000/postedData?id=${id}&email=${email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
+            const res = await axios.delete(`https://thrift-motors-server.vercel.app/postedData?id=${id}&email=${email}`,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.deletedCount > 0){
                 window.alert('Post Deleted')
                 refetch()

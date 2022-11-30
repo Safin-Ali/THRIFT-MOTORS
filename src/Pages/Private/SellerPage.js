@@ -45,11 +45,11 @@ const SellerPage = () => {
                             <Link className={`col-span-2`} to={`/dashboard/add-product`}><MdAddShoppingCart className={`text-xl inline-block mr-1`}></MdAddShoppingCart> Add Product</Link>
                     </section>
 
-                    <section className={`my-5 border-b pb-3`}>
+                    {/* <section className={`my-5 border-b pb-3`}>
                             <Link className={`col-span-2`} to={`/dashboard/my-buyers`}>
                                 <FaUserTie className={`text-xl inline-block mr-1`}></FaUserTie>My Buyers
                             </Link>
-                    </section>
+                    </section> */}
                 </LeftNav>
 
                 {/* Dashboard Content */}
