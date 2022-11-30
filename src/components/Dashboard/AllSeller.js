@@ -38,7 +38,7 @@ const AllSeller = () => {
             const patchBody = {userEmail:email,_id:id,status}
             const res = await axios.patch(`https://thrift-motors-server.vercel.app/allUser`,patchBody,{headers:{authorization: `Bearer ${localStorage.getItem(`jwt-token`)}`}});
             if(res.data.modifiedCount > 0){
-                window.alert('Update Successful')
+                notifySuccess('Update Successful')
                 refetch()
             }
         }
