@@ -10,6 +10,7 @@ import { ToastContainer} from 'react-toastify';
 import BookProductModal from '../../components/Form/BookProductModal';
 import { AuthUser } from '../../Context/AuthContext';
 import { useCurrUserInfo } from '../../Hook/useCurrUserInfo';
+import ExtraServiceCard from '../../components/extra-service-card/ExtraServiceCard';
 
 const Home = () => {
 
@@ -109,6 +110,22 @@ const Home = () => {
                 <div>
                 </div>
             </header>
+
+                {/* Extra Services Ffeatures */}
+                <section className={`md:mx-[4%] my-5`}>
+                <h3 className={`text-3xl font-bold text-center mt-[5%] pb-3 capitalize`}>Our Extra Services</h3>
+                    <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-0 md:grid-cols-3`}>
+                        <ExtraServiceCard imgLink={`https://i.ibb.co/9rsPfYN/auto-mechanic-repairing-vehicle-engine-isolated-flat-vector-illustration-cartoon-man-fixing-checking.png`}>
+                        <h3 className={`text-xl font-bold text-center text-primaryRed mt-[5%] pb-3 capitalize`}>Our CAR REPAIR</h3>
+                            If you have car problems anywhere in any country. You can email us. Our team will try to repair your car.
+                        </ExtraServiceCard>
+                        <ExtraServiceCard imgLink={`https://i.ibb.co/DMNS8R6/Car-finance-pana.png`}>
+                        <h3 className={`text-xl font-bold text-center text-primaryRed mt-[5%] pb-3 capitalize`}>BUY CAR WITH LOAN</h3>
+                            IYou can buy a used car through loan from us if you want. But in that case some instructions must be followed.
+                        </ExtraServiceCard>
+                    </div>
+                </section>
+
             <Footer></Footer>
             <section className={`relative`}>
                     <div className={`${toggle ? 'opacity-100' : 'opacity-0'} transition delay-[500ms] ease-linear`}><BookProductModal handleBooked={handleBooked} modalDT={modalDT} toggle={toggle} setToggle={setToggle}></BookProductModal></div>
