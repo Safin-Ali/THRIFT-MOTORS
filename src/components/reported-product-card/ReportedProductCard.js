@@ -3,9 +3,7 @@ import PrimaryButton from '../primary-button/PrimaryButton';
 
 const ReportedProductCard = ({data,setToggle,toggle,setModalDT,handleDeletePost}) => {
 
-    const {advertise,carInfo,resalePrice,sellCarImg,_id,postOwnerInfo} = data;
-
-    console.log(data)
+    const {paid,carInfo,resalePrice,sellCarImg,_id,postOwnerInfo} = data;
 
     const bgImage = {
         backgroundImage: 
@@ -25,7 +23,7 @@ const ReportedProductCard = ({data,setToggle,toggle,setModalDT,handleDeletePost}
 
                     <div className={`flex justify-center text-center gap-x-3`}>
                         <p className={`font-medium`}>Resale <b>${resalePrice}</b></p>
-                        <p className={`font-medium`}>Used <b>{''}</b></p>
+                        <p className={`font-medium`}><b>{paid?'Sold':'Available'}</b></p>
                     </div>
 
                     <div className={`text-center`}>
