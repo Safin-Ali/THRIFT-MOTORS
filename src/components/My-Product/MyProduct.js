@@ -16,6 +16,14 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
         backgroundRepeat: 'no-repeat',
     }
 
+    const brandBg = {
+        backgroundImage: 
+        `url(${carInfo?.brandLogo})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+    }
+
     return (
         <div className={`border drop-shadow-lg bg-whiteCard hover:scale-[1.02] duration-[500ms] rounded-t-md my-[3%]`}>
             
@@ -42,9 +50,15 @@ const MyProduct = ({data,handleDeleteProduct,advertiseProduct}) => {
 
                     {/* Price */}
                     <div className={`flex text-center justify-center gap-x-4 items-center my-2`}>
-                        <p className={`p-1 text-sm rounded-md bg-common hover:shadow-lg`}>Original price: ${carInfo.originalPrice}</p>
+                        <p className={`p-1 text-sm rounded-md text-white bg-green-600 hover:shadow-lg`}>Original price: ${carInfo.originalPrice}</p>
                         <p className={`p-1 text-sm rounded-md bg-primaryRed text-white hover:shadow-lg`}>Resale price: ${resalePrice}</p>
                     </div>
+
+                    {/* Paid Status */}
+                    <div className={`flex text-center justify-center gap-x-4 items-center my-3`}>
+                        <p className={`p-1 min-w-[100px] text-sm ${!paid && 'bg-yellow-500'} rounded-md text-white bg-green-600 hover:shadow-lg`}>{paid?'Sold':'Available'}</p>
+                        <div style={brandBg} className={`p-1 w-[50px] h-[45px] text-sm object-cover rounded-[50%] text-white hover:shadow-lg`} src={carInfo?.brandLogo} alt="Brand logo"/>
+                        </div>
 
                     {/* Location */}
                     <div className={`hidden lg:flex capitalize gap-x-5 items-center justify-center`}>
